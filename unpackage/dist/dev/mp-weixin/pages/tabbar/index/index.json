@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "search-bar": "/components/search-bar/search-bar",
+    "icon-nav": "/components/icon-nav/icon-nav",
+    "course-item": "/components/course-item/course-item"
+  }
+}
