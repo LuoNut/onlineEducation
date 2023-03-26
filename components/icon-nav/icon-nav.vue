@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view class="navItem" v-for="(item, index) in navList" hover-class="navItem-hove" :key="index">
+		<view @click="addtabar()" class="navItem" v-for="(item, index) in navList" hover-class="navItem-hove" :key="index">
 			<image :src="item.src" mode="aspectFill"></image>
 			<text>{{item.name}}</text>
 		</view>
@@ -17,6 +17,11 @@
 			return {
 				
 			};
+		},
+		methods: {
+			addtabar() {
+				this.$store.commit('setRoleId', 1)
+			}
 		}
 	}
 </script>

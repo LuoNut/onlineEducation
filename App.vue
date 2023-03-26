@@ -15,8 +15,7 @@
 
 <style lang="scss">
 	/*每个页面公共css */
-	@import url("common/css/free.css");
-	@import url("common/css/common.css");
-	@import url("common/css/animate.min.css");
-	@import url("common/icon/iconfont.css");
+	* {
+		box-sizing: border-box;
+	}
 </style>
