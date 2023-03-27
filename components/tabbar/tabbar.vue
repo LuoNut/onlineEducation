@@ -38,7 +38,7 @@
 
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 		.tab-bar {
 			position: fixed;
 			bottom: 0;

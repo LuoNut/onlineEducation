@@ -37,7 +37,7 @@
 		display: flex;
 		justify-content: space-between;
 		margin: 0 20rpx;
-		padding: 20rpx 0;
+		padding-bottom: 40rpx;
 		.image {
 			position: relative;
 			width: 300rpx;

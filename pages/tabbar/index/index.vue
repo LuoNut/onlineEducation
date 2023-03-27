@@ -51,13 +51,8 @@
 </template>
 
 <script>
-	//引入tabbar组件
-	import tabBar from '@/components/tabbar/tabbar.vue'
 
 	export default {
-		components: {
-			tabBar
-		},
 		data() {
 			return {
 				tabBerLists: [], //tabbar数据

@@ -1,9 +1,9 @@
 <template>
 	<view>
-		
+		teacher
 		
 		<!-- //底部tabbar -->
-		<tabbar :current="tabBerLists.length - 1" :tabBarList="tabBerLists" />
+		<tabbar :current="2" :tabBarList="tabBerLists" />
 	</view>
 </template>
 
@@ -11,8 +11,8 @@
 	export default {
 		data() {
 			return {
-				tabBerLists: [], //tabbar数据
-			}
+				
+			};
 		},
 		onLoad() {
 			// 影藏原生的tabbar,有自定义tabbar的页面都要写一遍
@@ -21,12 +21,9 @@
 		onShow() {
 			this.tabBerLists = uni.getStorageSync('tabBarList') // 自定义的tabbar赋值
 		},
-		methods: {
-			
-		}
 	}
 </script>
 
-<style>
+<style lang="scss">
 
 </style>

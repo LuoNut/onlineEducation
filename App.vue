@@ -17,5 +17,8 @@
 	/*每个页面公共css */
 	* {
 		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		border: 0;
 	}
 </style>

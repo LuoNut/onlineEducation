@@ -28,7 +28,7 @@
 			padding: 20rpx 0;
 			color: #928e8a;
 			border-radius: 8rpx;
-			margin-bottom: 20rpx;
+			
 			text {
 				margin-left: 20rpx;
 			}

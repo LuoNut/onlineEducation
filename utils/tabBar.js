@@ -41,10 +41,10 @@ const teacherTabbar = [
 		"index": '1'
 	},
 	{
-		"pagePath": "/pages/tabbar/home/home",
-		"text": "首页",
-		"iconPath": "/static/tabbar/home.png",
-		"selectedIconPath": "/static/tabbar/home_selected.png",
+		"pagePath": "/pages/tabbar/teacher/teacher",
+		"text": "课程",
+		"iconPath": "/static/tabbar/teacher.png",
+		"selectedIconPath": "/static/tabbar/teacher_selected.png",
 		"index": '2'
 	},
 	{
@@ -52,7 +52,7 @@ const teacherTabbar = [
 		"text": "首页",
 		"iconPath": "/static/tabbar/home.png",
 		"selectedIconPath": "/static/tabbar/home_selected.png",
-		"index": '2'
+		"index": '3'
 	}
 ]
 

@@ -21,6 +21,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/tabbar/teacher/teacher",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -47,6 +56,12 @@
 				// "text": "学习",
 				// "iconPath": "/static/tabbar/learn.png",
 				// "selectedIconPath": "static/tabbar/learn_selected.png"
+			},
+			{
+				"pagePath": "pages/tabbar/teacher/teacher"
+				// "text": "教师",
+				// "iconPath": "/static/tabbar/teacher.png",
+				// "selectedIconPath": "/static/tabbarteacher_selected.png",
 			},
 			{
 				"pagePath": "pages/tabbar/home/home"
