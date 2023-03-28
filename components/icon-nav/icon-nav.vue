@@ -31,6 +31,7 @@
 		padding: 20rpx 0;
 		display: flex;
 		flex-wrap: wrap;
+		background-color: #fff;
 		.navItem {
 			width: 25%;
 			display: flex;

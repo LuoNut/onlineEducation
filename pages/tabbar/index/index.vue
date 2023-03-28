@@ -1,16 +1,21 @@
 <template>
 	<view class="IndexContainer">
-		<!-- 搜索框 -->
-		<search-bar></search-bar>
-
+		
+		<cu-custom bgColor="bg-gradual-blue">
+			<block slot="content">移动课堂</block>
+		</cu-custom>
+	
 		<!-- 轮播图 -->
-		<swiper class="swiperImg" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
-			<swiper-item v-for="(item, index) in swiper" :key="index">
-				<view class="swiper-item">
-					<image :src="item.src" mode="aspectFill"></image>
-				</view>
-			</swiper-item>
-		</swiper>
+		<view class="image">
+			<swiper class="swiperImg" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
+				<swiper-item v-for="(item, index) in swiper" :key="index">
+					<view class="swiper-item">
+						<image :src="item.src" mode="aspectFill"></image>
+					</view>
+				</swiper-item>
+			</swiper>
+		</view>
+		
 
 		<!-- 导航图标 -->
 		<icon-nav :navList="navList"></icon-nav>
@@ -20,8 +25,11 @@
 
 		<!-- 推荐课程模块 -->
 		<view class="courseContainer">
-			<view class="title">
-				<text class="left">推荐课程</text>
+			<view class="cu-bar bg-white margin-top-xs">
+				<view class="action sub-title">
+					<text class="text-xl text-bold text-blue text-shadow">最新课程</text>
+					<text class="text-ABC text-blue">latest</text>
+				</view>
 			</view>
 			<scroll-view class="courseScroll" scroll-x="true" show>
 				<course-item></course-item>
@@ -35,12 +43,13 @@
 
 		<!-- 最新课程模块 -->
 		<view class="courseContainer">
-			<view class="title">
-				<text class="left">最新课程</text>
-				<text class="right">查看更多</text>
+			<view class="cu-bar bg-white margin-top-xs">
+				<view class="action sub-title">
+					<text class="text-xl text-bold text-blue text-shadow">热门课程</text>
+					<text class="text-ABC text-blue">curriculum</text>
+				</view>
+				<view class="action" @click="goVideo"><text class="text-lg text-grey text-shadow">更多</text></view>
 			</view>
-			<course-list></course-list>
-			<course-list></course-list>
 			<course-list></course-list>
 		</view>
 
@@ -99,42 +108,30 @@
 
 <style lang="scss" scoped>
 	.IndexContainer {
-				padding-bottom: 96rpx;
-		.swiperImg {
-			height: 310rpx;
-
-			.swiper-item {
-				display: flex;
-				justify-content: center;
-
-				image {
-					width: 720rpx;
-					height: 300rpx;
-					border-radius: 8rpx 8rpx 8rpx 8rpx;
-					box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.10);
+		padding-bottom: 96rpx;
+		background-color: #f2f5f9;
+		.image{
+			background-color: #fff;
+			padding: 30rpx 0 20rpx 0;
+			margin-bottom: 10rpx;
+			.swiperImg {
+				height: 310rpx;
+				
+				.swiper-item {
+					display: flex;
+					justify-content: center;
+					image {
+						width: 710rpx;
+						height: 300rpx;
+						border-radius: 8rpx 8rpx 8rpx 8rpx;
+						box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.10);
+					}
 				}
+			
 			}
-
 		}
 
 		.courseContainer {
-			.title {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 30rpx 20rpx;
-
-				.left {
-					font-size: 35rpx;
-					font-weight: 700;
-				}
-
-				.right {
-					font-size: 25rpx;
-					color: #A9A5A0;
-				}
-			}
-
 			.courseScroll {
 				width: 100%;
 				white-space: nowrap;

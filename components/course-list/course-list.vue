@@ -1,6 +1,6 @@
 <template>
-	<view>
-		<view class="container">
+	<view class="container">
+		<view class="content" v-for="(item, index) in 8" id="index">
 			<view class="image">
 				<image src="../../static/demo/cover/1.png" mode="aspectFill"></image>
 				<view class="type">
@@ -34,57 +34,61 @@
 
 <style lang="scss">
 	.container {
-		display: flex;
-		justify-content: space-between;
-		margin: 0 20rpx;
-		padding-bottom: 40rpx;
-		.image {
-			position: relative;
-			width: 300rpx;
-			height: 170rpx;
-			margin-right: 20rpx;
-			image {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		.title {
-			flex: 1;
+		.content {
 			display: flex;
-			flex-direction: column;
 			justify-content: space-between;
-			padding-right: 30rpx;
-			.text {
-				font-size: 36rpx;
-				line-height: 46rpx;
-				text-align: justify;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				display: -webkit-box;
-				-webkit-line-clamp: 2;
-				-webkit-box-orient: vertical;
-				word-break: break-all;
-			}
-			.info {
-				padding-bottom: 10rpx;
-				.name {
-					font-size: 25rpx;
-						padding-right: 20rpx;
-				}
-				.date {
-					font-size: 25rpx;
-					color: #999;
+			padding: 10rpx 20rpx 20rpx;
+			margin-top: 10rpx;
+			background-color: #fff;
+			.image {
+				position: relative;
+				width: 300rpx;
+				height: 170rpx;
+				margin-right: 20rpx;
+				image {
+					width: 100%;
+					height: 100%;
 				}
 			}
+			.title {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding-right: 30rpx;
+				.text {
+					font-size: 36rpx;
+					line-height: 46rpx;
+					text-align: justify;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display: -webkit-box;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;
+					word-break: break-all;
+				}
+				.info {
+					padding-bottom: 10rpx;
+					.name {
+						font-size: 25rpx;
+							padding-right: 20rpx;
+					}
+					.date {
+						font-size: 25rpx;
+						color: #999;
+					}
+				}
+			}
+			.image .type {
+				position: absolute;
+				font-size: 28rpx;
+				right: 10rpx;
+				bottom: 20rpx;
+				background-color: rgba(0, 0, 0, 0.4);
+				padding: 0 10rpx;
+				color: #fff;
+			}
 		}
-		.image .type {
-			position: absolute;
-			font-size: 28rpx;
-			right: 10rpx;
-			bottom: 20rpx;
-			background-color: rgba(0, 0, 0, 0.4);
-			padding: 0 10rpx;
-			color: #fff;
-		}
+		
 	}
 </style>

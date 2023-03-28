@@ -28,6 +28,10 @@
 	.container {
 		display: inline-block;
 		margin-left: 20rpx;
+		box-shadow: 4rpx 4rpx 6rpx rgba(26, 26, 26, 0.2);
+		border-radius: 10rpx;
+		padding: 10rpx;
+		margin-bottom: 20rpx;
 		.image {
 			position: relative;
 			image {
