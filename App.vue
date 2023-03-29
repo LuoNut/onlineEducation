@@ -39,4 +39,5 @@
 	@import "@/uni_modules/uview-ui/index.scss";
 	@import "@/colorui/main.css";
 	@import "@/colorui/icon.css";
+	@import "@/static/iconfont/iconfont.css"
 </style>
