@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3985177 */
-  src: url('//at.alicdn.com/t/c/font_3985177_1mx8e55tsp5.woff2?t=1680090391873') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3985177_1mx8e55tsp5.woff?t=1680090391873') format('woff'),
-       url('//at.alicdn.com/t/c/font_3985177_1mx8e55tsp5.ttf?t=1680090391873') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3985177_fww8u785z86.woff2?t=1680434659705') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3985177_fww8u785z86.woff?t=1680434659705') format('woff'),
+       url('//at.alicdn.com/t/c/font_3985177_fww8u785z86.ttf?t=1680434659705') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,122 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-praise:before {
+  content: "\e71b";
+}
+
+.icon-fengexian:before {
+  content: "\ec7f";
+}
+
+.icon-charutupian:before {
+  content: "\ec80";
+}
+
+.icon-zitijiacu:before {
+  content: "\ec83";
+}
+
+.icon-zitibiaoti:before {
+  content: "\ec84";
+}
+
+.icon-zitixieti:before {
+  content: "\ec85";
+}
+
+.icon-duigoux:before {
+  content: "\ec9e";
+}
+
+.icon-enter:before {
+  content: "\e6f8";
+}
+
+.icon-shiyongwendang:before {
+  content: "\eb66";
+}
+
+.icon-bianjisekuai:before {
+  content: "\ec7c";
+}
+
+.icon-dianzan:before {
+  content: "\ec81";
+}
+
+.icon-tianxie:before {
+  content: "\ec88";
+}
+
+.icon-tuichudenglu:before {
+  content: "\e603";
+}
+
+.icon-mail:before {
+  content: "\e70a";
+}
+
+.icon-yijianfankui:before {
+  content: "\e662";
+}
+
+.icon-brush:before {
+  content: "\e6e9";
+}
+
+.icon-close:before {
+  content: "\e6eb";
+}
+
+.icon-add:before {
+  content: "\e6df";
+}
+
+.icon-collection_fill:before {
+  content: "\e6ea";
+}
+
+.icon-interactive_fill:before {
+  content: "\e704";
+}
+
+.icon-interactive:before {
+  content: "\e705";
+}
+
+.icon-like_fill:before {
+  content: "\e707";
+}
+
+.icon-like:before {
+  content: "\e708";
+}
+
+.icon-praise_fill:before {
+  content: "\e71a";
+}
+
+.icon-search:before {
+  content: "\e741";
+}
+
+.icon-editor:before {
+  content: "\e6f5";
+}
+
+.icon-more:before {
+  content: "\e710";
+}
+
+.icon-browse:before {
+  content: "\e6e8";
+}
+
+.icon-message:before {
+  content: "\e70c";
 }
 
 .icon-keben:before {

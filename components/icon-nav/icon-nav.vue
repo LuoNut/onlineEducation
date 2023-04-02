@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view @click="addtabar()" class="navItem" v-for="(item, index) in navList" hover-class="navItem-hove" :key="index">
+		<view @click="addtabar(item.navigateTo)" class="navItem" v-for="(item, index) in navList" hover-class="navItem-hove" :key="index">
 			<image :src="item.src" mode="aspectFill"></image>
 			<text>{{item.name}}</text>
 		</view>
@@ -19,8 +19,11 @@
 			};
 		},
 		methods: {
-			addtabar() {
-				this.$store.commit('setRoleId', 1)
+			addtabar(e) {
+				console.log(e);
+				uni.navigateTo({
+					url: `${e}`
+				})
 			}
 		}
 	}

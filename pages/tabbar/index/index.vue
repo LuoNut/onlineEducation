@@ -76,6 +76,7 @@
 				navList: [{
 						name: "通知",
 						src: '/static/demo/icon/hd.png'
+						
 					},
 					{
 						name: "课程",
@@ -87,7 +88,8 @@
 					},
 					{
 						name: "社区",
-						src: '/static/demo/icon/ask.png'
+						src: '/static/demo/icon/ask.png',
+						navigateTo: '/pages/community/index/index'
 					}
 				]
 			}
