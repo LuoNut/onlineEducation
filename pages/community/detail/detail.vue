@@ -66,7 +66,7 @@
 			</view>
 			<view class="content">
 				<view class="item" v-for="item in commentList">
-					<commentItem :item="item" @removeEvn="P_deteleEvn" ></commentItem>
+					<comment-item :item="item" @removeEvn="P_deteleEvn" ></comment-item>
 				</view>
 				
 			</view>
@@ -83,7 +83,7 @@
 	import pageJson from '@/pages.json'
 	import { vShow } from "vue"
 	const db = uniCloud.database()
-	const utilsObj = uniCloud.importObject('utilsObj',{
+	const utilsObj = uniCloud.importObject('utils-obj',{
 		customUI: true // 取消自动展示的交互提示界面
 	})
 	export default {
@@ -103,7 +103,6 @@
 				},
 				commentList:[],
 				noComment:false, //文章是否有评论数据
-				schema: "" //当前社区的类别
 			};
 		},
 		onLoad(e) {
@@ -113,7 +112,6 @@
 				return
 			}
 			
-			this.schema = e.schema
 			
 			this.artId = e.id
 			this.commentObj.article_id = e.id
@@ -132,7 +130,7 @@
 				})
 				this.commentList.splice(index, 1)
 			},
-			//评论成功的回调
+			//评论成功的回调,评论无感增加操作
 			P_commentEvn(e) {
 				if(!this.commentList.length) {
 					this.noComment = false
@@ -147,22 +145,25 @@
 			
 			//获取文章评论
 			async getArticleComment() {
-				let commentTemp = db.collection(this.schema).where(`article_id == "${this.artId}" && comment_type==0`).getTemp()
+				let commentTemp = db.collection('blog_comment').where(`article_id == "${this.artId}" && comment_type==0`).getTemp()
 				let userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp()
 				
 				let res = await db.collection(commentTemp,userTemp).orderBy("comment_date desc").get()
-
+				
+				console.log(res);
 					
 					//获取一级评论所对应的二级评论的回复量
 					let idArr = res.result.data.map(item => {
 						return item._id
 					})
 
-					let replyArr = await db.collection(this.schema).where({
+					let replyArr = await db.collection('blog_comment').where({
 						reply_comment_id:db.command.in(idArr)
 					}).groupBy('reply_comment_id')
 					.groupField('count(*) as totalReply')
 					.get()
+					
+					console.log(replyArr);
 					
 
 					res.result.data.forEach(item => {
@@ -174,11 +175,12 @@
 					})
 					
 					if(!res.result.data.length) this.noComment = true
+					console.log(res.result.data);
 					this.commentList = res.result.data
 			},
 			//获取最近点赞用户头像
 			getUserLikeAvatar() {
-				let likeTemp = db.collection("quanzi_like").where(`article_id=="${this.artId}"`).getTemp()
+				let likeTemp = db.collection("blog_like").where(`article_id=="${this.artId}"`).getTemp()
 				let userTemp = db.collection("uni-id-users").field("_id,avatar_file").getTemp()
 				
 				db.collection(likeTemp,userTemp).orderBy("comment_date desc").limit(5).get().then(res => {
@@ -188,7 +190,7 @@
 			},
 			//记录阅读量
 			readUpdata() {
-				utilsObj.operation('quanzi_article','view_count',this.artId,2)
+				utilsObj.operation('blog_article','view_count',this.artId,2)
 			},
 			//记录点赞量
 			likeUpdata() {
@@ -233,18 +235,18 @@
 					title:"参数错误",
 					icon:'none',
 				})
-				setTimeout(function() {
-					uni.reLaunch({
-						url: '/pages/index/index'
-					})
-				}, 800);
+				// setTimeout(function() {
+				// 	uni.reLaunch({
+				// 		url: '/pages/index/index'
+				// 	})
+				// }, 800);
 			},
 			//获取文章数据
 			getData() {
-				let artTemp =  db.collection("quanzi_article").where(`_id=="${this.artId}"`).getTemp()
+				let artTemp =  db.collection("blog_article").where(`_id=="${this.artId}"`).getTemp()
 				let userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp()
 				
-				let likeTemp = db.collection(("quanzi_like")).where(`article_id=="${this.artId}" && user_id==$cloudEnv_uid`).getTemp()
+				let likeTemp = db.collection(("blog_like")).where(`article_id=="${this.artId}" && user_id==$cloudEnv_uid`).getTemp()
 				
 				//判断用户是否登录,来决定是否获取该用户的点赞数据
 				let arr = [artTemp,userTemp]
@@ -255,13 +257,13 @@
 				db.collection(...arr).get({
 					getOne:true
 				}).then((res) => {
-					if(!res.result.data) {
-						this.errFun()
-						return
-					}
+					// if(!res.result.data) {
+					// 	this.errFun()
+					// 	return
+					// }
 					
 					let isLike = false
-					if(store.hasLogin) isLike = res.result.data._id.quanzi_like.length ? true : false
+					if(store.hasLogin) isLike = res.result.data._id.blog_like.length ? true : false
 					
 					res.result.data.isLike = isLike
 					
@@ -274,7 +276,8 @@
 					
 					
 				}).catch(err => {
-					this.errFun()
+					console.log(err);
+					// this.errFun()
 				})
 			}
 		}
@@ -301,7 +304,7 @@
 				.avatar {
 					width: 60rpx;
 					height: 60rpx;
-					padding-right: 15rpx;
+					margin-right: 20rpx;
 					image {
 						width: 100%;
 						height: 100%;

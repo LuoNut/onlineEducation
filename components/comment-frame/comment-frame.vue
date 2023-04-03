@@ -8,7 +8,7 @@
 
 <script>
 	const db = uniCloud.database()
-	const utilsObj = uniCloud.importObject('utilsObj',{
+	const utilsObj = uniCloud.importObject('utils-obj',{
 		customUI: true // 取消自动展示的交互提示界面
 	}) 
 	import {store} from "@/uni_modules/uni-id-pages/common/store.js"
@@ -61,7 +61,7 @@
 					return
 				}
 				let province = await getProvince()
-				db.collection("quanzi_comment").add({
+				db.collection("blog_comment").add({
 					"comment_content": this.replyContent,
 					"province": province,
 					...this.commentObj
@@ -78,7 +78,7 @@
 					this.replyContent = ""
 					
 					//在数据库增加评论数
-					utilsObj.operation("quanzi_article","comment_count",this.commentObj.article_id,1)
+					utilsObj.operation("blog_article","comment_count",this.commentObj.article_id,1)
 				})
 			}
 		}

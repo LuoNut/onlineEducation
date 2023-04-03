@@ -35,7 +35,7 @@
 		<!-- 内容部分 -->
 		<view class="content">
 			<view class="Item" v-for="item in articleData">
-				<blog-item :schema="schema" @delEvent="P_delEvent" :item="item"></blog-item>
+				<blog-item :subject_type="subject_type" @delEvent="P_delEvent" :item="item"></blog-item>
 			</view>
 		</view>
 		
@@ -56,55 +56,55 @@
 	export default {
 		data() {
 			return {
-				schema:'blog-engineering', //当前社区的分类
+				subject_type:'engineering', //当前社区的分类
 				navList: [
 					{
 						name: "工学",
-						schema: "blog-engineering"
+						subject_type: "engineering"
 					},
 					{
 						name: "理学",
-						schema: "blog-science"
+						subject_type: "science"
 					},
 					{
 						name: "文学",
-						schema: "blog-literature"
+						subject_type: "literature"
 					},
 					{
 						name: "历史学",
-						schema: "blog-history"
+						subject_type: "history"
 					},
 					{
 						name: "哲学",
-						schema: "blog-philosophy"
+						subject_type: "philosophy"
 					},
 					{
 						name: "经济学",
-						schema: "blog-economics"
+						subject_type: "economics"
 					},
 					{
 						name: "法学",
-						schema: "blog-law"
+						subject_type: "law"
 					},
 					{
 						name: "教育学",
-						schema: "blog-pedagogy"
+						subject_type: "pedagogy"
 					},
 					{
 						name: "农学",
-						schema: "blog-agronomy"
+						subject_type: "agronomy"
 					},
 					{
 						name: "医学",
-						schema: "blog-medicine"
+						subject_type: "medicine"
 					},
 					{
 						name: "管理学",
-						schema: "blog-management"
+						subject_type: "management"
 					},
 					{
 						name: "艺术学",
-						schema: "blog-art"
+						subject_type: "art"
 					}
 				],
 				loadingState: true,
@@ -120,6 +120,9 @@
 			this.ReachBottom()
 		},
 		onLoad() {
+			this.getArticleData()
+		},
+		onShow() {
 			this.getArticleData()
 		},
 		methods: {
@@ -140,7 +143,8 @@
 			},
 			//获取文章数据
 			async getArticleData() {
-				let artTemp = db.collection(`${this.schema}`).where(`delState != true`).field("user_id,like_count,view_count,comment_count,title,publish_date,description,picurls,province").getTemp()
+				let artTemp = db.collection('blog_article').where(`delState != true && '${this.subject_type}' == subject_type`).field("user_id,like_count,view_count,comment_count,title,publish_date,description,picurls,province").getTemp()
+				console.log(artTemp);
 				let userTemp = await db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp()
 				
 				db.collection(artTemp,userTemp).orderBy(this.navList[this.navActive].type,"desc").skip(this.articleData.length).limit(5).get().then( async res => {
@@ -161,17 +165,20 @@
 						resDataArr.forEach(item => {
 							idArr.push(item._id)
 						})
+						console.log(idArr);
 						//获取已经点赞的文章id列表
-						let likeRes = await db.collection("quanzi_like").where({
+						let likeRes = await db.collection("blog_like").where({
 							article_id:dbCmd.in(idArr),//获取已经点赞的文章id列表
 							user_id:uniCloud.getCurrentUserInfo().uid
 						}).get()
 						
+						console.log(likeRes);
 						//获取已经点赞的文章下标，为其添加isLike属性
-						likeRes.result.data.forEach(item => {
+						likeRes.result.data.forEach( item => {
 							let index = resDataArr.findIndex(find => {
 								return item.article_id === find._id
 							})
+							console.log(index);
 							resDataArr[index].isLike = true
 						})
 					}
@@ -180,6 +187,7 @@
 					//储存获取到的文章数据
 					this.articleData = resDataArr
 					this.loadingState = false
+					console.log(resDataArr);
 				})
 				
 				
@@ -188,8 +196,8 @@
 			//点击导航标签
 			navClick(e) {
 				console.log(e);
-				this.schema = e.schema
-				console.log(this.schema)
+				this.subject_type = e.subject_type
+				console.log(this.subject_type)
 				this.loadingState = true
 				this.articleData = []
 				this.navActive = e.index
@@ -201,7 +209,7 @@
 			//跳转至edit页面
 			toEdit() {
 				uni.navigateTo({
-					url:"/pages/community/edit/edit?schema=" + this.schema
+					url:"/pages/community/edit/edit?subject_type=" + this.subject_type
 				})
 			}
 		}

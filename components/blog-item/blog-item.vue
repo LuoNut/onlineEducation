@@ -37,7 +37,7 @@
  		</view>
  		
  		<view class="info">
- 			<view class="box">
+ 			<view class="box" @click="test">
  				<text class="iconfont icon-browse"></text>
  				<text>{{item.view_count}}</text>
  			</view>
@@ -45,7 +45,7 @@
  				<text class="iconfont icon-message"></text>
  				<text>{{item.comment_count ? item.comment_count : '评论'}}</text>
  			</view>
- 			<view class="box" @click="onIsLike" :class="myItem.isLike ? 'active' : ''">
+ 			<view class="box" @click="onIsLike" :class="item.isLike ? 'active' : ''">
  				<text class="iconfont icon-praise"></text>
  				<text>{{item.like_count ? item.like_count : '点赞'}}</text>
  			</view>
@@ -95,14 +95,20 @@
  						disabled:true
  					}
  				],
- 				myItem: this.item
+ 				myItem: this.item,
+				isLike: this.item.isLike,
  			};
  		},
  		onLoad() {
+			
  		},
  		methods: {
  			giveName, 
  			giveAvatar,
+			
+			test() {
+				console.log(this.item);
+			},
  			
  			//点赞
  			onIsLike() {

@@ -7,6 +7,13 @@ const usersTable = db.collection('uni-id-users')
 
 let hostUserInfo = uni.getStorageSync('uni-id-pages-userInfo')||{}
 // console.log( hostUserInfo);
+
+
+//判断token是否过期
+let tokenTiem = uniCloud.getCurrentUserInfo().tokenExpired - Date.now() > 0
+if(!tokenTiem) hostUserInfo = {}
+
+
 const data = {
 	userInfo: hostUserInfo,
 	hasLogin: Object.keys(hostUserInfo).length != 0

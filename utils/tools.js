@@ -1,6 +1,6 @@
 const db = uniCloud.database()
 import {store} from "@/uni_modules/uni-id-pages/common/store.js"
-const utilsObj = uniCloud.importObject('utilsObj',{
+const utilsObj = uniCloud.importObject('utils-obj',{
 		customUI: true // 取消自动展示的交互提示界面
 })
 
@@ -83,17 +83,17 @@ export function giveAvatar(item) {
 //点赞操作数据库的方法
 export async function likeFun(artId) {
 	//判断用户是否已经点过赞
-	let count = await db.collection("quanzi_like")
+	let count = await db.collection("blog_like")
 		.where(`article_id=="${artId}" && user_id==$cloudEnv_uid`).count()
 	console.log(count);
 	if (count.result.total) {
-		db.collection("quanzi_like").where(`article_id=="${artId}" && user_id==$cloudEnv_uid`).remove()
-		utilsObj.operation('quanzi_article', 'like_count', artId, -1)
+		db.collection("blog_like").where(`article_id=="${artId}" && user_id==$cloudEnv_uid`).remove()
+		utilsObj.operation('blog_article', 'like_count', artId, -1)
 	} else {
-		db.collection('quanzi_like').add({
+		db.collection('blog_like').add({
 			article_id: artId
 		}).then((res) => {
-			utilsObj.operation('quanzi_article', 'like_count', artId, 1)
+			utilsObj.operation('blog_article', 'like_count', artId, 1)
 		})
 	}
 }

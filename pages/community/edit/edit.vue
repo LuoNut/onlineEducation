@@ -52,13 +52,14 @@
 					content: "",
 					description: "",
 					picurls: [],
-					province: ""
+					province: "",
+					subject_type: "" //当前所在的社区类别
 				},
-				schema: "" //当前所在的社区类别
+				
 			};
 		},
 		onLoad(e) {
-			this.schema = e.schema
+			this.artobj.subject_type = e.subject_type
 			getProvince().then(res => {
 				this.artobj.province = res
 			})
@@ -81,18 +82,18 @@
 
 			//上传到云数据库的功能函数
 			setData() {
-				db.collection(this.schema).add({
+				db.collection('blog_article').add({
 					...this.artobj
 				}).then(res => {
 					uni.hideLoading()
 					uni.showToast({
 						title: "发布成功"
 					})
-					// setTimeout(() => {
-					// 	uni.reLaunch({
-					// 		url: "/pages/community/index/index"
-					// 	})
-					// }, 800);
+					setTimeout(() => {
+						uni.navigateBack({
+							delta: 1
+						})
+					}, 800);
 
 				})
 			},

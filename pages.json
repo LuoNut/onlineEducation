@@ -165,6 +165,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/community/reply/reply",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "black",
@@ -173,7 +182,6 @@
 		// "backgroundColor": "#F8F8F8"
 		"navigationStyle": "custom"
 	},
-	"uniIdRouter": {},
 	"tabBar": {
 		// "color": "#BBBAc7",
 		// "selectedColor": "#2C2C2C",
@@ -204,5 +212,14 @@
 				// "selectedIconPath": "/static/tabbar/home_selected.png"
 			}
 		]
+	},
+	"uniIdRouter": {
+		"loginPage": "uni_modules/uni-id-pages/pages/login/login-withpwd", // 登录页面路径
+			"needLogin": [
+				"uni_modules/uni-id-pages/pages/userinfo/userinfo", // 需要登录才可访问的页面列表，可以使用正则语法
+				"pages/community/edit/edit"
+			],
+			"resToLogin": false // 自动解析云对象及clientDB的错误码，如果是客户端token不正确或token过期则自动跳转配置的登录页面，配置为false则关闭此行为，默认true
+		
 	}
 }

@@ -2,7 +2,8 @@
 	"bsonType": "object",
 	"required": [
 		"user_id",
-		"title"
+		"title",
+		"subject_type"
 	],
 	"permission": {
 		"read": true,
@@ -21,6 +22,11 @@
 			"defaultValue": {
 				"$env": "uid"
 			}
+		},
+		"subject_type": {
+			"bsonType": "string",
+			"title": "帖子所属的专业类型",
+			"description": "帖子所属的专业类型"
 		},
 		"title": {
 			"bsonType": "string",
