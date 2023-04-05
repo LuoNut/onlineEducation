@@ -45,9 +45,9 @@
  				<text class="iconfont icon-message"></text>
  				<text>{{item.comment_count ? item.comment_count : '评论'}}</text>
  			</view>
- 			<view class="box" @click="onIsLike" :class="item.isLike ? 'active' : ''">
+ 			<view class="box" @click="onIsLike" :class="isLike ? 'active' : ''">
  				<text class="iconfont icon-praise"></text>
- 				<text>{{item.like_count ? item.like_count : '点赞'}}</text>
+ 				<text>{{like_count ? like_count : '点赞'}}</text>
  			</view>
  		</view>
  		
@@ -97,6 +97,7 @@
  				],
  				myItem: this.item,
 				isLike: this.item.isLike,
+				like_count: this.item.like_count
  			};
  		},
  		onLoad() {
@@ -139,8 +140,9 @@
  				 }
  				 
  				 
- 				 this.myItem.isLike ?  this.myItem.like_count-- :  this.myItem.like_count++
- 				  this.myItem.isLike = ! this.myItem.isLike
+ 				 this.isLike ?  this.like_count-- :  this.like_count++
+ 				 this.isLike = ! this.isLike
+				 console.log(this.isLike);
  				 this.likeTime = time
  				 
  				//点赞操作数据库的方法
