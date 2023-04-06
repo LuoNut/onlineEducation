@@ -6,7 +6,7 @@
 		</cu-custom>
 		
 		<view class="body">
-			<view class="item">
+			<view class="item" @click="toCourseManagement">
 				<text class="iconfont icon-keben"></text>
 				<text class="text">课程上传</text>
 			</view>
@@ -37,13 +37,18 @@
 			this.tabBerLists = uni.getStorageSync('tabBarList') // 自定义的tabbar赋值
 		},
 		methods: {
+			//跳转到课堂管理页面
+			toCourseManagement() {
+				uni.navigateTo({
+					url: '/pages/teacher/course/course'
+				})
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
 	.teacher {
-		background-color: #f2f5f9;
 		.body {
 			display: flex;
 			justify-content: space-around;
