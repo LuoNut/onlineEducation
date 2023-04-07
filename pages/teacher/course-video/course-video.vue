@@ -8,16 +8,16 @@
 		<view class="content">
 			<view class="item-box" v-for="(item, index) in courseVideoList">
 				<view class="course-title">
-					<u--input placeholder="请输入章节标题" border="bottom" clearable></u--input>
+					<u--input v-model="item.section" placeholder="请输入章节标题" border="bottom" clearable></u--input>
 					<text v-if="item.id !== 1" class="right iconfont icon-shanchu" @click="delItem(item)"></text>
 
 				</view>
 				<view class="course-video">
-					<uni-file-picker v-model="imageValue" fileMediatype="video" mode="grid" @select="select"
+					<uni-file-picker fileMediatype="video" mode="grid" @select="select"
 						@progress="progress" @success="success" @fail="fail" ref="files" :auto-upload="false">
 						<u-button plain class="select-button" type="primary" icon="plus" text="添加课程"></u-button>
 					</uni-file-picker>
-					<button class="upload-button" @click="upload">上传</button>
+					<button class="upload-button" @click="upload(index)">上传</button>
 				</view>
 			</view>
 			<view class="add">
@@ -37,20 +37,26 @@
 	export default {
 		data() {
 			return {
-				imageValue: [],
-				id: 1,
-				courseVideoList: [{
+				currentIndex: 0, //当前操作的章节
+				id: 1, //开始的章节id
+				courseVideoList: [{  //总的课程数据
 					id: 1,
-					section: "",
-					videoSrc: []
-				}]
+					section: "",  //章节标题
+					videoSrc: [] //课程视频数据
+				}],
+				classData: []
 			}
+		},
+		onLoad() {
+			this.classData = uni.getStorageInfoSync('courseData')
 		},
 		methods: {
 			//增加章节
 			addItem() {
 				let add = {
-					id: parseInt(this.id) + 1
+					id: parseInt(this.id) + 1,
+					section: "",
+					videoSrc: []
 				}
 				this.courseVideoList.push(add)
 				this.id = parseInt(this.id) + 1
@@ -68,13 +74,10 @@
 					return i != item
 				})
 			},
-			//提交按钮
-			submitBtn() {
-				console.log(this.courseVideoList)
-			},
 			//上传文件
-			upload() {
-				this.$refs.files.upload()
+			upload(index) {
+				this.currentIndex = index
+				this.$refs.files[index].upload()
 			},
 			// 获取上传状态
 			select(e) {
@@ -87,12 +90,24 @@
 
 			// 上传成功
 			success(e) {
-				console.log('上传成功', e)
+				console.log(e);
+				let videoObj = {}
+				e.tempFiles.forEach(item => {
+					videoObj.name = item.name.substring(0,item.name.indexOf('.'));
+					videoObj.src = item.url
+					videoObj.size = item.size
+					//将视频地址fang'ru
+					this.courseVideoList[this.currentIndex].videoSrc.push(videoObj)
+					videoObj = {}
+				})
+				console.log(this.courseVideoList);
+
 			},
 
 			// 上传失败
 			fail(e) {
 				console.log('上传失败：', e)
+				
 			}
 		}
 	}
