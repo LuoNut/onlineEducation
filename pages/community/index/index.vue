@@ -61,54 +61,38 @@
 		data() {
 			return {
 				show: false, //是否展开全部侧边栏
-				subject_type: 'engineering', //当前社区的分类
+				subject_type: 'computer', //当前社区的分类
 				navList: [{
-						name: "工学",
-						subject_type: "engineering"
+						name: "计算机",
+						subject_type: "computer"
 					},
 					{
-						name: "理学",
-						subject_type: "science"
+						name: "理学,工学,农学",
+						subject_type: "ScienceEngineeringAgronomy"
 					},
 					{
-						name: "文学",
-						subject_type: "literature"
+						name: "外语",
+						subject_type: "foreignLanguages"
 					},
 					{
-						name: "历史学",
-						subject_type: "history"
+						name: "心理学",
+						subject_type: "fpsychology"
 					},
 					{
-						name: "哲学",
-						subject_type: "philosophy"
+						name: "文史哲学",
+						subject_type: "LiteratureHistoryPhilosophy"
 					},
 					{
-						name: "经济学",
-						subject_type: "economics"
+						name: "音乐与艺术",
+						subject_type: "MusicAndArt"
 					},
 					{
-						name: "法学",
-						subject_type: "law"
+						name: "医学与保健",
+						subject_type: "MedicineHealthCare"
 					},
 					{
-						name: "教育学",
-						subject_type: "pedagogy"
-					},
-					{
-						name: "农学",
-						subject_type: "agronomy"
-					},
-					{
-						name: "医学",
-						subject_type: "medicine"
-					},
-					{
-						name: "管理学",
-						subject_type: "management"
-					},
-					{
-						name: "艺术学",
-						subject_type: "art"
+						name: "教育教学",
+						subject_type: "educationTeaching"
 					}
 				],
 				loadingState: true,

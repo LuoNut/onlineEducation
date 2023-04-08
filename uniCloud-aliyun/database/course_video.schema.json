@@ -1,0 +1,126 @@
+{
+	"bsonType": "object",
+	"required": [
+		"user_id",
+		"course_name",
+		"subject_type_one",
+		"subject_type_two",
+	],
+	"permission": {
+		"read": true,
+		"create": "auth.uid != null",
+		"update": "doc.user_id == auth.uid || 'webmaster' in auth.role ",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "存储文档 ID（用户 ID），系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "课程作者ID， 参考`uni-id-users` 表",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"course_name": {
+			"bsonType": "string",
+			"title": "课程名称",
+			"description": "课程名称",
+			"label": "课程名称",
+			"trim": "both"
+		},
+		"subject_type_one": {
+			"bsonType": "string",
+			"title": "课程大类型",
+			"description": "课程大类型"
+		},
+		"subject_type_two": {
+			"bsonType": "string",
+			"title": "课程小类型",
+			"description": "课程小类型"
+		},
+		"course_intro": {
+			"bsonType": "string",
+			"title": "课程简介",
+			"description": "课程简介",
+			"label": "课程简介"
+		},
+		"courseware": {
+			"bsonType": "array",
+			"title": "课程课件",
+			"description": "课程课件",
+			"label": "课程课件"
+		},
+		"course_video": {
+			"bsonType": "array",
+			"title": "课程视频",
+			"description": "课程视频",
+			"label": "课程视频"
+		},
+		"view_count": {
+			"bsonType": "int",
+			"title": "阅读数量",
+			"description": "阅读数量",
+			"defaultValue": 55,
+			"permission": {
+				"write": true
+			}
+		},
+		"like_count": {
+			"bsonType": "int",
+			"description": "喜欢数、点赞数",
+			"defaultValue": 0,
+			"permission": {
+				"write": true
+			}
+		},
+		"comment_count": {
+			"bsonType": "int",
+			"description": "评论数量",
+			"defaultValue": 0,
+			"permission": {
+				"write": true
+			}
+		},
+		"picurls": {
+			"bsonType": "string",
+			"title": "封面大图",
+			"description": "缩略图地址",
+			"label": "封面大图"
+		},
+		"publish_date": {
+			"bsonType": "timestamp",
+			"title": "发表时间",
+			"description": "发表时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"publish_ip": {
+			"bsonType": "string",
+			"title": "发布文章时IP地址",
+			"description": "发表时 IP 地址",
+			"forceDefaultValue": {
+				"$env": "clientIP"
+			}
+		},
+		"last_modify_date": {
+			"bsonType": "timestamp",
+			"title": "最后修改时间",
+			"description": "最后修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"last_modify_ip": {
+			"bsonType": "string",
+			"description": "最后修改时 IP 地址",
+			"forceDefaultValue": {
+				"$env": "clientIP"
+			}
+		}
+	},
+	"version": "0.0.1"
+}

@@ -1,0 +1,39 @@
+{
+	"bsonType": "object",
+	"required": [
+		"user_id",
+		"class",
+		"course"
+	],
+	"permission": {
+		"read": true,
+		"create": "auth.uid != null",
+		"update": "doc.user_id == auth.uid || 'webmaster' in auth.role ",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "存储文档 ID（用户 ID），系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "文章作者ID， 参考`uni-id-users` 表",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"course": { 
+			"bsonType": "string",
+			"description": "课程的id",
+			"foreignKey": "course_video._id"
+		},
+		"class": {
+			"bsonType": "string",
+			"title": "该课程所属班级",
+			"description": "该课程所属班级",
+			"label": "该课程所属班级"
+		}
+	},
+	"version": "0.0.1"
+}

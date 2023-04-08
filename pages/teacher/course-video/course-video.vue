@@ -5,16 +5,30 @@
 			<block slot="content">课程</block>
 		</cu-custom>
 
+
+
 		<view class="content">
+			<!-- 上传课件 -->
+			<view class="item-box">
+				<view class="course-content">
+					<uni-file-picker fileMediatype="all" @select="upCoursewareSelect" @success="upCoursewareSuccess"
+						ref="coursewareFiles" :auto-upload="false">
+						<u-button plain class="select-button" type="primary" icon="plus" text="添加课件"></u-button>
+					</uni-file-picker>
+					<button class="upload-button" @click="coursewareUpload">上传</button>
+				</view>
+			</view>
+
+			<!-- 上传课程视频 -->
 			<view class="item-box" v-for="(item, index) in courseVideoList">
 				<view class="course-title">
 					<u--input v-model="item.section" placeholder="请输入章节标题" border="bottom" clearable></u--input>
 					<text v-if="item.id !== 1" class="right iconfont icon-shanchu" @click="delItem(item)"></text>
 
 				</view>
-				<view class="course-video">
-					<uni-file-picker fileMediatype="video" mode="grid" @select="select"
-						@progress="progress" @success="success" @fail="fail" ref="files" :auto-upload="false">
+				<view class="course-content">
+					<uni-file-picker fileMediatype="video" mode="grid" @select="select" @progress="progress"
+						@success="success" @fail="fail" ref="files" :auto-upload="false">
 						<u-button plain class="select-button" type="primary" icon="plus" text="添加课程"></u-button>
 					</uni-file-picker>
 					<button class="upload-button" @click="upload(index)">上传</button>
@@ -27,28 +41,33 @@
 
 		</view>
 
-
-
+		<view class="bottom">
+			<u-button @click="onAccomplish" type="primary" text="完成"></u-button>
+		</view>
 
 	</view>
 </template>
 
 <script>
+	const db = uniCloud.database()
 	export default {
 		data() {
 			return {
 				currentIndex: 0, //当前操作的章节
 				id: 1, //开始的章节id
-				courseVideoList: [{  //总的课程数据
+				courseware: [], //课程的课件
+				courseVideoList: [{ //总的课程数据
 					id: 1,
-					section: "",  //章节标题
-					videoSrc: [] //课程视频数据
+					section: "", //章节标题
+					videoSrc: [], //课程视频数据
 				}],
-				classData: []
+				courseData: {},
+				courseVideoId: "" //课程视频的id
 			}
 		},
 		onLoad() {
-			this.classData = uni.getStorageInfoSync('courseData')
+			this.courseData = uni.getStorageSync('courseData')
+			console.log(this.courseData);
 		},
 		methods: {
 			//增加章节
@@ -74,6 +93,10 @@
 					return i != item
 				})
 			},
+			//上传课件文件
+			coursewareUpload() {
+				this.$refs.coursewareFiles.upload()
+			},
 			//上传文件
 			upload(index) {
 				this.currentIndex = index
@@ -93,21 +116,81 @@
 				console.log(e);
 				let videoObj = {}
 				e.tempFiles.forEach(item => {
-					videoObj.name = item.name.substring(0,item.name.indexOf('.'));
+					videoObj.name = item.name.substring(0, item.name.indexOf('.'));
 					videoObj.src = item.url
 					videoObj.size = item.size
-					//将视频地址fang'ru
+					//将视频地址放入
 					this.courseVideoList[this.currentIndex].videoSrc.push(videoObj)
 					videoObj = {}
 				})
-				console.log(this.courseVideoList);
-
 			},
 
 			// 上传失败
 			fail(e) {
 				console.log('上传失败：', e)
+
+			},
+			// 获取上传课件的状态
+			upCoursewareSelect(e) {
+				console.log('选择文件：', e)
+			},
+			//上传课件成功
+			upCoursewareSuccess(e) {
+				console.log(e);
+				let videoObj = {}
+				e.tempFiles.forEach(item => {
+					videoObj.name = item.name.substring(0, item.name.indexOf('.'));
+					videoObj.src = item.url
+					videoObj.size = item.size
+					//将课件地址放入
+					this.courseware.push(videoObj)
+				})
+			},
+
+			//点击完成按钮
+			onAccomplish() {
+				this.upCourseData()
 				
+			},
+			//上传课程数据
+			async upCourseData() {
+				uni.showLoading({
+					title: "上传中...",
+					mask: true
+				})
+				let res =  await db.collection('course_video').add({
+					course_name: this.courseData.courseName,
+					subject_type_one: this.courseData.courseType[0],
+					subject_type_two: this.courseData.courseType[1],
+					course_intro: this.courseData.courseIntro,
+					courseware: this.courseware,
+					course_video: this.courseVideoList
+				})
+				
+				console.log(res);
+				this.courseVideoId = res.result.id
+				
+				
+				this.upTeacherClass()
+				
+				
+				uni.hideLoading()
+				uni.showToast({
+					title: "发布成功"
+				})
+			},
+
+			//上传教师的班级数据
+			upTeacherClass() {
+				this.courseData.classList.forEach( item => {
+					console.log(item.courseClass);
+					db.collection('teacher_course').add({
+						course: this.courseVideoId,
+						class: item.courseClass
+					}).then(res => {
+						console.log(res);
+					})
+				})
 			}
 		}
 	}
@@ -115,6 +198,9 @@
 
 <style lang="scss">
 	.course-vid-container {
+		height: 94vh;
+		overflow: auto;
+
 		.content {
 			.item-box {
 				margin-top: 20rpx;
@@ -133,7 +219,7 @@
 					}
 				}
 
-				.course-video {
+				.course-content {
 					position: relative;
 
 					.upload-button {
@@ -174,6 +260,13 @@
 			}
 
 
+		}
+
+		.bottom {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
 		}
 	}
 </style>
