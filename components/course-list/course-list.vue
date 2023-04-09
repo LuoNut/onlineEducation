@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<view class="container" @click="toVideoPlay">
 		<view class="content" v-for="(item, index) in 8" id="index">
 			<view class="image">
 				<image src="../../static/demo/cover/1.png" mode="aspectFill"></image>
@@ -28,6 +28,13 @@
 			return {
 
 			};
+		},
+		methods: {
+			toVideoPlay() {
+				uni.navigateTo({
+					url:'/pages/course-study/course-videoplay/course-videoplay'
+				})
+			}
 		}
 	}
 </script>

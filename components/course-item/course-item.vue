@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<view class="container" @click="toVideoPlay">
 		<view class="image">
 			<image src="../../static/demo/cover/1.png" mode="aspectFill"></image>
 			<view class="type">
@@ -20,6 +20,13 @@
 			return {
 				
 			};
+		},
+		methods: {
+			toVideoPlay() {
+				uni.navigateTo({
+					url:'/pages/course-study/course-videoplay/course-videoplay'
+				})
+			}
 		}
 	}
 </script>

@@ -1,0 +1,402 @@
+.imt-audio.theme1 {
+	background-color: #fff;
+	flex: 1;
+	flex-direction:column;
+	.top {
+		padding:30upx 30upx 0 30upx;
+		position: relative;
+		margin: 0;
+		display: flex;
+		flex-direction:column;
+		.title {
+			padding-top:30upx;
+			justify-content: center;
+			align-items: center;
+			display: flex;
+			.text{
+				font-size: 28upx;
+				font-family: PingFangSC-Regular, PingFang SC;
+				font-weight: 400;
+				line-height: 40upx;
+				text-align: center;
+				color: rgba(33, 45, 63, 0.4);
+			}
+		}
+		.singer {
+			color: #999;
+			font-size: 26rpx;
+			margin-top: 10rpx;
+			text-align: center;
+			margin-bottom: 18rpx;
+		}
+	}
+
+	.audio-wrapper {
+		display: flex;
+		flex-direction:row;
+		align-items: center;
+		padding:20upx 30upx;
+		margin: 0;
+		flex: 1;
+	}
+
+	.audio-button-box {
+		position: absolute;
+		top:165upx;
+		left: 0;
+		flex:1;
+		flex-direction: row;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		margin:0;
+		justify-content: space-around;
+		transform: translateY(-50%);
+		height: 100rpx;
+	}
+
+	.audio-number {
+		margin: 0;
+		padding: 0;
+		.text{
+			margin: 0;
+			padding: 0;
+			font-size: 24upx;
+			line-height: 32upx;
+			color: rgba(33, 45, 63, 0.5);
+			font-family: PingFangSC-Regular, PingFang SC;
+		}
+	}
+
+	.audio-slider {
+		flex: 1;
+		margin: 0 20rpx 0 20rpx;
+	}
+
+	.audio-control-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+	.cover-view{
+		width: 270upx;
+		height: 270upx;
+		border-radius: 135upx;
+		background: #B4B4B4;
+		box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+		overflow: hidden;
+	}
+	.cover {
+		width: 270upx;
+		height: 270upx;
+		background: #B4B4B4;
+		box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+		border-radius: 135upx;
+		overflow: hidden;
+	}
+	.playbox{
+		width: 100rpx;
+		height: 100rpx;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.play,
+	.pause {
+		width: 100rpx;
+		height: 100rpx;
+		&.loading{
+			width: 80rpx;
+			height: 80rpx;
+		}
+	}
+	.audio-playbox{
+		width: 50upx;
+		height: 50upx;
+		margin-right: 10rpx;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.audio-play,
+	.audio-pause {
+		width: 50upx;
+		height: 50upx;
+		&.loading{
+			width: 50upx;
+			height: 50upx;
+		}
+	}
+	.audio-speed{
+		position: relative;
+		margin-left: 10upx;
+		display: flex;
+		.speed-btn{
+			border-radius: 4upx;
+			border: 2upx solid #C8A460;
+			width: 100upx;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			.text{
+				text-align: center;
+				font-family: PingFangSC-Regular, PingFang SC;
+				font-size: 24upx;
+				line-height: 40upx;
+				color: #C8A460;
+			}
+		}
+		.speed-list{
+			position: absolute;
+			top: -10upx;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			transform: translateY(-100%);
+			text-align: center;
+			z-index: 2;
+			background: rgba(200,164,96,0.2);
+			.text{
+				font-size: 24upx;
+				width: 100upx;
+				line-height: 40upx;
+				text-align: center;
+				color: #646464;
+			}
+			.speed-value{
+				display: flex;
+			}
+			.speed-value.active{
+				background: rgb(200, 164, 96);
+				.text{
+					color: #FFFFFF;
+				}
+			}
+		}
+	}
+	.prevbtn,
+	.nextbtn {
+		width: 80upx;
+		height: 80upx;
+	}
+
+	.prevplay {
+		width: 80upx;
+		height: 80upx;
+		transform: rotateZ(180deg);
+	}
+
+	.nextplay {
+		width: 80upx;
+		height: 80upx;
+	}
+}
+
+.imt-audio.theme2 {
+	background-color: #fff;
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+	flex:1;
+	flex-direction: row;
+	.top {
+		background-color: #fff;
+		display: flex;
+		align-items: center;
+		height: 170rpx;
+		flex-direction: row;
+		flex:1;
+		padding: 10upx;
+		.title {
+			display: flex;
+			align-items: center;
+			flex-direction: row;
+			justify-content: space-between;
+			margin-top: 24rpx;
+			flex:1;
+			.zc-title{
+				flex:1;
+				display: flex;
+			}
+			.text{
+				font-size: 30rpx;
+				text-align: left;
+				line-height: 40upx;
+				flex: 1;
+			}
+			.audio-number {
+				display: flex;
+				.text{
+					font-size: 24upx;
+					line-height: 40upx;
+					color: #333;
+				}
+			}
+		}
+		.singer {
+			margin-bottom: 18rpx;
+			display: flex;
+			flex:1;
+			.text{
+				color: #999;
+				font-size: 26rpx;
+				margin-top: 10rpx;
+				text-align: left;
+			}
+		}
+		.right{
+			flex: 1;
+			padding: 0 20upx;
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	.cover {
+		width: 150upx;
+		height: 150upx;
+		border-radius: 10upx;
+		border: 4upx solid #fff;
+	}
+	.audio-control-wrapper{
+		width: 150rpx;
+		height: 150rpx;
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		background-color: #efefef;
+		position: relative;
+	}
+	.play {
+		width: 80rpx;
+		height: 80rpx;
+		z-index: 99;
+		background: rgba(0, 0, 0, 0.4);
+		border-radius: 50%;
+		position: absolute;
+		display: flex;
+		&.loading{
+			width: 60rpx;
+			height: 60rpx;
+			// #ifndef APP-PLUS-NVUE
+			// animation: rotating 2s linear infinite;
+			// #endif
+		}
+	}
+
+	.prevbtn {
+		width: 48rpx;
+		height: 48rpx;
+		margin-right: 40rpx;
+	}
+
+	.nextbtn {
+		width: 48rpx;
+		height: 48rpx;
+		margin-left: 40rpx;
+	}
+}
+.imt-audio.theme3 {
+	background-color: #ccc;
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+	flex:1;
+	position:relative;
+	flex-direction: row;
+	.info{
+		padding: 40rpx 20rpx;
+		display: flex;
+		flex-direction: row;
+	}
+	.top {
+		width: 140rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+
+	.audio-wrapper {
+		display: flex;
+		flex-direction: column; 
+		flex: 1;
+		color: #fff;
+		margin-left: 20rpx;
+		width: 550upx;
+		.titlebox {
+			display: flex;
+			margin-bottom: 30rpx;
+			flex-direction: row;
+			.title {
+				display: flex;
+				flex:1;
+				.text{
+					font-size: 30rpx;
+					line-height: 46rpx;
+				}
+				
+			}
+			.singer {
+				display: flex;
+				width: 200upx;
+				margin-left: 20rpx;
+				.text{
+					font-size: 28rpx;
+					line-height: 46rpx;
+				}
+			}
+		}
+	}
+	.slidebox {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: row;
+		flex:1;
+		.text{
+			font-size: 26rpx;
+			line-height: 40rpx;
+		}
+		.btn{
+			display: flex;
+			flex-direction: row;
+		}
+		.prev,.next{
+			padding: 0 10upx;
+		}
+	}
+	.audio-slider {
+		position: absolute;
+		top: 0;
+		margin: 0;
+		display: flex;
+		flex: 1;
+		left: 0;
+		padding: 0;
+	}
+	
+
+	.cover {
+		width: 120rpx;
+		height: 120rpx;
+		box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+	}
+	.audio-control-wrapper{
+		position: relative;
+	}
+	.play {
+		width: 80rpx;
+		height: 80rpx;
+		z-index: 99;
+		background: rgba(0, 0, 0, 0.4);
+		border-radius: 50%;
+		position: absolute;
+		top: 60upx;
+		left: 60upx;
+		transform: translate(-50%, -50%);
+		&.loading{
+			width: 60rpx;
+			height: 60rpx;
+		}
+	}
+}

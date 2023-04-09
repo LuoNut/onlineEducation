@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/tabbar/index/index",
+    "pages/tabbar/home/home",
+    "pages/tabbar/teacher/teacher",
+    "pages/tabbar/learn/learn",
+    "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
+    "uni_modules/uni-id-pages/pages/userinfo/userinfo",
+    "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
+    "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
+    "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
+    "uni_modules/uni-id-pages/pages/login/login-withpwd",
+    "uni_modules/uni-id-pages/pages/login/login-smscode",
+    "uni_modules/uni-id-pages/pages/register/register",
+    "uni_modules/uni-id-pages/pages/register/register-by-email",
+    "uni_modules/uni-id-pages/pages/retrieve/retrieve",
+    "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
+    "uni_modules/uni-id-pages/pages/common/webview/webview",
+    "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
+    "uni_modules/uni-id-pages/pages/register/register-admin",
+    "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
+    "uni_modules/uni-id-pages/pages/userinfo/realname-verify/realname-verify",
+    "pages/community/index/index",
+    "pages/community/detail/detail",
+    "pages/community/edit/edit",
+    "pages/community/reply/reply",
+    "pages/teacher/course/course",
+    "pages/teacher/teacher/teacher",
+    "pages/teacher/course-video/course-video",
+    "pages/course-study/course-videoplay/course-videoplay"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/tabbar/index/index"
+      },
+      {
+        "pagePath": "pages/tabbar/learn/learn"
+      },
+      {
+        "pagePath": "pages/tabbar/teacher/teacher"
+      },
+      {
+        "pagePath": "pages/tabbar/home/home"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "tn-custom": "/components/TnCustom/TnCustom"
+  }
+}

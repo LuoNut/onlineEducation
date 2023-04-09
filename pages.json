@@ -201,6 +201,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/course-study/course-videoplay/course-videoplay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "black",

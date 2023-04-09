@@ -1,0 +1,68 @@
+.bing-progress.data-v-2ece3ac5 {
+	position: relative;
+
+	display: flex;
+
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+.bp-marea.data-v-2ece3ac5 {
+
+	display: flex;
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+	justify-content: space-around;
+	background-color: rgba(0,0,0,0);
+	z-index: 6;
+}
+.bp-mview.data-v-2ece3ac5,
+.bp-handle.data-v-2ece3ac5 {
+	position: absolute !important;
+
+	display: flex;
+
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	z-index: 5;
+}
+.bp-handle-text.data-v-2ece3ac5 {
+	text-align: center;
+	z-index: 5;
+}
+.bp-bar_max.data-v-2ece3ac5 {
+	position: absolute;
+
+	display: flex;
+
+	flex-direction: row;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	z-index: 1;
+	overflow: hidden;
+}
+.bp-bar_active.data-v-2ece3ac5 {
+	position: absolute;
+	z-index: 3;
+}
+.bp-bar_sub_active.data-v-2ece3ac5 {
+	position: absolute;
+	z-index: 2;
+}
+.bp-value.data-v-2ece3ac5 {
+	position: absolute;
+	text-align: center;
+	z-index: 4;
+}
+.bp-handle-widget.data-v-2ece3ac5 {
+	position: absolute;
+	z-index: 99;
+}
+

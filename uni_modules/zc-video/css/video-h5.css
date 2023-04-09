@@ -1,0 +1,77 @@
+/deep/.video-js{
+	width: 100%;
+	height: 100%;
+}
+/deep/.video-js div{
+	touch-action: none;
+}
+/deep/.vjs-poster{
+	background-size: cover;
+}
+/deep/.video-js .vjs-button {
+  background: none;
+  border: none;
+  color: inherit;
+  display: inline-block;
+  overflow: visible;
+  outline: none;
+  font-size: inherit;
+  line-height: inherit;
+  text-transform: none;
+  text-decoration: none;
+  transition: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
+/deep/.video-js .vjs-control-bar{
+	background: rgba(43, 51, 63, 0.7);
+	background: -webkit-linear-gradient(rgba(43, 51, 63, 0.1),rgba(43, 51, 63, 0.7));
+	background: -moz-linear-gradient(top,rgba(43, 51, 63, 0.1) 0%,rgba(43, 51, 63, 0.7) 100%);; /*FireFox*/
+	background: -o-linear-gradient(top,rgba(43, 51, 63, 0.1) 0%,rgba(43, 51, 63, 0.7) 100%);  /* Opear */
+	background: -ms-linear-gradient(rgba(43, 51, 63, 0.1),rgba(43, 51, 63, 0.7)); /*IE10及IE10+*/
+}
+/deep/.video-js .vjs-play-progress:before{
+	top:50%;
+	transform: translateY(-50%);
+}
+/deep/.vjs-slider-horizontal .vjs-volume-level:before{
+	top:50%;
+	transform: translateY(-50%);
+}
+/deep/.vjs-slider-horizontal .vjs-volume-level:before{
+	top:50%;
+	transform: translateY(-50%);
+}
+/deep/.vjs-slider-vertical .vjs-volume-level:before{
+	left: 50%;
+	transform: translateX(-50%);
+}
+/deep/.video-js .vjs-big-play-button{
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 50%;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #FFFFFF;
+}
+/deep/.video-js .vjs-time-control{
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+}
+/deep/.vjs-time-divider{
+	min-width: auto;
+}
+/deep/.video-js .vjs-mute-control{
+	width: 3em;
+}
+/deep/.video-js .vjs-current-time,
+.vjs-no-flex .vjs-current-time {
+  display: block;
+}
+/deep/.vjs-time-divider{
+	display: block;
+}
+/deep/.video-js .vjs-duration, .vjs-no-flex .vjs-duration{
+	display: block;
+}

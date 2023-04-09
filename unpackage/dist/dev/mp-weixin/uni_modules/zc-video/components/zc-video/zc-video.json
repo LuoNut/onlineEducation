@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "zc-slider": "/uni_modules/zc-video/components/zc-slider/zc-slider"
+  }
+}

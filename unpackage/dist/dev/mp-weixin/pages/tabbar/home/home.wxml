@@ -1,0 +1,73 @@
+<view class="home data-v-52760117">
+  <cu-custom vue-id="076aba62-1" bgColor="bg-gradual-blue" isBack="{{true}}" class="data-v-52760117" bind:__l="__l" vue-slots="{{['backText','content']}}">
+    <view slot="backText" class="data-v-52760117">返回</view>
+    <view slot="content" class="data-v-52760117">技术栈</view>
+  </cu-custom>
+  <view class="body data-v-52760117">
+    <view class="top data-v-52760117">
+      <view class="group data-v-52760117">
+        <view class="userinfo data-v-52760117">
+          <view class="pic data-v-52760117">
+            <image src="../../../static/images/user-default.jpg" mode="aspectFill" class="data-v-52760117"></image>
+          </view>
+          <block wx:if="{{true}}">
+            <view class="text data-v-52760117">
+              <view class="nickname data-v-52760117">匿名</view>
+              <view class="year data-v-52760117">
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="text data-v-52760117">
+              <view class="nickname data-v-52760117">点击登录</view>
+            </view>
+          </block>
+        </view>
+        <view class="more data-v-52760117"><text class="iconfont icon-a-10-you data-v-52760117"></text></view>
+      </view>
+      <view class="bg data-v-52760117">
+        <image src="../../../static/images/user-default.jpg" mode="aspectFill" class="data-v-52760117"></image>
+      </view>
+    </view>
+    <view class="main data-v-52760117">
+      <view class="info data-v-52760117">
+        <view class="item data-v-52760117"><text class="data-v-52760117">33</text>获赞</view>
+        <view class="item data-v-52760117"><text class="data-v-52760117">11</text>评论</view>
+        <view class="item data-v-52760117"><text class="data-v-52760117">5</text>发文</view>
+      </view>
+      <view class="list data-v-52760117">
+        <view class="group data-v-52760117">
+          <view class="item data-v-52760117">
+            <view class="left data-v-52760117"><text class="iconfont icon-a-24-bianji data-v-52760117"></text><text class="text data-v-52760117">我的长文</text></view>
+            <view class="right data-v-52760117"><text class="iconfont icon-a-10-you data-v-52760117"></text></view>
+          </view>
+          <view class="item data-v-52760117">
+            <view class="left data-v-52760117"><text class="iconfont icon-a-106-xihuan data-v-52760117"></text><text class="text data-v-52760117">我的点赞</text></view>
+            <view class="right data-v-52760117"><text class="iconfont icon-a-10-you data-v-52760117"></text></view>
+          </view>
+          <view class="item data-v-52760117">
+            <view class="left data-v-52760117"><text class="iconfont icon-a-21-xiugai data-v-52760117"></text><text class="text data-v-52760117">评论过的</text></view>
+            <view class="right data-v-52760117"><text class="iconfont icon-a-10-you data-v-52760117"></text></view>
+          </view>
+        </view>
+        <view class="group data-v-52760117">
+          <view class="item data-v-52760117">
+            <view class="left data-v-52760117"><text class="iconfont icon-a-32-wenjian data-v-52760117"></text><text class="text data-v-52760117">关于</text></view>
+            <view class="right data-v-52760117"><text class="iconfont icon-a-10-you data-v-52760117"></text></view>
+          </view>
+          <view class="item data-v-52760117">
+            <view class="left data-v-52760117"><text class="iconfont icon-a-5-xinxi data-v-52760117"></text><text class="text data-v-52760117">意见反馈</text></view>
+            <view class="right data-v-52760117"><text class="iconfont icon-a-10-you data-v-52760117"></text></view>
+          </view>
+        </view>
+        <view class="group data-v-52760117">
+          <view class="item data-v-52760117">
+            <view class="left data-v-52760117"><text class="iconfont icon-a-73-tuichu data-v-52760117"></text><text class="text data-v-52760117">退出登录</text></view>
+            <view class="right data-v-52760117"><text class="iconfont icon-a-10-you data-v-52760117"></text></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <tabbar vue-id="076aba62-3" current="{{$root.g0-1}}" tabBarList="{{tabBerLists}}" class="data-v-52760117" bind:__l="__l"></tabbar>
+</view>
