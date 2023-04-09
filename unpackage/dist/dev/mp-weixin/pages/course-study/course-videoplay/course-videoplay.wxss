@@ -58,11 +58,13 @@
   font-size: 24rpx;
   color: #666666;
 }
-.container .content .course-container.data-v-14645ae0 .u-cell__body[data-v-1c4434ae] {
-  background-color: #f7f7f7;
-  margin-top: 20rpx;
-  border-radius: 18rpx;
-  margin-top: 0;
+.container .content .course-container.data-v-14645ae0 {
+  height: calc( 100vh - 317px);
+  overflow: auto;
+  padding-bottom: 60rpx;
+}
+.container .content .course-container.data-v-14645ae0 .uni-collapse-item__title-text[data-v-41027c34] {
+  font-size: 17px;
 }
 .container .content .course-container .course-item.data-v-14645ae0 {
   padding: 24rpx;

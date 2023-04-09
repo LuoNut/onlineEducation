@@ -50,7 +50,7 @@
 				<swiper-item>
 					<view class="swiper-item">					  
 						<view class="course-container">
-							<u-collapse
+							<!-- <u-collapse
 								:border="false"
 							  >
 							    <u-collapse-item
@@ -73,7 +73,15 @@
 							    >
 							      <text class="u-collapse-content">众多的贴心小工具，是您开发过程中召之即来的利器，让您飞镖在手，百步穿杨</text>
 							    </u-collapse-item>
-							</u-collapse>
+							</u-collapse> -->
+							
+							<uni-collapse>
+								<uni-collapse-item title="默认开启" v-for="(item, index) in 20">
+									<view class="course-item" v-for="(item, index) in 20">
+										第{{index}}章
+									</view>
+								</uni-collapse-item>
+							</uni-collapse>
 						</view>
 					</view>
 				</swiper-item>
@@ -161,12 +169,12 @@
 					}
 				}
 				.course-container {
-					/deep/ .u-cell__body[data-v-1c4434ae] {
-						background-color: #f7f7f7;
-						    margin-top: 20rpx;
-						    border-radius: 18rpx;
-							margin-top: 0;
+					/deep/ .uni-collapse-item__title-text[data-v-41027c34] {
+						font-size: 17px;
 					}
+						height: calc( 100vh - 317px);
+						overflow: auto;
+						padding-bottom: 60rpx;
 					.course-item {
 						padding: 24rpx;
 						color: #333333;

@@ -107,11 +107,11 @@ try {
     uTabs: function () {
       return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 574))
     },
-    uCollapse: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-collapse/u-collapse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-collapse/u-collapse")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-collapse/u-collapse.vue */ 927))
+    uniCollapse: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse/uni-collapse */ "uni_modules/uni-collapse/components/uni-collapse/uni-collapse").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue */ 927))
     },
-    uCollapseItem: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-collapse-item/u-collapse-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-collapse-item/u-collapse-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-collapse-item/u-collapse-item.vue */ 935))
+    uniCollapseItem: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item */ "uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue */ 934))
     },
   }
 } catch (e) {
@@ -174,6 +174,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
