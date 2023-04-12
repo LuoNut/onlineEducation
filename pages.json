@@ -210,6 +210,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/teacher/course-management/course-management",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "black",

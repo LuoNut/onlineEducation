@@ -37,11 +37,6 @@
 	export default {
 		name:"commentItem",
 		props:{
-			toTarget: {
-				default:() => {
-					return {}
-				}
-			},
 			schema: {
 				type: String
 			},
@@ -72,19 +67,11 @@
 			giveName, giveAvatar,
 			//跳转到回复评论事件
 			toReply() {
-				if(this.showReply) return
-				
-				console.log(this.toTarget);
-				if(this.toTarget) {
-					console.log('1');
-					this.toTarget()
-				}else {
-					uni.setStorageSync("replyItem",this.item)
-					uni.navigateTo({
-						url:"/pages/community/reply/reply"
-					})
-				}
-
+				if(this.showReply) return 
+				uni.setStorageSync("replyItem",this.item)
+				uni.navigateTo({
+					url:"/pages/community/reply/reply"
+				})
 			},
 			//点击删除按钮
 			onDelete() {

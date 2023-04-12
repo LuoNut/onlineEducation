@@ -6,11 +6,11 @@
 		</cu-custom>
 		
 		<view class="body">
-			<view class="item" @click="toCourseManagement">
+			<view class="item" @click="toCourseCreation">
 				<text class="iconfont icon-keben"></text>
 				<text class="text">课程上传</text>
 			</view>
-			<view class="item">
+			<view class="item" @click="toCourseManagement">
 				<text class="iconfont icon-tingke"></text>
 				<text class="text">课程管理</text>
 			</view>
@@ -37,10 +37,16 @@
 			this.tabBerLists = uni.getStorageSync('tabBarList') // 自定义的tabbar赋值
 		},
 		methods: {
+			//跳转到课堂创建页面
+			totoCourseCreation() {
+				uni.navigateTo({
+					url: '/pages/teacher/course/course'
+				})
+			},
 			//跳转到课堂管理页面
 			toCourseManagement() {
 				uni.navigateTo({
-					url: '/pages/teacher/course/course'
+					url: '/pages/teacher/course-management/course-management'
 				})
 			}
 		}
