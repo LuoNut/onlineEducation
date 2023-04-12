@@ -19,6 +19,9 @@
 	export default {
 		name:"commentFrame",
 		props: {
+			schema: {
+				type: String
+			},
 			commentObj: {
 				type: Object,
 				default:() => {
@@ -61,7 +64,7 @@
 					return
 				}
 				let province = await getProvince()
-				db.collection("blog_comment").add({
+				db.collection(`${this.schema}_comment`).add({
 					"comment_content": this.replyContent,
 					"province": province,
 					...this.commentObj
@@ -78,7 +81,7 @@
 					this.replyContent = ""
 					
 					//在数据库增加评论数
-					utilsObj.operation("blog_article","comment_count",this.commentObj.article_id,1)
+					utilsObj.operation(`${this.schema}_article`,"comment_count",this.commentObj.course_id,1)
 				})
 			}
 		}

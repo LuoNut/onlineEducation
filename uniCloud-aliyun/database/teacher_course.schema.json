@@ -33,6 +33,14 @@
 			"title": "该课程所属班级",
 			"description": "该课程所属班级",
 			"label": "该课程所属班级"
+		},
+		"publish_date": {
+			"bsonType": "timestamp",
+			"title": "发表时间",
+			"description": "发表时间",
+			"defaultValue": {
+				"$env": "now"
+			}
 		}
 	},
 	"version": "0.0.1"

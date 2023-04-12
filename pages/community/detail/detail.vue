@@ -66,13 +66,13 @@
 			</view>
 			<view class="content">
 				<view class="item" v-for="item in commentList">
-					<comment-item :item="item" @removeEvn="P_deteleEvn" ></comment-item>
+					<comment-item schema="blog" :item="item" @removeEvn="P_deteleEvn" ></comment-item>
 				</view>
 				
 			</view>
 		</view>
 		
-		<comment-frame @commentEvn="P_commentEvn" :commentObj="commentObj" ></comment-frame>
+		<comment-frame schema="blog" @commentEvn="P_commentEvn" :commentObj="commentObj" ></comment-frame>
 	
 	</view>
 </template>
@@ -106,7 +106,6 @@
 			};
 		},
 		onLoad(e) {
-			console.log(e);
 			if(!e.id) {
 				this.errFun()
 				return
@@ -149,8 +148,6 @@
 				let userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp()
 				
 				let res = await db.collection(commentTemp,userTemp).orderBy("comment_date desc").get()
-				
-				console.log(res);
 					
 					//获取一级评论所对应的二级评论的回复量
 					let idArr = res.result.data.map(item => {
@@ -163,7 +160,6 @@
 					.groupField('count(*) as totalReply')
 					.get()
 					
-					console.log(replyArr);
 					
 
 					res.result.data.forEach(item => {
@@ -175,7 +171,6 @@
 					})
 					
 					if(!res.result.data.length) this.noComment = true
-					console.log(res.result.data);
 					this.commentList = res.result.data
 			},
 			//获取最近点赞用户头像
@@ -276,7 +271,6 @@
 					
 					
 				}).catch(err => {
-					console.log(err);
 					// this.errFun()
 				})
 			}

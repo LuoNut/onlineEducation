@@ -1,6 +1,6 @@
 <template>
 	<view class="container" @click="toVideoPlay">
-		<view class="content" v-for="(item, index) in 8" id="index">
+		<view class="content">
 			<view class="image">
 				<image src="../../static/demo/cover/1.png" mode="aspectFill"></image>
 				<view class="type">

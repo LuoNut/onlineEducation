@@ -9,7 +9,7 @@
 		<view class="image">
 			<swiper class="swiperImg" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
 				<swiper-item v-for="(item, index) in swiper" :key="index">
-					<view class="swiper-item">
+					<view class="swiperItem">
 						<image :src="item.src" mode="aspectFill"></image>
 					</view>
 				</swiper-item>
@@ -32,12 +32,9 @@
 				</view>
 			</view>
 			<scroll-view class="courseScroll" scroll-x="true" show>
-				<course-item></course-item>
-				<course-item></course-item>
-				<course-item></course-item>
-				<course-item></course-item>
-				<course-item></course-item>
-				<course-item></course-item>
+				<view class="scrollItem" v-for="item in newestCourseData" :id="item._id" >
+					<course-item :courseData="item" ></course-item>
+				</view>
 			</scroll-view>
 		</view>
 
@@ -50,7 +47,10 @@
 				</view>
 				<view class="action" @click="goVideo"><text class="text-lg text-grey text-shadow">更多</text></view>
 			</view>
-			<course-list></course-list>
+
+				<course-list></course-list>
+				<course-list></course-list>
+
 		</view>
 
 
@@ -60,11 +60,13 @@
 </template>
 
 <script>
-
+	const db = uniCloud.database()
 	export default {
 		data() {
 			return {
 				tabBerLists: [], //tabbar数据
+				recommendCourseData: [] ,//推荐课程数据
+				newestCourseData: [] , //最新课程数据
 				swiper: [{
 						src: '/static/demo/cover/1.png',
 						
@@ -97,13 +99,28 @@
 		onLoad() {
 			// 影藏原生的tabbar,有自定义tabbar的页面都要写一遍
 			uni.hideTabBar()
+			
+			//获取课程数据
+			this.getCourseData()
 		},
 		onShow() {
 			this.tabBerLists = uni.getStorageSync('tabBarList') // 自定义的tabbar赋值
 		},
 
 		methods: {
-
+			//获取课程视频数据
+			async getCourseData() {
+				
+				
+				const courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id").orderBy("publish_date desc").getTemp()
+				const userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp()
+				
+				
+				let res = await db.collection(courseTemp,userTemp).get()
+				
+	
+				this.newestCourseData = res.result.data
+			}
 		}
 	}
 </script>
@@ -137,6 +154,9 @@
 			.courseScroll {
 				width: 100%;
 				white-space: nowrap;
+				.scrollItem {
+					display: inline-block;
+				}
 			}
 
 			::-webkit-scrollbar {

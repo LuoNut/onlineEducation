@@ -18,6 +18,17 @@
 					<button class="upload-button" @click="coursewareUpload">上传</button>
 				</view>
 			</view>
+			
+			<!-- 上传课程封面 -->
+			<view class="item-box">
+				<view class="course-content">
+					<uni-file-picker file-extname="png,jpg" fileMediatype="all" @success="upCourseCoverSuccess"
+						ref="courseCoverFiles" :auto-upload="false">
+						<u-button plain class="select-button" type="primary" icon="plus" text="添加封面"></u-button>
+					</uni-file-picker>
+					<button class="upload-button" @click="courseCoverUpload">上传</button>
+				</view>
+			</view>
 
 			<!-- 上传课程视频 -->
 			<view class="item-box" v-for="(item, index) in courseVideoList">
@@ -56,7 +67,8 @@
 				currentIndex: 0, //当前操作的章节
 				id: 1, //开始的章节id
 				courseware: [], //课程的课件
-				courseVideoList: [{ //总的课程数据
+				courseCover: "", //课程封面
+				courseVideoList: [{ //总的课程视频数据
 					id: 1,
 					section: "", //章节标题
 					videoSrc: [], //课程视频数据
@@ -97,6 +109,11 @@
 			coursewareUpload() {
 				this.$refs.coursewareFiles.upload()
 			},
+			//上传封面
+			courseCoverUpload() {
+				this.$refs.courseCoverFiles.upload()
+			},
+			
 			//上传文件
 			upload(index) {
 				this.currentIndex = index
@@ -146,6 +163,12 @@
 					this.courseware.push(videoObj)
 				})
 			},
+			
+			//上传封面成功
+			upCourseCoverSuccess(e) {
+				console.log(e.tempFilePaths[0]);
+				this.courseCover = e.tempFilePaths[0]
+			},
 
 			//点击完成按钮
 			onAccomplish() {
@@ -164,6 +187,7 @@
 					subject_type_two: this.courseData.courseType[1],
 					course_intro: this.courseData.courseIntro,
 					courseware: this.courseware,
+					courseCover: this.courseCover,
 					course_video: this.courseVideoList
 				})
 				
@@ -177,6 +201,10 @@
 				uni.hideLoading()
 				uni.showToast({
 					title: "发布成功"
+				})
+				
+				uni.reLaunch({
+					url: '/pages/tabbar/teacher/teacher'
 				})
 			},
 

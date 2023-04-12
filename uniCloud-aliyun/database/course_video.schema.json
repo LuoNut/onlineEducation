@@ -4,7 +4,7 @@
 		"user_id",
 		"course_name",
 		"subject_type_one",
-		"subject_type_two",
+		"subject_type_two"
 	],
 	"permission": {
 		"read": true,
@@ -30,6 +30,12 @@
 			"description": "课程名称",
 			"label": "课程名称",
 			"trim": "both"
+		},
+		"courseCover": {
+			"bsonType": "string",
+			"title": "课程封面",
+			"description": "课程封面",
+			"label": "课程封面"
 		},
 		"subject_type_one": {
 			"bsonType": "string",

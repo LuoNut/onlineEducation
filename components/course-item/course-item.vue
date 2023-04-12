@@ -1,14 +1,11 @@
 <template>
 	<view class="container" @click="toVideoPlay">
 		<view class="image">
-			<image src="../../static/demo/cover/1.png" mode="aspectFill"></image>
-			<view class="type">
-				图文
-			</view>
+			<image :src="courseData.courseCover" mode="aspectFill"></image>
 		</view>
 		<view class="title">
-			<text class="text">uni-app实战开发发发发发发发发发发发发发</text>
-			<text class="name">李老师</text>
+			<text class="text">{{courseData.course_name}}</text>
+			<text class="name">{{courseData.user_id[0].nickname}}</text>
 		</view>
 	</view>
 </template>
@@ -16,6 +13,11 @@
 <script>
 	export default {
 		name:"course-item",
+		props: {
+			courseData: {
+				type: Object
+			}
+		},
 		data() {
 			return {
 				
@@ -24,7 +26,7 @@
 		methods: {
 			toVideoPlay() {
 				uni.navigateTo({
-					url:'/pages/course-study/course-videoplay/course-videoplay'
+					url:`/pages/course-study/course-videoplay/course-videoplay?id=${this.courseData._id}`
 				})
 			}
 		}
@@ -34,11 +36,11 @@
 <style lang="scss" scoped >
 	.container {
 		display: inline-block;
-		margin-left: 20rpx;
+		margin: 10rpx 0 20rpx 20rpx;
 		box-shadow: 4rpx 4rpx 6rpx rgba(26, 26, 26, 0.2);
 		border-radius: 10rpx;
 		padding: 10rpx;
-		margin-bottom: 20rpx;
+		background-color: #fff;
 		.image {
 			position: relative;
 			image {
@@ -59,14 +61,6 @@
 			.name {
 				font-size: 25rpx;
 			}	
-		}
-		.image view {
-			position: absolute;
-			right: 10rpx;
-			bottom: 20rpx;
-			background-color: rgba(0, 0, 0, 0.4);
-			padding: 0 10rpx;
-			color: #fff;
 		}
 	}
 </style>

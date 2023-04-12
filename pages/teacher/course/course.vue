@@ -40,6 +40,7 @@
 					<u--textarea border="bottom" v-model="courseData.courseIntro" placeholder="请输入课程简介内容" count ></u--textarea>
 				</view>
 				
+				
 
 				<!-- 课程班级 -->
 				<view class="item-box" v-for="(item, index) in courseData.classList">

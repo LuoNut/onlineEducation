@@ -30,13 +30,16 @@
 
 <script>
 	import {giveName, giveAvatar} from '../../utils/tools.js'
-	const utilsObj = uniCloud.importObject('utilsObj',{
+	const utilsObj = uniCloud.importObject('utils-obj',{
 		customUI: true // 取消自动展示的交互提示界面
 	}) 
 	const db = uniCloud.database()
 	export default {
 		name:"commentItem",
 		props:{
+			schema: {
+				type: String
+			},
 			item: {
 				type:Object,
 				default:() => {
@@ -51,6 +54,9 @@
 				type:Boolean,
 				default:false
 			}
+		},
+		onLoad() {
+
 		},
 		data() {
 			return {
@@ -76,14 +82,14 @@
 						title:"是否确认删除？",
 						success: (res) => {
 							if(res.confirm) {
-								db.collection("quanzi_comment").where(`_id == "${this.item._id}"`).remove().then(res => {
+								db.collection(`${this.schema}_comment`).where(`_id == "${this.item._id}"`).remove().then(res => {
 									this.$emit("removeEvn",this.item._id)
 									uni.showToast({
 										title:"删除成功！"
 									})
 									
 									//改变数据库数据
-									utilsObj.operation("quanzi_article","comment_count",this.item.article_id,-1)
+									utilsObj.operation(`${this.schema}_article`,"comment_count",this.item.article_id,-1)
 								})
 								
 							}
