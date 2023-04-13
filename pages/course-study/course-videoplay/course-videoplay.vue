@@ -97,31 +97,8 @@
 				<swiper-item>
 					<view class="swiper-item">
 						<view class="comment-container">
-							<view class="comment" v-if="!secondComShow">
-								<view  v-if="noComment">
-									<u-empty
-									        mode="comment"
-									        icon="http://cdn.uviewui.com/uview/empty/comment.png"
-									>
-									</u-empty>
-								</view>
-								<view class="content">
-									<view class="item" v-for="item in commentList">
-										<comment-item :toTarget="switchComment" schema="course" :item="item" @removeEvn="P_deteleEvn" ></comment-item>
-									</view>
-									
-								</view>
-							</view>
-							<view class="secondComment" v-else>
-								<view class="reply">
-									<view class="top">
-										<commentItem :item="replyItem" :showReply="true" :showClose="true"></commentItem>
-									</view>
-									<view class="list">
-										<view class="row" v-for="item in replyList">
-											<commentItem @removeEvn="P_removeEvn" :item="item" :showReply="true"></commentItem>
-										</view>
-									</view>
+							<view class="comment" >
+								<view class="comment-box">
 									<view  v-if="noComment">
 										<u-empty
 										        mode="comment"
@@ -129,16 +106,48 @@
 										>
 										</u-empty>
 									</view>
-									
-									<view>
-										<comment-frame @commentEvn="P_commentEvn" :commentObj="commentObj" :placeholder="`回复：${giveName(replyItem)}`" ></comment-frame>
+									<view class="content">
+										<view class="item" v-for="item in commentList">
+											<comment-item :toTarget="switchComment" schema="course" :item="item" @removeEvn="P_deteleEvn" ></comment-item>
+										</view>
+															
 									</view>
 								</view>
+								<comment-frame schema="course" @commentEvn="P_commentEvn" :commentObj="commentObj" ></comment-frame>
 							</view>
+							<u-popup closeable :show="secondComShow" mode="bottom"  @close="close">
+							        <view class="secondComment">
+							        	<view class="reply">
+											<view class="comment-box">
+												<view class="top">
+													<commentItem :item="replyItem" schema="course" :showReply="true" :showClose="true"></commentItem>
+												</view>
+												<view class="list">
+													<view class="row" v-for="item in replyList">
+														<commentItem @removeEvn="second_P_removeEvn" :item="item" :showReply="true"></commentItem>
+													</view>
+												</view>
+												<view  v-if="noComment">
+													<u-empty
+													        mode="comment"
+													        icon="http://cdn.uviewui.com/uview/empty/comment.png"
+													>
+													</u-empty>
+												</view>
+											</view>
+							        		
+
+							        		<comment-frame schema="course" @commentEvn="second_P_commentEvn" :commentObj="secondCommentObj" :placeholder="`回复：${giveName(replyItem)}`" ></comment-frame>
+
+							        	</view>
+							        </view>
+							</u-popup>
+								
+							
 						</view>
 						
 						
-						<comment-frame schema="course" @commentEvn="P_commentEvn" :commentObj="commentObj" ></comment-frame>
+						
 					</view>
 				</swiper-item>
 			</swiper>
@@ -183,8 +192,8 @@
 				// 二级评论
 				secondComShow: false, //是否显示二级评论
 				replyItem: null,
-				commentObj: {
-					article_id:'',
+				secondCommentObj: {
+					course_id:'',
 					comment_type:1,
 					reply_user_id:"",
 					reply_comment_id:"",
@@ -200,19 +209,6 @@
 			this.getCourseComment()
 			
 			
-			//***二级评论***
-			let replyItem = uni.getStorageSync("replyItem") || {}
-			
-			if(!replyItem) {
-				uni.navigateBack()
-				return 
-			}
-			this.replyItem = replyItem
-			this.commentObj.article_id = replyItem.article_id
-			this.commentObj.reply_user_id = replyItem.user_id[0]._id
-			this.commentObj.reply_comment_id = replyItem._id
-			//获取评论列表
-			this.getArticleComment()
 		},
 		methods: {
 			giveName,
@@ -373,20 +369,37 @@
 			
 			// ***二级评论***
 			
-			//跳转到二级评论页面
-			switchComment() {
+			//弹出二级评论页面
+			switchComment(replyItem) {
 				this.secondComShow = true
+				
+				
+				
+				if(!replyItem) {
+					return 
+				}
+				this.replyItem = replyItem
+				this.secondCommentObj.course_id = replyItem.course_id
+				this.secondCommentObj.reply_user_id = replyItem.user_id[0]._id
+				this.secondCommentObj.reply_comment_id = replyItem._id
+				//获取评论列表
+				this.getArticleComment()
+			},
+			
+			close() {
+			  this.secondComShow = false
+			  // console.log('close');
 			},
 			
 			//无感删除评论
-			P_removeEvn(e) {
+			second_P_removeEvn(e) {
 				let index = this.replyList.findIndex(item => {
 					return e==item._id
 				})
 				this.replyList.splice(index, 1)
 			},
 			//无感增加二级评论
-			P_commentEvn(e) {
+			second_P_commentEvn(e) {
 			
 				this.replyList.unshift({
 					...e,
@@ -397,8 +410,8 @@
 			
 			//获取二级评论
 			async getArticleComment() {
-				let commentTemp = db.collection("blog_comment")
-				.where(`article_id == "${this.replyItem.article_id}" && comment_type==1 && reply_comment_id=="${this.replyItem._id}"`)
+				let commentTemp = db.collection("course_comment")
+				.where(`course_id == "${this.replyItem.course_id}" && comment_type==1 && reply_comment_id=="${this.replyItem._id}"`)
 				.getTemp()
 				let userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp()
 				
@@ -425,10 +438,10 @@
 				height: 100%;
 			}
 				
-				padding: 10px 15px;
+				padding: 0 20rpx 20rpx 10rpx;
 				background-color: #FFFFFF;
 				margin-top: 20rpx;
-				height: calc( 100vh - 636rpx);
+				height: calc( 100vh - 670rpx);
 				.brief-container {
 					.brief {
 						font-weight: bold;
@@ -478,20 +491,34 @@
 						line-height: 80rpx;
 					}
 				}
-				.conment-container {
-					.reply {
-						.top {
-							padding: 30rpx;
-							border-bottom: 15rpx solid #eee;
+				.comment-container {
+					.comment-box {
+						height: 508rpx;
+						overflow-y: auto;
+					}
+					.secondComment {
+						.reply {
+						    height: 662rpx;
 						}
-						.list {
-							padding: 30rpx 60rpx;
-							padding-bottom: 120rpx;
-							.row {
-								padding-bottom: 15rpx;
+						.reply {
+							/deep/ .list[data-v-14645ae0] {
+							    padding-bottom: 0;
+							}
+							.top {
+								padding: 30rpx;
+								border-bottom: 15rpx solid #eee;
+								
+							}
+							.list {
+								padding: 30rpx 60rpx;
+								padding-bottom: 120rpx;
+								.row {
+									padding-bottom: 15rpx;
+								}
 							}
 						}
 					}
+					
 				}
 				
 				

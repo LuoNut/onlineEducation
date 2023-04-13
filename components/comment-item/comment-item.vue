@@ -76,8 +76,8 @@
 				
 				console.log(this.toTarget);
 				if(this.toTarget) {
-					console.log('1');
-					this.toTarget()
+					console.log(this.toTarget);
+					this.toTarget(this.item)
 				}else {
 					uni.setStorageSync("replyItem",this.item)
 					uni.navigateTo({
@@ -127,7 +127,7 @@
 		.avatar {
 			width: 50rpx;
 			height: 50rpx;	
-			padding-right: 20rpx;
+			margin: 16rpx 20rpx 20rpx 20rpx;
 			image {
 				width: 100%;
 				height: 100%;
