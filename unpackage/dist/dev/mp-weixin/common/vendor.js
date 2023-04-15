@@ -9889,11 +9889,12 @@ var y = "development" === "development",
   k = m({
     "address": [
         "127.0.0.1",
-        "182.91.175.227",
+        "182.91.186.96",
+        "172.21.32.1",
         "169.254.221.79",
         "192.168.20.1",
-        "172.21.148.84",
-        "172.18.32.1"
+        "192.168.137.1",
+        "172.21.148.84"
     ],
     "debugPort": 9000,
     "initialLaunchType": "local",
@@ -17052,6 +17053,12 @@ var _default = {
     }
   }, {
     "path": "pages/course-study/course-videoplay/course-videoplay",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+  }, {
+    "path": "pages/teacher/course-management/course-management",
     "style": {
       "navigationBarTitleText": "",
       "enablePullDownRefresh": false
@@ -27850,186 +27857,249 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _default = [{
-  "name": "工学",
+  "name": "计算机",
   "foods": [{
-    "name": "HTML/CSS",
-    "key": "HTML/CSS",
-    "icon": "http://cdn.zhoukaiwen.com/html.jpeg",
-    "cat": 10
+    "name": "计算机基础",
+    "key": "计算机基础",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "Javascript",
-    "key": "Javascript",
-    "icon": "http://cdn.zhoukaiwen.com/JavaScript.jpg",
-    "cat": 10
+    "name": "软件工程",
+    "key": "软件工程",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "Vue.js",
-    "key": "Vue.js",
-    "icon": "http://cdn.zhoukaiwen.com/vue.jpg",
-    "cat": 10
+    "name": "网络与安全技术",
+    "key": "网络与安全技术",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "React.js",
-    "key": "React.js",
-    "icon": "http://cdn.zhoukaiwen.com/react.png",
-    "cat": 10
+    "name": "硬件系统及应用",
+    "key": "硬件系统及应用",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "Angular",
-    "key": "Angular",
-    "icon": "http://cdn.zhoukaiwen.com/angular.jpg",
-    "cat": 10
-  }, {
-    "name": "Node.js",
-    "key": "Node.js",
-    "icon": "http://cdn.zhoukaiwen.com/node.jpeg",
-    "cat": 10
-  }, {
-    "name": "jQuery",
-    "key": "jQuery",
-    "icon": "http://cdn.zhoukaiwen.com/jquery.jpg",
-    "cat": 10
-  }, {
-    "name": "Bootstrap",
-    "key": "Bootstrap",
-    "icon": "http://cdn.zhoukaiwen.com/bootstrap.png",
-    "cat": 10
-  }, {
-    "name": "WebApp",
-    "key": "WebApp",
-    "icon": "http://cdn.zhoukaiwen.com/webapp.jpg",
-    "cat": 10
-  }, {
-    "name": "小程序",
-    "key": "小程序",
-    "icon": "http://cdn.zhoukaiwen.com/xiaochengxu.jpg",
-    "cat": 10
-  }, {
-    "name": "uniApp",
-    "key": "uniApp",
-    "icon": "http://cdn.zhoukaiwen.com/uniapp.png",
-    "cat": 10
-  }, {
-    "name": "前端工具",
-    "key": "前端工具",
-    "icon": "http://cdn.zhoukaiwen.com/web.png",
-    "cat": 10
+    "name": "前端开发",
+    "key": "前端开发",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }]
 }, {
-  "name": "理学",
+  "name": "理，工，农",
   "foods": [{
-    "name": "Java",
-    "key": "Java",
-    "icon": "http://cdn.zhoukaiwen.com/java.jpg",
-    "cat": 6
+    "name": "力学",
+    "key": "力学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "SpringBoot",
-    "key": "SpringBoot",
-    "icon": "http://cdn.zhoukaiwen.com/SpringBoot.jpg",
-    "cat": 6
+    "name": "机械",
+    "key": "机械",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "Spring Cloud",
-    "key": "Spring Cloud",
-    "icon": "http://cdn.zhoukaiwen.com/SpringCloud.jpg",
-    "cat": 6
+    "name": "材料",
+    "key": "材料",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "SSM",
-    "key": "SSM",
-    "icon": "http://cdn.zhoukaiwen.com/SSM.jpg",
-    "cat": 6
+    "name": "电气信息",
+    "key": "电气信息",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "PHP",
-    "key": "PHP",
-    "icon": "http://cdn.zhoukaiwen.com/php.jpg",
-    "cat": 6
+    "name": "土木",
+    "key": "土木",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "Python",
-    "key": "Python",
-    "icon": "http://cdn.zhoukaiwen.com/Python.jpg",
-    "cat": 6
+    "name": "工学",
+    "key": "工学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "爬虫",
-    "key": "爬虫",
-    "icon": "http://cdn.zhoukaiwen.com/seo.jpg",
-    "cat": 6
+    "name": "化学",
+    "key": "化学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "Django",
-    "key": "Django",
-    "icon": "http://cdn.zhoukaiwen.com/Django.jpg",
-    "cat": 6
-  }, {
-    "name": "Go",
-    "key": "Go",
-    "icon": "http://cdn.zhoukaiwen.com/go.jpg",
-    "cat": 6
-  }, {
-    "name": "C++",
-    "key": "C++",
-    "icon": "http://cdn.zhoukaiwen.com/c.jpg",
-    "cat": 6
-  }, {
-    "name": "Ruby",
-    "key": "Ruby",
-    "icon": "http://cdn.zhoukaiwen.com/Ruby.jpg",
-    "cat": 6
+    "name": "数学",
+    "key": "数学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }]
 }, {
-  "name": "文学",
+  "name": "外语",
   "foods": [{
-    "name": "设计工具",
-    "key": "设计工具",
-    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg",
-    "cat": 3
+    "name": "听力口语",
+    "key": "听力口语",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "设计基础",
-    "key": "设计基础",
-    "icon": "http://cdn.zhoukaiwen.com/ui.png",
-    "cat": 3
+    "name": "语法阅读",
+    "key": "语法阅读",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "Photpshop",
-    "key": "Photpshop",
-    "icon": "http://cdn.zhoukaiwen.com/ps.jpg",
-    "cat": 3
+    "name": "写作翻译",
+    "key": "写作翻译",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "动效动画",
-    "key": "动效动画",
-    "icon": "http://cdn.zhoukaiwen.com/dongxiao.gif",
-    "cat": 3
+    "name": "四六级",
+    "key": "四六级",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "APPUI设计",
-    "key": "APPUI设计",
-    "icon": "http://cdn.zhoukaiwen.com/webapp.jpg",
-    "cat": 3
+    "name": "雅思",
+    "key": "雅思",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }, {
-    "name": "产品交互",
-    "key": "产品交互",
-    "icon": "http://cdn.zhoukaiwen.com/jiaohu.png",
-    "cat": 3
+    "name": "其它语言",
+    "key": "其它语言",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
   }]
 }, {
-  "name": "历史学",
-  "foods": []
+  "name": "心理学",
+  "foods": [{
+    "name": "心理学",
+    "key": "心理学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }]
 }, {
-  "name": "哲学",
-  "foods": []
+  "name": "文史哲学",
+  "foods": [{
+    "name": "文学文化",
+    "key": "文学文化",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "新闻传播",
+    "key": "新闻传播",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "哲学",
+    "key": "哲学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "历史",
+    "key": "历史",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "政治",
+    "key": "政治",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }]
 }, {
-  "name": "经济学",
-  "foods": []
+  "name": "音乐与艺术",
+  "foods": [{
+    "name": "设计",
+    "key": "设计",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "创作",
+    "key": "创作",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "艺术学",
+    "key": "艺术学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "美术学",
+    "key": "美术学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "戏剧与影视",
+    "key": "戏剧与影视",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "设计学",
+    "key": "设计学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "音乐与舞蹈",
+    "key": "音乐与舞蹈",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }]
 }, {
-  "name": "法学",
-  "foods": []
+  "name": "医学与保健",
+  "foods": [{
+    "name": "体育教育",
+    "key": "体育教育",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "基础医学",
+    "key": "基础医学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "临床医学",
+    "key": "临床医学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "公共卫生",
+    "key": "公共卫生",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "口腔医学",
+    "key": "口腔医学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "中医药医学",
+    "key": "中医药医学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "药学",
+    "key": "药学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "护理学",
+    "key": "护理学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "健康",
+    "key": "健康",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "老年医学",
+    "key": "老年医学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "儿医学",
+    "key": "儿医学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "妇产科学",
+    "key": "妇产科学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "急诊与灾难医学",
+    "key": "急诊与灾难医学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "医患沟通伦理学",
+    "key": "医患沟通伦理学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }]
 }, {
-  "name": "教育学",
-  "foods": []
-}, {
-  "name": "农学",
-  "foods": []
-}, {
-  "name": "医学",
-  "foods": []
-}, {
-  "name": "管理学",
-  "foods": []
-}, {
-  "name": "艺术学",
-  "foods": []
+  "name": "教育教学",
+  "foods": [{
+    "name": "教学方法",
+    "key": "教学方法",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "教学能力",
+    "key": "教学能力",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "信息化教学",
+    "key": "信息化教学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "职业素养",
+    "key": "职业素养",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "学科教学",
+    "key": "学科教学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "素质教育",
+    "key": "素质教育",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "体育教学",
+    "key": "体育教学",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "体育教育",
+    "key": "体育教育",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }, {
+    "name": "学前教育",
+    "key": "学前教育",
+    "icon": "http://cdn.zhoukaiwen.com/sheji.jpg"
+  }]
 }];
 exports.default = _default;
 
@@ -28954,15 +29024,23 @@ function getip() {
 }
 
 //获取昵称
+// export function giveName(item) {
+// 	return item.user_id[0]?.nickname || item.user_id[0]?.username || item.user_id[0]?.mobile || "请设置昵称"
+// }
+
+//获取昵称 
 function giveName(item) {
-  var _item$user_id$, _item$user_id$2, _item$user_id$3;
-  return ((_item$user_id$ = item.user_id[0]) === null || _item$user_id$ === void 0 ? void 0 : _item$user_id$.nickname) || ((_item$user_id$2 = item.user_id[0]) === null || _item$user_id$2 === void 0 ? void 0 : _item$user_id$2.username) || ((_item$user_id$3 = item.user_id[0]) === null || _item$user_id$3 === void 0 ? void 0 : _item$user_id$3.mobile) || "请设置昵称";
+  if (item) {
+    return item.user_id[0].nickname;
+  } else {
+    return "";
+  }
 }
 
 //获取头像
 function giveAvatar(item) {
-  var _item$user_id$0$avata, _item$user_id$4, _item$user_id$4$avata;
-  return (_item$user_id$0$avata = (_item$user_id$4 = item.user_id[0]) === null || _item$user_id$4 === void 0 ? void 0 : (_item$user_id$4$avata = _item$user_id$4.avatar_file) === null || _item$user_id$4$avata === void 0 ? void 0 : _item$user_id$4$avata.url) !== null && _item$user_id$0$avata !== void 0 ? _item$user_id$0$avata : '/static/images/user-default.jpg';
+  var _item$user_id$0$avata, _item$user_id$, _item$user_id$$avatar;
+  return (_item$user_id$0$avata = (_item$user_id$ = item.user_id[0]) === null || _item$user_id$ === void 0 ? void 0 : (_item$user_id$$avatar = _item$user_id$.avatar_file) === null || _item$user_id$$avatar === void 0 ? void 0 : _item$user_id$$avatar.url) !== null && _item$user_id$0$avata !== void 0 ? _item$user_id$0$avata : '/static/images/user-default.jpg';
 }
 
 //点赞操作数据库的方法
@@ -29059,7 +29137,19 @@ function _likeFun() {
 /* 405 */,
 /* 406 */,
 /* 407 */,
-/* 408 */
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */
 /*!**************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/readOnlyError.js ***!
   \**************************************************************/
@@ -29072,18 +29162,6 @@ function _readOnlyError(name) {
 module.exports = _readOnlyError, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 409 */,
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */,
-/* 414 */,
-/* 415 */,
-/* 416 */,
-/* 417 */,
-/* 418 */,
-/* 419 */,
-/* 420 */,
 /* 421 */,
 /* 422 */,
 /* 423 */,
@@ -29107,7 +29185,19 @@ module.exports = _readOnlyError, module.exports.__esModule = true, module.export
 /* 441 */,
 /* 442 */,
 /* 443 */,
-/* 444 */
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */
 /*!**************************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-dateformat/components/uni-dateformat/date-format.js ***!
   \**************************************************************************************************/
@@ -29324,12 +29414,12 @@ function friendlyDate(time, _ref) {
 }
 
 /***/ }),
-/* 445 */,
-/* 446 */,
-/* 447 */,
-/* 448 */,
-/* 449 */,
-/* 450 */
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */
 /*!******************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-icon/icons.js ***!
   \******************************************************************************/
@@ -29560,7 +29650,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 451 */
+/* 463 */
 /*!******************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-icon/props.js ***!
   \******************************************************************************/
@@ -29667,18 +29757,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 452 */,
-/* 453 */,
-/* 454 */,
-/* 455 */,
-/* 456 */,
-/* 457 */,
-/* 458 */,
-/* 459 */,
-/* 460 */,
-/* 461 */,
-/* 462 */,
-/* 463 */,
 /* 464 */,
 /* 465 */,
 /* 466 */,
@@ -29702,7 +29780,19 @@ exports.default = _default;
 /* 484 */,
 /* 485 */,
 /* 486 */,
-/* 487 */
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */
 /*!**********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-popup/components/uni-popup/popup.js ***!
   \**********************************************************************************/
@@ -29743,7 +29833,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 488 */
+/* 500 */
 /*!***************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
   \***************************************************************************************/
@@ -29758,9 +29848,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 489));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 490));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 491));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 501));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 502));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 503));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -29769,7 +29859,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 489 */
+/* 501 */
 /*!**************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
   \**************************************************************************************/
@@ -29779,7 +29869,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\"ok\",\"uni-popup.placeholder\":\"pleace enter\",\"uni-popup.title\":\"Hint\",\"uni-popup.shareTitle\":\"Share to\"}");
 
 /***/ }),
-/* 490 */
+/* 502 */
 /*!*******************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
   \*******************************************************************************************/
@@ -29789,7 +29879,7 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\
 module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
 
 /***/ }),
-/* 491 */
+/* 503 */
 /*!*******************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
   \*******************************************************************************************/
@@ -29799,18 +29889,6 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\
 module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
 
 /***/ }),
-/* 492 */,
-/* 493 */,
-/* 494 */,
-/* 495 */,
-/* 496 */,
-/* 497 */,
-/* 498 */,
-/* 499 */,
-/* 500 */,
-/* 501 */,
-/* 502 */,
-/* 503 */,
 /* 504 */,
 /* 505 */,
 /* 506 */,
@@ -29834,7 +29912,19 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\
 /* 524 */,
 /* 525 */,
 /* 526 */,
-/* 527 */
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */,
+/* 538 */,
+/* 539 */
 /*!*****************************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/utils.js ***!
   \*****************************************************************************************************/
@@ -30089,18 +30179,6 @@ function imageTouchMoveOfCalcOffset(data, clientXForLeft, clientYForLeft) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 528 */,
-/* 529 */,
-/* 530 */,
-/* 531 */,
-/* 532 */,
-/* 533 */,
-/* 534 */,
-/* 535 */,
-/* 536 */,
-/* 537 */,
-/* 538 */,
-/* 539 */,
 /* 540 */,
 /* 541 */,
 /* 542 */,
@@ -30110,7 +30188,19 @@ function imageTouchMoveOfCalcOffset(data, clientXForLeft, clientYForLeft) {
 /* 546 */,
 /* 547 */,
 /* 548 */,
-/* 549 */
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */
 /*!*************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-forms/components/uni-forms/validate.js ***!
   \*************************************************************************************/
@@ -30801,7 +30891,7 @@ var _default = SchemaValidator;
 exports.default = _default;
 
 /***/ }),
-/* 550 */
+/* 562 */
 /*!**********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-forms/components/uni-forms/utils.js ***!
   \**********************************************************************************/
@@ -31136,18 +31226,6 @@ var isEqual = function isEqual(a, b) {
 exports.isEqual = isEqual;
 
 /***/ }),
-/* 551 */,
-/* 552 */,
-/* 553 */,
-/* 554 */,
-/* 555 */,
-/* 556 */,
-/* 557 */,
-/* 558 */,
-/* 559 */,
-/* 560 */,
-/* 561 */,
-/* 562 */,
 /* 563 */,
 /* 564 */,
 /* 565 */,
@@ -31164,7 +31242,19 @@ exports.isEqual = isEqual;
 /* 576 */,
 /* 577 */,
 /* 578 */,
-/* 579 */
+/* 579 */,
+/* 580 */,
+/* 581 */,
+/* 582 */,
+/* 583 */,
+/* 584 */,
+/* 585 */,
+/* 586 */,
+/* 587 */,
+/* 588 */,
+/* 589 */,
+/* 590 */,
+/* 591 */
 /*!******************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-tabs/props.js ***!
   \******************************************************************************/
@@ -31246,14 +31336,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 580 */,
-/* 581 */,
-/* 582 */,
-/* 583 */,
-/* 584 */,
-/* 585 */,
-/* 586 */,
-/* 587 */
+/* 592 */,
+/* 593 */,
+/* 594 */,
+/* 595 */,
+/* 596 */,
+/* 597 */,
+/* 598 */,
+/* 599 */
 /*!**********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-skeleton/props.js ***!
   \**********************************************************************************/
@@ -31330,21 +31420,21 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 588 */,
-/* 589 */,
-/* 590 */,
-/* 591 */,
-/* 592 */,
-/* 593 */,
-/* 594 */,
-/* 595 */,
-/* 596 */,
-/* 597 */,
-/* 598 */,
-/* 599 */,
 /* 600 */,
 /* 601 */,
-/* 602 */
+/* 602 */,
+/* 603 */,
+/* 604 */,
+/* 605 */,
+/* 606 */,
+/* 607 */,
+/* 608 */,
+/* 609 */,
+/* 610 */,
+/* 611 */,
+/* 612 */,
+/* 613 */,
+/* 614 */
 /*!***********************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
   \***********************************************************************************************/
@@ -31359,9 +31449,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 603));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 604));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 605));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 615));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 616));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 617));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -31370,7 +31460,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 603 */
+/* 615 */
 /*!**********************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
   \**********************************************************************************************/
@@ -31380,7 +31470,7 @@ exports.default = _default;
 module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
 
 /***/ }),
-/* 604 */
+/* 616 */
 /*!***************************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
   \***************************************************************************************************/
@@ -31390,7 +31480,7 @@ module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show mo
 module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
 
 /***/ }),
-/* 605 */
+/* 617 */
 /*!***************************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
   \***************************************************************************************************/
@@ -31400,14 +31490,14 @@ module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多
 module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
 
 /***/ }),
-/* 606 */,
-/* 607 */,
-/* 608 */,
-/* 609 */,
-/* 610 */,
-/* 611 */,
-/* 612 */,
-/* 613 */
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */
 /*!*******************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-parse/props.js ***!
   \*******************************************************************************/
@@ -31467,7 +31557,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 614 */
+/* 626 */
 /*!********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-parse/parser.js ***!
   \********************************************************************************/
@@ -32398,14 +32488,14 @@ module.exports = parser;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
 
 /***/ }),
-/* 615 */,
-/* 616 */,
-/* 617 */,
-/* 618 */,
-/* 619 */,
-/* 620 */,
-/* 621 */,
-/* 622 */
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */
 /*!*******************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-empty/props.js ***!
   \*******************************************************************************/
@@ -32482,18 +32572,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 623 */,
-/* 624 */,
-/* 625 */,
-/* 626 */,
-/* 627 */,
-/* 628 */,
-/* 629 */,
-/* 630 */,
-/* 631 */,
-/* 632 */,
-/* 633 */,
-/* 634 */,
 /* 635 */,
 /* 636 */,
 /* 637 */,
@@ -32503,7 +32581,19 @@ exports.default = _default;
 /* 641 */,
 /* 642 */,
 /* 643 */,
-/* 644 */
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */,
+/* 649 */,
+/* 650 */,
+/* 651 */,
+/* 652 */,
+/* 653 */,
+/* 654 */,
+/* 655 */,
+/* 656 */
 /*!************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/libs/mixin/button.js ***!
   \************************************************************************/
@@ -32533,7 +32623,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 645 */
+/* 657 */
 /*!**************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/libs/mixin/openType.js ***!
   \**************************************************************************/
@@ -32575,7 +32665,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 646 */
+/* 658 */
 /*!********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-button/props.js ***!
   \********************************************************************************/
@@ -32754,14 +32844,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 647 */,
-/* 648 */,
-/* 649 */,
-/* 650 */,
-/* 651 */,
-/* 652 */,
-/* 653 */,
-/* 654 */
+/* 659 */,
+/* 660 */,
+/* 661 */,
+/* 662 */,
+/* 663 */,
+/* 664 */,
+/* 665 */,
+/* 666 */
 /*!********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-picker/props.js ***!
   \********************************************************************************/
@@ -32858,14 +32948,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 655 */,
-/* 656 */,
-/* 657 */,
-/* 658 */,
-/* 659 */,
-/* 660 */,
-/* 661 */,
-/* 662 */
+/* 667 */,
+/* 668 */,
+/* 669 */,
+/* 670 */,
+/* 671 */,
+/* 672 */,
+/* 673 */,
+/* 674 */
 /*!**********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-textarea/props.js ***!
   \**********************************************************************************/
@@ -33002,12 +33092,12 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 663 */,
-/* 664 */,
-/* 665 */,
-/* 666 */,
-/* 667 */,
-/* 668 */
+/* 675 */,
+/* 676 */,
+/* 677 */,
+/* 678 */,
+/* 679 */,
+/* 680 */
 /*!***************************************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-file-picker/components/uni-file-picker/choose-and-upload-file.js ***!
   \***************************************************************************************************************/
@@ -33222,7 +33312,7 @@ function chooseAndUploadFile() {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"]))
 
 /***/ }),
-/* 669 */
+/* 681 */
 /*!**********************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-file-picker/components/uni-file-picker/utils.js ***!
   \**********************************************************************************************/
@@ -33385,14 +33475,14 @@ exports.get_file_data = get_file_data;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 670 */,
-/* 671 */,
-/* 672 */,
-/* 673 */,
-/* 674 */,
-/* 675 */,
-/* 676 */,
-/* 677 */
+/* 682 */,
+/* 683 */,
+/* 684 */,
+/* 685 */,
+/* 686 */,
+/* 687 */,
+/* 688 */,
+/* 689 */
 /*!*******************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-input/props.js ***!
   \*******************************************************************************/
@@ -33597,24 +33687,135 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 678 */,
-/* 679 */,
-/* 680 */,
-/* 681 */,
-/* 682 */,
-/* 683 */,
-/* 684 */,
-/* 685 */,
-/* 686 */,
-/* 687 */,
-/* 688 */,
-/* 689 */,
 /* 690 */,
 /* 691 */,
 /* 692 */,
 /* 693 */,
 /* 694 */,
-/* 695 */
+/* 695 */,
+/* 696 */,
+/* 697 */,
+/* 698 */,
+/* 699 */,
+/* 700 */,
+/* 701 */,
+/* 702 */,
+/* 703 */,
+/* 704 */,
+/* 705 */,
+/* 706 */,
+/* 707 */,
+/* 708 */,
+/* 709 */
+/*!*******************************************************************************!*\
+  !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-popup/props.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  props: {
+    // 是否展示弹窗
+    show: {
+      type: Boolean,
+      default: uni.$u.props.popup.show
+    },
+    // 是否显示遮罩
+    overlay: {
+      type: Boolean,
+      default: uni.$u.props.popup.overlay
+    },
+    // 弹出的方向，可选值为 top bottom right left center
+    mode: {
+      type: String,
+      default: uni.$u.props.popup.mode
+    },
+    // 动画时长，单位ms
+    duration: {
+      type: [String, Number],
+      default: uni.$u.props.popup.duration
+    },
+    // 是否显示关闭图标
+    closeable: {
+      type: Boolean,
+      default: uni.$u.props.popup.closeable
+    },
+    // 自定义遮罩的样式
+    overlayStyle: {
+      type: [Object, String],
+      default: uni.$u.props.popup.overlayStyle
+    },
+    // 点击遮罩是否关闭弹窗
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: uni.$u.props.popup.closeOnClickOverlay
+    },
+    // 层级
+    zIndex: {
+      type: [String, Number],
+      default: uni.$u.props.popup.zIndex
+    },
+    // 是否为iPhoneX留出底部安全距离
+    safeAreaInsetBottom: {
+      type: Boolean,
+      default: uni.$u.props.popup.safeAreaInsetBottom
+    },
+    // 是否留出顶部安全距离（状态栏高度）
+    safeAreaInsetTop: {
+      type: Boolean,
+      default: uni.$u.props.popup.safeAreaInsetTop
+    },
+    // 自定义关闭图标位置，top-left为左上角，top-right为右上角，bottom-left为左下角，bottom-right为右下角
+    closeIconPos: {
+      type: String,
+      default: uni.$u.props.popup.closeIconPos
+    },
+    // 是否显示圆角
+    round: {
+      type: [Boolean, String, Number],
+      default: uni.$u.props.popup.round
+    },
+    // mode=center，也即中部弹出时，是否使用缩放模式
+    zoom: {
+      type: Boolean,
+      default: uni.$u.props.popup.zoom
+    },
+    // 弹窗背景色，设置为transparent可去除白色背景
+    bgColor: {
+      type: String,
+      default: uni.$u.props.popup.bgColor
+    },
+    // 遮罩的透明度，0-1之间
+    overlayOpacity: {
+      type: [Number, String],
+      default: uni.$u.props.popup.overlayOpacity
+    }
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 710 */,
+/* 711 */,
+/* 712 */,
+/* 713 */,
+/* 714 */,
+/* 715 */,
+/* 716 */,
+/* 717 */,
+/* 718 */,
+/* 719 */,
+/* 720 */,
+/* 721 */,
+/* 722 */
 /*!**********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \**********************************************************************************/
@@ -34635,21 +34836,21 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 696 */,
-/* 697 */,
-/* 698 */,
-/* 699 */,
-/* 700 */,
-/* 701 */,
-/* 702 */,
-/* 703 */,
-/* 704 */,
-/* 705 */,
-/* 706 */,
-/* 707 */,
-/* 708 */,
-/* 709 */,
-/* 710 */
+/* 723 */,
+/* 724 */,
+/* 725 */,
+/* 726 */,
+/* 727 */,
+/* 728 */,
+/* 729 */,
+/* 730 */,
+/* 731 */,
+/* 732 */,
+/* 733 */,
+/* 734 */,
+/* 735 */,
+/* 736 */,
+/* 737 */
 /*!******************************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \******************************************************************************************************/
@@ -34782,12 +34983,12 @@ function createAnimation(option, _this) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 711 */,
-/* 712 */,
-/* 713 */,
-/* 714 */,
-/* 715 */,
-/* 716 */
+/* 738 */,
+/* 739 */,
+/* 740 */,
+/* 741 */,
+/* 742 */,
+/* 743 */
 /*!*******************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-badge/props.js ***!
   \*******************************************************************************/
@@ -34877,14 +35078,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 717 */,
-/* 718 */,
-/* 719 */,
-/* 720 */,
-/* 721 */,
-/* 722 */,
-/* 723 */,
-/* 724 */
+/* 744 */,
+/* 745 */,
+/* 746 */,
+/* 747 */,
+/* 748 */,
+/* 749 */,
+/* 750 */,
+/* 751 */
 /*!**************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-action-sheet/props.js ***!
   \**************************************************************************************/
@@ -34956,23 +35157,23 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 725 */,
-/* 726 */,
-/* 727 */,
-/* 728 */,
-/* 729 */,
-/* 730 */,
-/* 731 */,
-/* 732 */,
-/* 733 */,
-/* 734 */,
-/* 735 */,
-/* 736 */,
-/* 737 */,
-/* 738 */,
-/* 739 */,
-/* 740 */,
-/* 741 */
+/* 752 */,
+/* 753 */,
+/* 754 */,
+/* 755 */,
+/* 756 */,
+/* 757 */,
+/* 758 */,
+/* 759 */,
+/* 760 */,
+/* 761 */,
+/* 762 */,
+/* 763 */,
+/* 764 */,
+/* 765 */,
+/* 766 */,
+/* 767 */,
+/* 768 */
 /*!**************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
   \**************************************************************************************/
@@ -35049,118 +35250,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 742 */,
-/* 743 */,
-/* 744 */,
-/* 745 */,
-/* 746 */,
-/* 747 */,
-/* 748 */,
-/* 749 */
-/*!*******************************************************************************!*\
-  !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-popup/props.js ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 是否展示弹窗
-    show: {
-      type: Boolean,
-      default: uni.$u.props.popup.show
-    },
-    // 是否显示遮罩
-    overlay: {
-      type: Boolean,
-      default: uni.$u.props.popup.overlay
-    },
-    // 弹出的方向，可选值为 top bottom right left center
-    mode: {
-      type: String,
-      default: uni.$u.props.popup.mode
-    },
-    // 动画时长，单位ms
-    duration: {
-      type: [String, Number],
-      default: uni.$u.props.popup.duration
-    },
-    // 是否显示关闭图标
-    closeable: {
-      type: Boolean,
-      default: uni.$u.props.popup.closeable
-    },
-    // 自定义遮罩的样式
-    overlayStyle: {
-      type: [Object, String],
-      default: uni.$u.props.popup.overlayStyle
-    },
-    // 点击遮罩是否关闭弹窗
-    closeOnClickOverlay: {
-      type: Boolean,
-      default: uni.$u.props.popup.closeOnClickOverlay
-    },
-    // 层级
-    zIndex: {
-      type: [String, Number],
-      default: uni.$u.props.popup.zIndex
-    },
-    // 是否为iPhoneX留出底部安全距离
-    safeAreaInsetBottom: {
-      type: Boolean,
-      default: uni.$u.props.popup.safeAreaInsetBottom
-    },
-    // 是否留出顶部安全距离（状态栏高度）
-    safeAreaInsetTop: {
-      type: Boolean,
-      default: uni.$u.props.popup.safeAreaInsetTop
-    },
-    // 自定义关闭图标位置，top-left为左上角，top-right为右上角，bottom-left为左下角，bottom-right为右下角
-    closeIconPos: {
-      type: String,
-      default: uni.$u.props.popup.closeIconPos
-    },
-    // 是否显示圆角
-    round: {
-      type: [Boolean, String, Number],
-      default: uni.$u.props.popup.round
-    },
-    // mode=center，也即中部弹出时，是否使用缩放模式
-    zoom: {
-      type: Boolean,
-      default: uni.$u.props.popup.zoom
-    },
-    // 弹窗背景色，设置为transparent可去除白色背景
-    bgColor: {
-      type: String,
-      default: uni.$u.props.popup.bgColor
-    },
-    // 遮罩的透明度，0-1之间
-    overlayOpacity: {
-      type: [Number, String],
-      default: uni.$u.props.popup.overlayOpacity
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-/* 750 */,
-/* 751 */,
-/* 752 */,
-/* 753 */,
-/* 754 */,
-/* 755 */,
-/* 756 */,
-/* 757 */
+/* 769 */,
+/* 770 */,
+/* 771 */,
+/* 772 */,
+/* 773 */,
+/* 774 */,
+/* 775 */,
+/* 776 */
 /*!*********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-toolbar/props.js ***!
   \*********************************************************************************/
@@ -35212,25 +35309,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 758 */,
-/* 759 */,
-/* 760 */,
-/* 761 */,
-/* 762 */,
-/* 763 */,
-/* 764 */,
-/* 765 */,
-/* 766 */,
-/* 767 */,
-/* 768 */,
-/* 769 */,
-/* 770 */,
-/* 771 */,
-/* 772 */,
-/* 773 */,
-/* 774 */,
-/* 775 */,
-/* 776 */,
 /* 777 */,
 /* 778 */,
 /* 779 */,
@@ -35254,57 +35332,7 @@ exports.default = _default;
 /* 797 */,
 /* 798 */,
 /* 799 */,
-/* 800 */
-/*!******************************************************************************!*\
-  !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-line/props.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    color: {
-      type: String,
-      default: uni.$u.props.line.color
-    },
-    // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
-    length: {
-      type: [String, Number],
-      default: uni.$u.props.line.length
-    },
-    // 线条方向，col-竖向，row-横向
-    direction: {
-      type: String,
-      default: uni.$u.props.line.direction
-    },
-    // 是否显示细边框
-    hairline: {
-      type: Boolean,
-      default: uni.$u.props.line.hairline
-    },
-    // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
-    margin: {
-      type: [String, Number],
-      default: uni.$u.props.line.margin
-    },
-    // 是否虚线，true-虚线，false-实线
-    dashed: {
-      type: Boolean,
-      default: uni.$u.props.line.dashed
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
+/* 800 */,
 /* 801 */,
 /* 802 */,
 /* 803 */,
@@ -35312,56 +35340,11 @@ exports.default = _default;
 /* 805 */,
 /* 806 */,
 /* 807 */,
-/* 808 */
-/*!*****************************************************************************!*\
-  !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-gap/props.js ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  props: {
-    // 背景颜色（默认transparent）
-    bgColor: {
-      type: String,
-      default: uni.$u.props.gap.bgColor
-    },
-    // 分割槽高度，单位px（默认30）
-    height: {
-      type: [String, Number],
-      default: uni.$u.props.gap.height
-    },
-    // 与上一个组件的距离
-    marginTop: {
-      type: [String, Number],
-      default: uni.$u.props.gap.marginTop
-    },
-    // 与下一个组件的距离
-    marginBottom: {
-      type: [String, Number],
-      default: uni.$u.props.gap.marginBottom
-    }
-  }
-};
-exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
+/* 808 */,
 /* 809 */,
 /* 810 */,
 /* 811 */,
-/* 812 */,
-/* 813 */,
-/* 814 */,
-/* 815 */,
-/* 816 */
+/* 812 */
 /*!*********************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-overlay/props.js ***!
   \*********************************************************************************/
@@ -35403,14 +35386,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
+/* 813 */,
+/* 814 */,
+/* 815 */,
+/* 816 */,
 /* 817 */,
 /* 818 */,
 /* 819 */,
-/* 820 */,
-/* 821 */,
-/* 822 */,
-/* 823 */,
-/* 824 */
+/* 820 */
 /*!************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-transition/props.js ***!
   \************************************************************************************/
@@ -35452,7 +35435,7 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 825 */
+/* 821 */
 /*!*****************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-transition/transition.js ***!
   \*****************************************************************************************/
@@ -35469,7 +35452,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 30));
-var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 826));
+var _nvueAniMap = _interopRequireDefault(__webpack_require__(/*! ./nvue.ani-map.js */ 822));
 // 定义一个一定时间后自动成功的promise，让调用nextTick方法处，进入下一个then方法
 var nextTick = function nextTick() {
   return new Promise(function (resolve) {
@@ -35561,7 +35544,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 826 */
+/* 822 */
 /*!*******************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-transition/nvue.ani-map.js ***!
   \*******************************************************************************************/
@@ -35754,14 +35737,14 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
+/* 823 */,
+/* 824 */,
+/* 825 */,
+/* 826 */,
 /* 827 */,
 /* 828 */,
 /* 829 */,
-/* 830 */,
-/* 831 */,
-/* 832 */,
-/* 833 */,
-/* 834 */
+/* 830 */
 /*!************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-status-bar/props.js ***!
   \************************************************************************************/
@@ -35787,14 +35770,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
+/* 831 */,
+/* 832 */,
+/* 833 */,
+/* 834 */,
 /* 835 */,
 /* 836 */,
 /* 837 */,
-/* 838 */,
-/* 839 */,
-/* 840 */,
-/* 841 */,
-/* 842 */
+/* 838 */
 /*!*************************************************************************************!*\
   !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-safe-bottom/props.js ***!
   \*************************************************************************************/
@@ -35812,6 +35795,113 @@ var _default = {
   props: {}
 };
 exports.default = _default;
+
+/***/ }),
+/* 839 */,
+/* 840 */,
+/* 841 */,
+/* 842 */,
+/* 843 */,
+/* 844 */,
+/* 845 */,
+/* 846 */
+/*!******************************************************************************!*\
+  !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-line/props.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  props: {
+    color: {
+      type: String,
+      default: uni.$u.props.line.color
+    },
+    // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
+    length: {
+      type: [String, Number],
+      default: uni.$u.props.line.length
+    },
+    // 线条方向，col-竖向，row-横向
+    direction: {
+      type: String,
+      default: uni.$u.props.line.direction
+    },
+    // 是否显示细边框
+    hairline: {
+      type: Boolean,
+      default: uni.$u.props.line.hairline
+    },
+    // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
+    margin: {
+      type: [String, Number],
+      default: uni.$u.props.line.margin
+    },
+    // 是否虚线，true-虚线，false-实线
+    dashed: {
+      type: Boolean,
+      default: uni.$u.props.line.dashed
+    }
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+/* 847 */,
+/* 848 */,
+/* 849 */,
+/* 850 */,
+/* 851 */,
+/* 852 */,
+/* 853 */,
+/* 854 */
+/*!*****************************************************************************!*\
+  !*** D:/桌面/onlineEducation1/uni_modules/uview-ui/components/u-gap/props.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  props: {
+    // 背景颜色（默认transparent）
+    bgColor: {
+      type: String,
+      default: uni.$u.props.gap.bgColor
+    },
+    // 分割槽高度，单位px（默认30）
+    height: {
+      type: [String, Number],
+      default: uni.$u.props.gap.height
+    },
+    // 与上一个组件的距离
+    marginTop: {
+      type: [String, Number],
+      default: uni.$u.props.gap.marginTop
+    },
+    // 与下一个组件的距离
+    marginBottom: {
+      type: [String, Number],
+      default: uni.$u.props.gap.marginBottom
+    }
+  }
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 ]]);

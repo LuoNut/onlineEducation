@@ -38,7 +38,7 @@
 		},
 		methods: {
 			//跳转到课堂创建页面
-			totoCourseCreation() {
+			toCourseCreation() {
 				uni.navigateTo({
 					url: '/pages/teacher/course/course'
 				})

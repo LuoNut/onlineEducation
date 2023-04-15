@@ -2,13 +2,13 @@
 	<view class="learn">
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
 			<block slot="backText">返回</block>
-			<block slot="content">技术栈</block>
+			<block slot="content">学习</block>
 		</cu-custom>
 		
 		<view class="u-search-box">
 			<view class="u-search-inner">
 				<u-icon name="search" color="#909399" :size="28"></u-icon>
-				<text class="u-search-text">搜索您想学习的技术栈</text>
+				<text class="u-search-text">搜索您想学习的课程</text>
 			</view>
 		</view>
 		<view class="u-menu-wrap">

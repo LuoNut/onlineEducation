@@ -29,10 +29,10 @@
   padding: 10rpx 0;
 }
 .container .content.data-v-14645ae0 {
-  padding: 10px 15px;
+  padding: 0 20rpx 20rpx 10rpx;
   background-color: #FFFFFF;
   margin-top: 20rpx;
-  height: calc( 100vh - 636rpx);
+  height: calc( 100vh - 670rpx);
 }
 .container .content.data-v-14645ae0 uni-swiper {
   height: 100%;
@@ -63,6 +63,9 @@
   overflow: auto;
   padding-bottom: 60rpx;
 }
+.container .content .course-container.data-v-14645ae0 .uni-collapse-item__title-box[data-v-41027c34] {
+  padding: 0;
+}
 .container .content .course-container.data-v-14645ae0 .uni-collapse-item__title-text[data-v-41027c34] {
   font-size: 17px;
 }
@@ -71,5 +74,32 @@
   color: #333333;
   border-bottom: 1px solid #f7f7f7;
   font-size: 28rpx;
+}
+.container .content .document-container .blueBtn.data-v-14645ae0 {
+  width: 500rpx;
+  margin: 50rpx auto;
+  display: block;
+  line-height: 80rpx;
+}
+.container .content .comment-container .comment-box.data-v-14645ae0 {
+  height: 508rpx;
+  overflow-y: auto;
+}
+.container .content .comment-container .secondComment .reply.data-v-14645ae0 {
+  height: 662rpx;
+}
+.container .content .comment-container .secondComment .reply.data-v-14645ae0 .list[data-v-14645ae0] {
+  padding-bottom: 0;
+}
+.container .content .comment-container .secondComment .reply .top.data-v-14645ae0 {
+  padding: 30rpx;
+  border-bottom: 15rpx solid #eee;
+}
+.container .content .comment-container .secondComment .reply .list.data-v-14645ae0 {
+  padding: 30rpx 60rpx;
+  padding-bottom: 120rpx;
+}
+.container .content .comment-container .secondComment .reply .list .row.data-v-14645ae0 {
+  padding-bottom: 15rpx;
 }
 

@@ -102,22 +102,22 @@ var components
 try {
   components = {
     uSkeleton: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-skeleton/u-skeleton */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-skeleton/u-skeleton")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-skeleton/u-skeleton.vue */ 582))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-skeleton/u-skeleton */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-skeleton/u-skeleton")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-skeleton/u-skeleton.vue */ 594))
     },
     uniDateformat: function () {
-      return Promise.all(/*! import() | uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat.vue */ 439))
+      return Promise.all(/*! import() | uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat.vue */ 451))
     },
     uParse: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-parse/u-parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-parse/u-parse")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-parse/u-parse.vue */ 608))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-parse/u-parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-parse/u-parse")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-parse/u-parse.vue */ 620))
     },
     uEmpty: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-empty/u-empty.vue */ 617))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-empty/u-empty.vue */ 629))
     },
     commentItem: function () {
-      return __webpack_require__.e(/*! import() | components/comment-item/comment-item */ "components/comment-item/comment-item").then(__webpack_require__.bind(null, /*! @/components/comment-item/comment-item.vue */ 625))
+      return __webpack_require__.e(/*! import() | components/comment-item/comment-item */ "components/comment-item/comment-item").then(__webpack_require__.bind(null, /*! @/components/comment-item/comment-item.vue */ 637))
     },
     commentFrame: function () {
-      return __webpack_require__.e(/*! import() | components/comment-frame/comment-frame */ "components/comment-frame/comment-frame").then(__webpack_require__.bind(null, /*! @/components/comment-frame/comment-frame.vue */ 632))
+      return __webpack_require__.e(/*! import() | components/comment-frame/comment-frame */ "components/comment-frame/comment-frame").then(__webpack_require__.bind(null, /*! @/components/comment-frame/comment-frame.vue */ 644))
     },
   }
 } catch (e) {
@@ -234,7 +234,6 @@ var _default = {
     };
   },
   onLoad: function onLoad(e) {
-    console.log(e);
     if (!e.id) {
       this.errFun();
       return;
@@ -282,19 +281,16 @@ var _default = {
                 return db.collection(commentTemp, userTemp).orderBy("comment_date desc").get();
               case 4:
                 res = _context.sent;
-                console.log(res);
-
                 //获取一级评论所对应的二级评论的回复量
                 idArr = res.result.data.map(function (item) {
                   return item._id;
                 });
-                _context.next = 9;
+                _context.next = 8;
                 return db.collection('blog_comment').where({
                   reply_comment_id: db.command.in(idArr)
                 }).groupBy('reply_comment_id').groupField('count(*) as totalReply').get();
-              case 9:
+              case 8:
                 replyArr = _context.sent;
-                console.log(replyArr);
                 res.result.data.forEach(function (item) {
                   var index = replyArr.result.data.findIndex(function (find) {
                     return item._id == find.reply_comment_id;
@@ -302,9 +298,8 @@ var _default = {
                   if (index > -1) item.totalReply = replyArr.result.data[index].totalReply;
                 });
                 if (!res.result.data.length) _this.noComment = true;
-                console.log(res.result.data);
                 _this.commentList = res.result.data;
-              case 15:
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -399,7 +394,6 @@ var _default = {
           title: res.result.data.title
         });
       }).catch(function (err) {
-        console.log(err);
         // this.errFun()
       });
     }

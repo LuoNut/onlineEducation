@@ -30,7 +30,7 @@
 .commentItem .avatar.data-v-c04fc1b8 {
   width: 50rpx;
   height: 50rpx;
-  padding-right: 20rpx;
+  margin: 16rpx 20rpx 20rpx 20rpx;
 }
 .commentItem .avatar image.data-v-c04fc1b8 {
   width: 100%;

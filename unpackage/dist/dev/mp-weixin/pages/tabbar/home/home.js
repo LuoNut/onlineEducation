@@ -102,10 +102,10 @@ var components
 try {
   components = {
     uniDateformat: function () {
-      return Promise.all(/*! import() | uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat.vue */ 439))
+      return Promise.all(/*! import() | uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat.vue */ 451))
     },
     tabbar: function () {
-      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 432))
+      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 444))
     },
   }
 } catch (e) {
@@ -279,7 +279,42 @@ var _default = {
     this.tabBerLists = uni.getStorageSync('tabBarList'); // 自定义的tabbar赋值
   },
 
-  methods: {}
+  methods: {
+    //跳转到个人用户信息界面
+    toUserInfo: function toUserInfo() {
+      if (this.hasLogin) {
+        uni.navigateTo({
+          url: '/uni_modules/uni-id-pages/pages/userinfo/userinfo'
+        });
+      } else {
+        uni.navigateTo({
+          url: '/uni_modules/uni-id-pages/pages/login/login-withpwd?uniIdRedirecyUrl'
+        });
+      }
+    },
+    logout: function logout() {
+      if (this.isLoginPage()) return;
+      uni.showModal({
+        title: "是否确认退出登录",
+        success: function success(e) {
+          if (e.confirm) {
+            mutations.logout();
+          }
+        }
+      });
+    },
+    //判断是否未登录 true未登录 false已登录
+    isLoginPage: function isLoginPage() {
+      if (!this.hasLogin) {
+        uni.showToast({
+          title: "未登录",
+          icon: "none"
+        });
+        return true;
+      }
+      return false;
+    }
+  }
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))

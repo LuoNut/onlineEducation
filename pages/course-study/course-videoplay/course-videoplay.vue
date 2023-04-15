@@ -16,6 +16,7 @@
 				show-center-play-btn enable-progress-gesture enable-play-gesture
 				show-mute-btn
 				@ended="videoEnd"
+				autoplay
 				>
 			</video>
 		</view>

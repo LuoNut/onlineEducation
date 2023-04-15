@@ -26,11 +26,11 @@
 /* 文章场景相关 */
 .container.data-v-1990ede0 {
   display: inline-block;
-  margin-left: 20rpx;
+  margin: 10rpx 0 20rpx 20rpx;
   box-shadow: 4rpx 4rpx 6rpx rgba(26, 26, 26, 0.2);
   border-radius: 10rpx;
   padding: 10rpx;
-  margin-bottom: 20rpx;
+  background-color: #fff;
 }
 .container .image.data-v-1990ede0 {
   position: relative;
@@ -52,13 +52,5 @@
 }
 .container .title .name.data-v-1990ede0 {
   font-size: 25rpx;
-}
-.container .image view.data-v-1990ede0 {
-  position: absolute;
-  right: 10rpx;
-  bottom: 20rpx;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 0 10rpx;
-  color: #fff;
 }
 

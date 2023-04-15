@@ -4304,9 +4304,9 @@ scroll-view.cu-steps .cu-item {
 }
 @font-face {
   font-family: "iconfont"; /* Project id 3985177 */
-  src: url('//at.alicdn.com/t/c/font_3985177_2kdzfidwovu.woff2?t=1680946656214') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3985177_2kdzfidwovu.woff?t=1680946656214') format('woff'),
-       url('//at.alicdn.com/t/c/font_3985177_2kdzfidwovu.ttf?t=1680946656214') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3985177_pjf0eod0dg9.woff2?t=1681303192781') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3985177_pjf0eod0dg9.woff?t=1681303192781') format('woff'),
+       url('//at.alicdn.com/t/c/font_3985177_pjf0eod0dg9.ttf?t=1681303192781') format('truetype');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -4395,6 +4395,9 @@ scroll-view.cu-steps .cu-item {
 }
 .icon-close:before {
   content: "\e6eb";
+}
+.icon-enter-copy:before {
+  content: "\eca1";
 }
 .icon-add:before {
   content: "\e6df";
@@ -5885,8 +5888,6 @@ to {
 .vjs-playing.vjs-user-inactive .vjs-title-bar {
   opacity: 0;
   transition: opacity 1s;
-}
-@media print {
 }
 .vjs-resize-manager {
   position: absolute;

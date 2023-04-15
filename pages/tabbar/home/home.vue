@@ -50,11 +50,11 @@
 							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 						</view>
 						<view class="item">
-							<view class="left"><text class="iconfont icon-a-106-xihuan"></text><text class="text">我的点赞</text></view>
+							<view class="left"><text class="iconfont icon-a-106-xihuan"></text><text class="text">我的收藏</text></view>
 							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 						</view>
 						<view class="item">
-							<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">评论过的</text></view>
+							<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">观看历史</text></view>
 							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 						</view>
 					</view>
@@ -101,6 +101,44 @@
 			this.tabBerLists = uni.getStorageSync('tabBarList') // 自定义的tabbar赋值
 		},
 		methods: {
+			//跳转到个人用户信息界面
+					toUserInfo() {
+						if(this.hasLogin) {		
+							uni.navigateTo({
+								url: '/uni_modules/uni-id-pages/pages/userinfo/userinfo'
+							}) 
+						}else {
+							uni.navigateTo({
+								url: '/uni_modules/uni-id-pages/pages/login/login-withpwd?uniIdRedirecyUrl'
+							})
+							
+						}
+						
+					},
+					logout() {
+						if(this.isLoginPage()) return 
+						uni.showModal({
+							title: "是否确认退出登录",
+							success: (e) => {
+								if(e.confirm) {
+									mutations.logout()
+								}
+								
+							}
+						})
+					},
+					//判断是否未登录 true未登录 false已登录
+					isLoginPage() {
+						if(!this.hasLogin) {
+							uni.showToast({
+								title: "未登录",
+								icon:"none"
+							})
+							return true
+						}
+						return false
+					}
+				
 			
 		}
 	}

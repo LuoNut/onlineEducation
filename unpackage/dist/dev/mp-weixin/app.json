@@ -27,7 +27,8 @@
     "pages/teacher/course/course",
     "pages/teacher/teacher/teacher",
     "pages/teacher/course-video/course-video",
-    "pages/course-study/course-videoplay/course-videoplay"
+    "pages/course-study/course-videoplay/course-videoplay",
+    "pages/teacher/course-management/course-management"
   ],
   "subPackages": [],
   "window": {

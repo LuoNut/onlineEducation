@@ -131,22 +131,24 @@
 		background-color: #f2f5f9;
 		.image{
 			background-color: #fff;
-			padding: 30rpx 0 20rpx 0;
+			padding: 20rpx 0 20rpx 0;
 			margin-bottom: 10rpx;
 			.swiperImg {
 				height: 310rpx;
-				
-				.swiper-item {
+				.swiperItem {
+					width: 100%;
+					height: 100%;
 					display: flex;
 					justify-content: center;
+					align-items: center;
 					image {
-						width: 710rpx;
-						height: 300rpx;
-						border-radius: 8rpx 8rpx 8rpx 8rpx;
-						box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.10);
+							width: 710rpx;
+							height: 300rpx;
+							border-radius: 8rpx 8rpx 8rpx 8rpx;
+							box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.10);
 					}
 				}
-			
+				
 			}
 		}
 

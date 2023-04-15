@@ -102,16 +102,16 @@ var components
 try {
   components = {
     iconNav: function () {
-      return __webpack_require__.e(/*! import() | components/icon-nav/icon-nav */ "components/icon-nav/icon-nav").then(__webpack_require__.bind(null, /*! @/components/icon-nav/icon-nav.vue */ 411))
+      return __webpack_require__.e(/*! import() | components/icon-nav/icon-nav */ "components/icon-nav/icon-nav").then(__webpack_require__.bind(null, /*! @/components/icon-nav/icon-nav.vue */ 423))
     },
     courseItem: function () {
-      return __webpack_require__.e(/*! import() | components/course-item/course-item */ "components/course-item/course-item").then(__webpack_require__.bind(null, /*! @/components/course-item/course-item.vue */ 418))
+      return __webpack_require__.e(/*! import() | components/course-item/course-item */ "components/course-item/course-item").then(__webpack_require__.bind(null, /*! @/components/course-item/course-item.vue */ 430))
     },
     courseList: function () {
-      return __webpack_require__.e(/*! import() | components/course-list/course-list */ "components/course-list/course-list").then(__webpack_require__.bind(null, /*! @/components/course-list/course-list.vue */ 425))
+      return __webpack_require__.e(/*! import() | components/course-list/course-list */ "components/course-list/course-list").then(__webpack_require__.bind(null, /*! @/components/course-list/course-list.vue */ 437))
     },
     tabbar: function () {
-      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 432))
+      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 444))
     },
   }
 } catch (e) {
@@ -168,12 +168,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 30));
 //
 //
 //
@@ -235,11 +238,17 @@ exports.default = void 0;
 //
 //
 //
+
+var db = uniCloud.database();
 var _default = {
   data: function data() {
     return {
       tabBerLists: [],
       //tabbar数据
+      recommendCourseData: [],
+      //推荐课程数据
+      newestCourseData: [],
+      //最新课程数据
       swiper: [{
         src: '/static/demo/cover/1.png'
       }, {
@@ -264,15 +273,43 @@ var _default = {
   onLoad: function onLoad() {
     // 影藏原生的tabbar,有自定义tabbar的页面都要写一遍
     uni.hideTabBar();
+
+    //获取课程数据
+    this.getCourseData();
   },
   onShow: function onShow() {
     this.tabBerLists = uni.getStorageSync('tabBarList'); // 自定义的tabbar赋值
   },
 
-  methods: {}
+  methods: {
+    //获取课程视频数据
+    getCourseData: function getCourseData() {
+      var _this = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var courseTemp, userTemp, res;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id").orderBy("publish_date desc").getTemp();
+                userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp();
+                _context.next = 4;
+                return db.collection(courseTemp, userTemp).get();
+              case 4:
+                res = _context.sent;
+                _this.newestCourseData = res.result.data;
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

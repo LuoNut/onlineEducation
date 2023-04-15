@@ -78,7 +78,7 @@ function getip() {
 //获取昵称 
 export function giveName(item) {
 	if (item) {
-		return item.user_id[0].nickname
+		return item.user_id[0]?.nickname
 	}else {
 		return ""
 	}

@@ -30,17 +30,20 @@
 }
 .IndexContainer .image.data-v-6b1f4146 {
   background-color: #fff;
-  padding: 30rpx 0 20rpx 0;
+  padding: 20rpx 0 20rpx 0;
   margin-bottom: 10rpx;
 }
 .IndexContainer .image .swiperImg.data-v-6b1f4146 {
   height: 310rpx;
 }
-.IndexContainer .image .swiperImg .swiper-item.data-v-6b1f4146 {
+.IndexContainer .image .swiperImg .swiperItem.data-v-6b1f4146 {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-.IndexContainer .image .swiperImg .swiper-item image.data-v-6b1f4146 {
+.IndexContainer .image .swiperImg .swiperItem image.data-v-6b1f4146 {
   width: 710rpx;
   height: 300rpx;
   border-radius: 8rpx 8rpx 8rpx 8rpx;
@@ -49,6 +52,9 @@
 .IndexContainer .courseContainer .courseScroll.data-v-6b1f4146 {
   width: 100%;
   white-space: nowrap;
+}
+.IndexContainer .courseContainer .courseScroll .scrollItem.data-v-6b1f4146 {
+  display: inline-block;
 }
 .IndexContainer .courseContainer.data-v-6b1f4146 ::-webkit-scrollbar {
   width: 0;

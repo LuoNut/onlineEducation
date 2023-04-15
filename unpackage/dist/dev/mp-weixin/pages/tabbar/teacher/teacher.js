@@ -102,7 +102,7 @@ var components
 try {
   components = {
     tabbar: function () {
-      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 432))
+      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 444))
     },
   }
 } catch (e) {
@@ -202,10 +202,16 @@ var _default = {
   },
 
   methods: {
+    //跳转到课堂创建页面
+    totoCourseCreation: function totoCourseCreation() {
+      uni.navigateTo({
+        url: '/pages/teacher/course/course'
+      });
+    },
     //跳转到课堂管理页面
     toCourseManagement: function toCourseManagement() {
       uni.navigateTo({
-        url: '/pages/teacher/course/course'
+        url: '/pages/teacher/course-management/course-management'
       });
     }
   }
