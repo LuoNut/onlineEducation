@@ -1,106 +1,148 @@
 <template>
-	<view class="home">
-		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
-			<block slot="backText">返回</block>
-			<block slot="content">技术栈</block>
-		</cu-custom>
-		
-		<view class="body">
-			<view class="top">
-				<view class="group">
-					<view class="userinfo">
-						<view class="pic">
-							<image src="../../../static/images/user-default.jpg" mode="aspectFill"></image>
-						</view>
-						<view class="text" v-if="true">
-							<view class="nickname">匿名</view>
-							<view class="year">
-								<uni-dateformat :date="new Date() - 360000" :threshold="[3600,99*365*24*60*60*1000]"></uni-dateformat>
-								注册</view>
-						</view>
-						<view class="text" v-else>
-							<view class="nickname">点击登录</view>
-						</view>
-						
+	<view class="user">
+		<view class="top">
+			<view class="group" @click="toUserInfo">
+				<view class="userinfo">
+					<view class="pic">
+						<image 
+							v-if="hasLogin&&userInfo.avatar_file&&userInfo.avatar_file.url" 
+							:src="userInfo.avatar_file.url" mode="aspectFill">
+						</image>
+						<image src="../../../static/images/user-default.jpg" mode="aspectFill"></image>
 					</view>
-					
-					<view class="more">
-						<text class="iconfont icon-a-10-you"></text>
+					<view class="text" v-if="hasLogin">
+						<view class="nickname">
+							{{userInfo.nickname||userInfo.username||userInfo.moblie}}
+						</view>
+						<!-- <view class="year">
+							<uni-dateformat :date="userInfo.register_date" :threshold="[3600,99*365*24*60*60*1000]"></uni-dateformat>
+							注册
+						</view> -->
+					</view>
+					<view class="text" v-else>
+						<view class="nickname">
+							点击登录
+						</view>
 					</view>
 				</view>
 				
-				<view class="bg">				
-					<image src="../../../static/images/user-default.jpg" mode="aspectFill" ></image>
+				<view class="more">
+					<text class="iconfont icon-enter"></text>
 				</view>
 			</view>
-			
-			
-			
-			<view class="main">
-				<view class="info">
-					<view class="item"><text>33</text>获赞</view>
-					<view class="item"><text>11</text>评论</view>
-					<view class="item"><text>5</text>发文</view>
-				</view>
-				
-				<view class="list">
-					<view class="group">					
-						<view class="item">
-							<view class="left"><text class="iconfont icon-a-24-bianji"></text><text class="text">我的长文</text></view>
-							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
-						</view>
-						<view class="item">
-							<view class="left"><text class="iconfont icon-a-106-xihuan"></text><text class="text">我的收藏</text></view>
-							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
-						</view>
-						<view class="item">
-							<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">观看历史</text></view>
-							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
-						</view>
-					</view>
-					
-					<view class="group">
-						<view class="item">
-							<view class="left"><text class="iconfont icon-a-32-wenjian"></text><text class="text">关于</text></view>
-							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
-						</view>		
-						<view class="item">
-							<view class="left"><text class="iconfont icon-a-5-xinxi"></text><text class="text">意见反馈</text></view>
-							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
-						</view>	
-					</view>
-					
-					<view class="group">
-						<view class="item">
-							<view class="left"><text class="iconfont icon-a-73-tuichu"></text><text class="text">退出登录</text></view>
-							<view class="right"><text class="iconfont icon-a-10-you"></text></view>
-						</view>					
-					</view>
-				</view>
+			<view class="bg">
+				<image
+					v-if="hasLogin&&userInfo.avatar_file&&userInfo.avatar_file.url" 
+					:src="userInfo.avatar_file.url" mode="aspectFill"></image>
+				<image src="../../../static/images/user-default.jpg" mode="aspectFill"></image>
 			</view>
-			
-			
 		</view>
-		<!-- //底部tabbar -->
-		<tabbar :current="tabBerLists.length - 1" :tabBarList="tabBerLists" />
+		
+		<view class="main">
+			<view class="info">
+				<view class="item">
+					<text>{{total.likeNum}}</text>获赞
+				</view>
+				<view class="item">
+					<!-- <text>11</text>评论 -->
+				</view>
+				<view class="item">
+					<text>{{total.artNum}}</text>发文
+				</view>
+			</view>
+			
+			<view class="list">
+				<view class="group">
+					<view class="item" @click="toMyArticle">
+							<view class="left"><text class="iconfont icon-tianxie"></text><text class="text">我的长文</text></view>
+							<view class="right"><text class="iconfont icon-enter"></text></view>
+					</view>
+					<view class="item" @click="toMyLike">
+							<view class="left"><text class="iconfont icon-dianzan"></text><text class="text">我的点赞</text></view>
+							<view class="right"><text class="iconfont icon-enter"></text></view>
+					</view>
+					<view class="item">
+							<view class="left"><text class="iconfont icon-brush"></text><text class="text">评论过的</text></view>
+							<view class="right"><text class="iconfont icon-enter"></text></view>
+					</view>
+				</view>
+				
+				<view class="group">
+					<view class="item">
+							<view class="left"><text class="iconfont icon-shiyongwendang"></text><text class="text">关于</text></view>
+							<view class="right"><text class="iconfont icon-enter"></text></view>
+					</view>
+					<view class="item" @click="goFeedback">
+							<view class="left"><text class="iconfont icon-yijianfankui"></text><text class="text">意见反馈</text></view>
+							<view class="right"><text class="iconfont icon-enter"></text></view>
+					</view>
+				</view>
+				
+				<view class="group">
+					<view class="item" @click="logout">
+							<view class="left"><text class="iconfont icon-tuichudenglu"></text><text class="text">退出登录</text></view>
+							<view class="right"><text class="iconfont icon-enter"></text></view>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		
 	</view>
 </template>
 
 <script>
+	import {store, mutations} from "@/uni_modules/uni-id-pages/common/store.js"
+	const db = uniCloud.database()
 	export default {
 		data() {
 			return {
 				tabBerLists: [], //tabbar数据
+				total: {
+					artNum: 0,
+					likeNum:0
+				}
+			}
+		},
+		computed: {
+			userInfo() {
+				return store.userInfo
+			},
+			hasLogin() {
+				return store.hasLogin
 			}
 		},
 		onLoad() {
 			// 影藏原生的tabbar,有自定义tabbar的页面都要写一遍
 			uni.hideTabBar()
+			
+			//获取发文，评论，点赞数量详情
+			// this.getTotal()	
 		},
 		onShow() {
 			this.tabBerLists = uni.getStorageSync('tabBarList') // 自定义的tabbar赋值
 		},
 		methods: {
+			//获取发文，评论，点赞数量详情
+			async getTotal() {
+				if(!this.hasLogin) return 
+				let artNum = await db.collection("blog_article").where("user_id==$cloudEnv_uid").count()
+				let likeNum = await db.collection("blog_article").where("user_id==$cloudEnv_uid")
+				.groupBy("user_id")
+				.groupField('sum(like_count) as detal')
+				.get()
+				this.total.artNum = artNum.result.total
+				this.total.likeNum = likeNum.result.data[0]?.detal
+			},
+			
+			//跳转到我的长文页面
+			toMyArticle() {
+				if(this.isLoginPage()) return 
+				uni.navigateTo({
+					url: '/pages/quanzi_article/list'
+				})
+			},
+			
 			//跳转到个人用户信息界面
 					toUserInfo() {
 						if(this.hasLogin) {		
@@ -145,7 +187,7 @@
 </script>
 
 <style lang="scss" scoped >
-	.body{
+	.user{
 		
 		.top{
 			height: 300rpx;
