@@ -323,6 +323,8 @@ module.exports = {
    * @param {String} params.captcha     图形验证码
    * @param {String} params.nickname    昵称
    * @param {String} params.inviteCode  邀请码
+   * @param {String} params.studentnumber 学号
+   * @param {String} params.userType 用户类型
    * @returns
    */
   registerUser,

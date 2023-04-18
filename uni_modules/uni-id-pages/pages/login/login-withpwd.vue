@@ -149,6 +149,11 @@
 
 <style lang="scss" scoped>
 	@import "@/uni_modules/uni-id-pages/common/login-page.scss";
+	
+	.uni-content {
+		background-color: #fff;
+		height: 100vh;
+	}
 
 	@media screen and (min-width: 690px) {
 		.uni-content {

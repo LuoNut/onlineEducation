@@ -213,6 +213,22 @@
 				"write": "doc._id == auth.uid || 'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
+		"studentnumber": {
+			"bsonType": "string",
+			"description": "学号",
+			"title": "学号"
+		},
+		
+		"userType": {
+			"bsonType": "string",
+			"description": "用户类型",
+			"title": "用户类型",
+			"trim": "both",
+			"permission": {
+				"read": true,
+				"write": "doc._id == auth.uid || 'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
+			}
+		},
 		"password": {
 			"bsonType": "password",
 			"description": "密码，加密存储",

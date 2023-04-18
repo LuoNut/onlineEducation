@@ -87,6 +87,8 @@
 			</view>
 		</view>
 		
+		<!-- 底部tabbar -->
+		<tabbar :current="3" :tabBarList="tabBerLists" />
 		
 	</view>
 </template>

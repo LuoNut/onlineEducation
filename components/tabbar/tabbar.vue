@@ -29,6 +29,7 @@
 		methods: {
 			// 点击跳转对应tabbar页面
 			jump(e) {
+				console.log(e)
 				uni.switchTab({
 					url: e.pagePath
 				})

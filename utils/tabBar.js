@@ -16,7 +16,7 @@ const stdentTabbar = [
 	},
 	{
 		"pagePath": "/pages/tabbar/home/home",
-		"text": "首页",
+		"text": "我的",
 		"iconPath": "/static/tabbar/home.png",
 		"selectedIconPath": "/static/tabbar/home_selected.png",
 		"index": '2'
@@ -49,7 +49,7 @@ const teacherTabbar = [
 	},
 	{
 		"pagePath": "/pages/tabbar/home/home",
-		"text": "首页",
+		"text": "我的",
 		"iconPath": "/static/tabbar/home.png",
 		"selectedIconPath": "/static/tabbar/home_selected.png",
 		"index": '3'

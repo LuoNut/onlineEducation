@@ -17,6 +17,17 @@
 				<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
 					class="input-box" placeholder="请输入用户昵称" v-model="formData.nickname" trim="both" />
 			</uni-forms-item>
+			<uni-forms-item name="studentnumber">
+				<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
+					class="input-box" placeholder="请输入10位学号编号" v-model="formData.studentnumber" trim="both" />
+				</uni-forms-item>
+			
+			<uni-forms-item name="studentnumber">
+				 <view>
+						<uni-data-checkbox  v-model="formData.userType" :localdata="range" @change="change" selected-color="#007aff" selected-text-color="#666" ></uni-data-checkbox>
+					</view>
+			</uni-forms-item>
+			
 			<uni-forms-item name="password" v-model="formData.password" required>
 				<uni-easyinput :inputBorder="false" :focus="focusPassword" @blur="focusPassword = false"
 					class="input-box" maxlength="20"
@@ -63,14 +74,18 @@
 					nickname: "",
 					password: "",
 					password2: "",
-					captcha: ""
+					captcha: "",
+					studentnumber: "", //学号
+					userType: "student", //用户类型
+					
 				},
 				rules,
 				focusUsername: false,
 				focusNickname: false,
 				focusPassword: false,
 				focusPassword2: false,
-				logo: "/static/logo.png"
+				logo: "/static/logo.png",
+				range: [{"value": "student","text": "学生"	},{"value": "teacher","text": "教师"}]
 			}
 		},
 		onReady() {
@@ -91,6 +106,7 @@
 			 * 触发表单提交
 			 */
 			submit() {
+				console.log(this.formData)
 				this.$refs.form.validate().then((res) => {
 					if (this.formData.captcha.length != 4) {
 						this.$refs.captcha.focusCaptchaInput = true
@@ -134,17 +150,28 @@
 				uni.navigateTo({
 					url: '/uni_modules/uni-id-pages/pages/register/register-by-email'
 				})
+			},
+			
+			//选择用户类型
+			change(e){
+				console.log('e:',e);
+				this.formData.userType = e.detail.data.value
+				console.log(this.formData.userType);
 			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	@import "@/uni_modules/uni-id-pages/common/login-page.scss";
-
+	
+	.uni-content[data-v-3c091c49] {
+		background-color: #fff;
+		height: 100vh;
+	}
 	@media screen and (max-width: 690px) {
 		.uni-content {
-			margin-top: 15px;
+			padding-top: 30px;
 			height: 100%;
 			background-color: #fff;
 		}

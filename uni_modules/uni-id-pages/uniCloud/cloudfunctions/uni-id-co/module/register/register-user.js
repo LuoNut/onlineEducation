@@ -18,6 +18,8 @@ const {
  * @param {String} params.captcha     图形验证码
  * @param {String} params.nickname    昵称
  * @param {String} params.inviteCode  邀请码
+ * @param {String} params.studentnumber 学号
+ * @param {String} params.userType 用户类型
  * @returns
  */
 module.exports = async function (params = {}) {
@@ -32,7 +34,10 @@ module.exports = async function (params = {}) {
     inviteCode: {
       required: false,
       type: 'string'
-    }
+    },
+	studentnumber: 'string',
+	userType: 'string'
+	
   }
   this.middleware.validate(params, schema)
   const {
@@ -40,7 +45,9 @@ module.exports = async function (params = {}) {
     password,
     nickname,
     captcha,
-    inviteCode
+    inviteCode,
+	studentnumber,
+	userType
   } = params
 
   await verifyCaptcha.call(this, {
@@ -61,7 +68,9 @@ module.exports = async function (params = {}) {
     user,
     extraData: {
       ...extraData,
-      nickname
+      nickname,
+	  studentnumber,
+	  userType
     },
     inviteCode
   })

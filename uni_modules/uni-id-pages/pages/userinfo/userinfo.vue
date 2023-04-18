@@ -1,6 +1,12 @@
 <!-- 用户资料页 -->
 <template>
 	<view class="uni-content">
+		
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText">返回</block>
+			<block slot="content">课程</block>
+		</cu-custom>
+		
 		<view class="avatar">
 			<uni-id-pages-avatar width="260rpx" height="260rpx"></uni-id-pages-avatar>
 		</view>

@@ -45,12 +45,18 @@
 					<view class="swiper-item">
 						<view class="brief-container">
 							<view class="title">
-								<view class="course-name">
-									{{courseData.course_name}}
+								<view class="course-info">
+									<view class="course-name">
+										{{courseData.course_name}}
+									</view>
+									<view class="course-author">
+										{{courseData.user_id ? courseData.user_id[0].nickname : ''}}
+									</view>
 								</view>
-								<view class="course-author">
-									{{courseData.user_id ? courseData.user_id[0].nickname : ''}}
+								<view class="collect">
+									<uni-fav :checked="checked" class="favBtn"  />
 								</view>
+								
 							</view>
 							<view class="briefBox">
 								<view class="brief">
@@ -189,6 +195,7 @@
 				commentList:[], //评论数据
 				courseUrl: "", //当前课程url
 				courseTitle: "" ,//课程标题
+				checked: false, //是否已收藏 
 				
 				// 二级评论
 				secondComShow: false, //是否显示二级评论
@@ -439,7 +446,7 @@
 				height: 100%;
 			}
 				
-				padding: 0 20rpx 20rpx 10rpx;
+				padding: 10px;
 				background-color: #FFFFFF;
 				margin-top: 20rpx;
 				height: calc( 100vh - 670rpx);
@@ -456,6 +463,10 @@
 					}
 					.title {
 						padding: 10rpx 0 40rpx;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+
 						.course-name {
 							font-size: 40rpx;
 							margin-bottom: 5rpx;
@@ -524,19 +535,6 @@
 				
 				
 				
-
-				// .course-container {
-				// 	height: calc( 100vh - 317px);
-				// 	overflow: auto;
-				// 	padding-bottom: 60rpx;
-				// 	.course-item {
-				// 		margin-top: 20rpx;
-				// 		padding: 28rpx 32rpx;
-				// 		background-color: #f7f7f7;
-				// 		border-radius: 18rpx;
-				// 	}
-				// }
-
 		}
 	}
 </style>
