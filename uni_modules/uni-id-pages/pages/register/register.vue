@@ -77,7 +77,6 @@
 					captcha: "",
 					studentnumber: "", //学号
 					userType: "student", //用户类型
-					
 				},
 				rules,
 				focusUsername: false,

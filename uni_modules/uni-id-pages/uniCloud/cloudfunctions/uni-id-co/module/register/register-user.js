@@ -35,7 +35,10 @@ module.exports = async function (params = {}) {
       required: false,
       type: 'string'
     },
-	studentnumber: 'string',
+	studentnumber: {
+      required: false,
+      type: 'string'
+    },
 	userType: 'string'
 	
   }
@@ -70,7 +73,8 @@ module.exports = async function (params = {}) {
       ...extraData,
       nickname,
 	  studentnumber,
-	  userType
+	  userType,
+	  "verified": 0
     },
     inviteCode
   })

@@ -106,3 +106,21 @@ export async function likeFun(artId) {
 		})
 	}
 }
+
+//收藏操作数据库的方法
+export async function courseLikeFun(courseId) {
+	//判断用户是否已经点过赞
+	let count = await db.collection("course_like")
+		.where(`course_id=="${courseId}" && user_id==$cloudEnv_uid`).count()
+	console.log(count);
+	if (count.result.total) {
+		db.collection("course_like").where(`course_id=="${courseId}" && user_id==$cloudEnv_uid`).remove()
+		utilsObj.operation('course_video', 'like_count', courseId, -1)
+	} else {
+		db.collection('course_like').add({
+			course_id: courseId
+		}).then((res) => {
+			utilsObj.operation('course_video', 'like_count', courseId, 1)
+		})
+	}
+}

@@ -14,7 +14,7 @@
 			"bsonType": "string",
 			"description": "支付宝平台openid",
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -22,7 +22,7 @@
 			"bsonType": "string",
 			"description": "苹果登录openid",
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -51,7 +51,7 @@
 			"title": "备注",
 			"trim": "both",
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -60,7 +60,7 @@
 			"description": "允许登录的客户端的appid列表",
 			"foreignKey": "opendb-app-list.appid",
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -75,7 +75,7 @@
 			"enumType": "tree",
 			"title": "部门",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -86,7 +86,7 @@
 			"title": "邮箱",
 			"trim": "both",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -105,7 +105,7 @@
 			],
 			"title": "邮箱验证状态",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -128,7 +128,7 @@
 			],
 			"title": "性别",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -136,7 +136,7 @@
 			"bsonType": "timestamp",
 			"description": "受邀时间",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -145,7 +145,7 @@
 			"description": "用户全部上级邀请者",
 			"trim": "both",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -153,7 +153,7 @@
 			"bsonType": "timestamp",
 			"description": "最后登录时间",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -161,7 +161,7 @@
 			"bsonType": "string",
 			"description": "最后登录时 IP 地址",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -172,7 +172,7 @@
 			"title": "手机号码",
 			"trim": "both",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -191,7 +191,7 @@
 			],
 			"title": "手机号验证状态",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -199,7 +199,7 @@
 			"bsonType": "string",
 			"description": "用户自身邀请码",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -216,9 +216,19 @@
 		"studentnumber": {
 			"bsonType": "string",
 			"description": "学号",
-			"title": "学号"
+			"title": "学号",
+			"forceDefaultValue": {
+			  "$env": ""
+			} 
 		},
-		
+		"verified": {
+			"bsonType": "int",
+			"description": "（教师用户）是否通过审核",
+			"title": "（教师用户）是否通过审核",
+			"forceDefaultValue": {
+			  "$env": 0
+			} 
+		},
 		"userType": {
 			"bsonType": "string",
 			"description": "用户类型",
@@ -248,7 +258,7 @@
 			"bsonType": "object",
 			"description": "实名认证信息",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			},
 			"properties": {
@@ -317,7 +327,7 @@
 				"$env": "now"
 			},
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -328,7 +338,7 @@
 				"$env": "clientIP"
 			},
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -341,7 +351,7 @@
 			},
 			"foreignKey": "uni-id-roles.role_id",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			},
 			"title": "角色"
@@ -350,7 +360,7 @@
 			"bsonType": "array",
 			"description": "用户标签",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			},
 			"title": "标签"
@@ -359,7 +369,7 @@
 			"bsonType": "int",
 			"description": "用户积分，积分变更记录可参考：uni-id-scores表定义",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -368,7 +378,7 @@
 			"defaultValue": 0,
 			"description": "用户状态：0 正常 1 禁用 2 审核中 3 审核拒绝",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			},
 			"enum": [{
@@ -404,7 +414,7 @@
 			"title": "用户名",
 			"trim": "both",
 			"permission": {
-				"read": "doc._id == auth.uid || 'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -430,7 +440,7 @@
 				}
 			},
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -438,7 +448,7 @@
 			"bsonType": "string",
 			"description": "微信unionid",
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -456,7 +466,7 @@
 				}
 			},
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -464,7 +474,7 @@
 			"bsonType": "string",
 			"description": "QQ unionid",
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		},
@@ -480,7 +490,7 @@
 			"bsonType": "array",
 			"description": "三方平台身份信息；一个对象代表一个身份，参数支持: provider 身份源, userInfo 三方用户信息, openid 三方openid, unionid 三方unionid, uid 三方uid",
 			"permission": {
-				"read": "'READ_UNI_ID_USERS' in auth.permission",
+				"read": true,
 				"write": "'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
 			}
 		}

@@ -53,8 +53,8 @@
 										{{courseData.user_id ? courseData.user_id[0].nickname : ''}}
 									</view>
 								</view>
-								<view class="collect">
-									<uni-fav :checked="checked" class="favBtn"  />
+								<view class="collect" @click="onCollect" >
+									<uni-fav :checked="courseData.isLike" class="favBtn"  />
 								</view>
 								
 							</view>
@@ -89,7 +89,10 @@
 				<swiper-item>
 					<view class="swiper-item">
 						<view class="document-container">
-							<button class="blueBtn cu-btn bg-blue shadow lg" @tap="openDocument()">文档预览</button>
+							<view v-for="item in courseData.courseware" :id="item.src">
+								<button class="blueBtn cu-btn bg-blue shadow lg" @tap="openDocument(item.src)">文档预览</button>
+							</view>
+							
 						</view>		
 					</view>
 				</swiper-item>
@@ -116,8 +119,7 @@
 									<view class="content">
 										<view class="item" v-for="item in commentList">
 											<comment-item :toTarget="switchComment" schema="course" :item="item" @removeEvn="P_deteleEvn" ></comment-item>
-										</view>
-															
+										</view>														
 									</view>
 								</view>
 								<comment-frame schema="course" @commentEvn="P_commentEvn" :commentObj="commentObj" ></comment-frame>
@@ -164,14 +166,14 @@
 </template>
 
 <script>
-	import {giveName, giveAvatar, likeFun} from '../../../utils/tools.js'
+	import {giveName, giveAvatar, courseLikeFun} from '../../../utils/tools.js'
 	import {store} from "@/uni_modules/uni-id-pages/common/store.js"
 	import pageJson from '@/pages.json'
 	const db = uniCloud.database()
 	export default {
 		data() {
 			return {
-				courseId: undefined, //当前的课程id
+				courseId: null, //当前的课程id
 				courseData: {}, //课程视频的数据
 				tabData: [{
 						name: '简介',
@@ -239,13 +241,65 @@
 				const courseTemp = db.collection('course_video').where(`_id=="${this.courseId}"`).getTemp()
 				const userTemp = db.collection('uni-id-users').field("_id,username,nickname").getTemp()
 				
+				let likeTemp = db.collection(("course_like")).where(`course_id=="${this.courseId}" && user_id==$cloudEnv_uid`).getTemp()
 				
-				let res = await db.collection(courseTemp,userTemp).get()
+				//判断用户是否登录,来决定是否获取该用户的收藏数据
+				let arr = [courseTemp,userTemp]
+				if(store.hasLogin) {
+					arr.push(likeTemp)
+				}
 				
+				
+				
+				let res = await db.collection(...arr).get()
+				
+				let isLike = false
+				console.log(res);
+				if(store.hasLogin) isLike = res.result.data[0]._id.course_like.length ? true : false
+				
+				res.result.data[0].isLike = isLike
 				this.courseData = res.result.data[0]
 				this.courseUrl = res.result.data[0].course_video[0].videoSrc[0].src
 				this.courseTitle = res.result.data[0].course_video[0].videoSrc[0].name
 				
+			},
+			
+			//点击收藏按钮,记录收藏量
+			onCollect() {
+
+					//判断用户是否登录，登录才能进行点赞操作
+					if(!store.hasLogin) {
+						 uni.showModal({
+						 	title:"登录才能进行点赞哦，是否进行登录？",
+							success: (res) => {
+				
+								if(res.confirm) {
+									uni.navigateTo({
+										url: '/' + pageJson.uniIdRouter.loginPage
+									})
+								}
+							}
+						 })
+						return 
+					 }
+					 
+					 //防抖
+					 let time = Date.now()
+					 if(time - this.likeTime < 2000) {
+						 uni.showToast({
+						 	title:"点击太频繁了...",
+							icon:'none'
+						 })
+						 return
+					 }
+					 
+					 
+					 this.courseData.isLike ? this.courseData.like_count-- : this.courseData.like_count++
+					 this.courseData.isLike = !this.courseData.isLike
+					 this.likeTime = time
+					 
+					//点赞操作数据库的方法
+					courseLikeFun(this.courseId)
 			},
 			
 			//点击课程列表进行播放
@@ -255,9 +309,10 @@
 			},
 			
 			//文档预览
-			openDocument() {
+			openDocument(coursewareUrl) {
+				console.log(this.courseData);
 				uni.downloadFile({
-					url: 'https://mp-b47b22da-6a90-4dde-b937-8ac0d9bec90c.cdn.bspapp.com/cloudstorage/3ee13d9d-bbca-45f6-ac25-f755af6c892e.pdf',
+					url: coursewareUrl,
 					success: function(res) {
 						var filePath = res.tempFilePath;
 						uni.openDocument({
@@ -275,6 +330,7 @@
 				let commentTemp = db.collection("course_comment").where(`course_id == "${this.courseId}" && comment_type==0`).getTemp()
 				let userTemp = db.collection("uni-id-users").field("_id,username,nickname").getTemp()
 				
+								
 				let res = await db.collection(commentTemp,userTemp).orderBy("comment_date desc").get()
 			
 					console.log(res);
@@ -324,43 +380,6 @@
 				this.commentList.splice(index, 1)
 			},
 			
-			//记录点赞量
-			likeUpdata() {
-			
-				//判断用户是否登录，登录才能进行点赞操作
-				if(!store.hasLogin) {
-					 uni.showModal({
-					 	title:"登录才能进行点赞哦，是否进行登录？",
-						success: (res) => {
-			
-							if(res.confirm) {
-								uni.navigateTo({
-									url: '/' + pageJson.uniIdRouter.loginPage
-								})
-							}
-						}
-					 })
-					return 
-				 }
-				 
-				 //防抖
-				 let time = Date.now()
-				 if(time - this.likeTime < 2000) {
-					 uni.showToast({
-					 	title:"点击太频繁了...",
-						icon:'none'
-					 })
-					 return
-				 }
-				 
-				 
-				 this.artData.isLike ? this.artData.like_count-- : this.artData.like_count++
-				 this.artData.isLike = !this.artData.isLike
-				 this.likeTime = time
-				 
-				//收藏操作数据库的方法
-				likeFun(this.artId)
-			},
 			//错误处理
 			errFun(e) {
 				uni.showToast({

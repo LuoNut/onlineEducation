@@ -189,7 +189,6 @@
 			},
 			//记录点赞量
 			likeUpdata() {
-
 				//判断用户是否登录，登录才能进行点赞操作
 				if(!store.hasLogin) {
 					 uni.showModal({

@@ -8,7 +8,7 @@
 	],
 	"permission": {
 		"read": true,
-		"create": "auth.uid != null",
+		"create": true,
 		"update": "doc.user_id == auth.uid || 'webmaster' in auth.role ",
 		"delete": "doc.user_id == auth.uid"
 	},
