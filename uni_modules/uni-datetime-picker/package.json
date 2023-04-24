@@ -1,15 +1,14 @@
 {
-  "id": "uni-list",
-  "displayName": "uni-list 列表",
-  "version": "1.2.14",
-  "description": "List 组件 ，帮助使用者快速构建列表。",
+  "id": "uni-datetime-picker",
+  "displayName": "uni-datetime-picker 日期选择器",
+  "version": "2.2.22",
+  "description": "uni-datetime-picker 日期时间选择器，支持日历，支持范围选择",
   "keywords": [
-    "",
+    "uni-datetime-picker",
     "uni-ui",
     "uniui",
-    "列表",
-    "",
-    "list"
+    "日期时间选择器",
+    "日期时间"
 ],
   "repository": "https://github.com/dcloudio/uni-ui",
   "engines": {
@@ -40,9 +39,9 @@
   },
   "uni_modules": {
     "dependencies": [
-      "uni-badge",
-      "uni-icons"
-    ],
+			"uni-scss",
+			"uni-icons"
+		],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -52,7 +51,7 @@
       "client": {
         "App": {
           "app-vue": "y",
-          "app-nvue": "y"
+          "app-nvue": "n"
         },
         "H5-mobile": {
           "Safari": "y",

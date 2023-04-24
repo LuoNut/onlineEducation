@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3985177 */
-  src: url('//at.alicdn.com/t/c/font_3985177_pjf0eod0dg9.woff2?t=1681303192781') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3985177_pjf0eod0dg9.woff?t=1681303192781') format('woff'),
-       url('//at.alicdn.com/t/c/font_3985177_pjf0eod0dg9.ttf?t=1681303192781') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3985177_pg90zygcie.woff2?t=1682322700563') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3985177_pg90zygcie.woff?t=1682322700563') format('woff'),
+       url('//at.alicdn.com/t/c/font_3985177_pg90zygcie.ttf?t=1682322700563') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,232 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shoucang:before {
+  content: "\e600";
+}
+
+.icon-shoucang1:before {
+  content: "\eca7";
+}
+
+.icon-collection:before {
+  content: "\e6ec";
+}
+
+.icon-lishijilu:before {
+  content: "\e62b";
+}
+
+.icon-fuxi:before {
+  content: "\e678";
+}
+
+.icon-shebeileixing:before {
+  content: "\e62e";
+}
+
+.icon-kecheng1:before {
+  content: "\e609";
+}
+
+.icon-jiahao2fill:before {
+  content: "\e728";
+}
+
+.icon-jiahao2fill-copy:before {
+  content: "\eca0";
+}
+
+.icon-jiahao:before {
+  content: "\e726";
+}
+
+.icon-shanchu:before {
+  content: "\e74b";
+}
+
+.icon-kecheng:before {
+  content: "\e66f";
+}
+
+.icon-Friends:before {
+  content: "\e681";
+}
+
+.icon-jiahao-copy:before {
+  content: "\ec9f";
+}
+
+.icon-praise:before {
+  content: "\e71b";
+}
+
+.icon-fengexian:before {
+  content: "\ec7f";
+}
+
+.icon-charutupian:before {
+  content: "\ec80";
+}
+
+.icon-zitijiacu:before {
+  content: "\ec83";
+}
+
+.icon-zitibiaoti:before {
+  content: "\ec84";
+}
+
+.icon-zitixieti:before {
+  content: "\ec85";
+}
+
+.icon-duigoux:before {
+  content: "\ec9e";
+}
+
+.icon-enter:before {
+  content: "\e6f8";
+}
+
+.icon-shiyongwendang:before {
+  content: "\eb66";
+}
+
+.icon-bianjisekuai:before {
+  content: "\ec7c";
+}
+
+.icon-dianzan:before {
+  content: "\ec81";
+}
+
+.icon-tianxie:before {
+  content: "\ec88";
+}
+
+.icon-tuichudenglu:before {
+  content: "\e603";
+}
+
+.icon-mail:before {
+  content: "\e70a";
+}
+
+.icon-yijianfankui:before {
+  content: "\e662";
+}
+
+.icon-brush:before {
+  content: "\e6e9";
+}
+
+.icon-close:before {
+  content: "\e6eb";
+}
+
+.icon-enter-copy:before {
+  content: "\eca1";
+}
+
+.icon-add:before {
+  content: "\e6df";
+}
+
+.icon-collection_fill:before {
+  content: "\e6ea";
+}
+
+.icon-interactive_fill:before {
+  content: "\e704";
+}
+
+.icon-interactive:before {
+  content: "\e705";
+}
+
+.icon-like_fill:before {
+  content: "\e707";
+}
+
+.icon-like:before {
+  content: "\e708";
+}
+
+.icon-praise_fill:before {
+  content: "\e71a";
+}
+
+.icon-search:before {
+  content: "\e741";
+}
+
+.icon-editor:before {
+  content: "\e6f5";
+}
+
+.icon-more:before {
+  content: "\e710";
+}
+
+.icon-browse:before {
+  content: "\e6e8";
+}
+
+.icon-message:before {
+  content: "\e70c";
+}
+
+.icon-keben:before {
+  content: "\e6e3";
+}
+
+.icon-tingke:before {
+  content: "\e6e4";
+}
+
+.icon-wenju:before {
+  content: "\e6e5";
+}
+
+.icon-zuoyeben:before {
+  content: "\e6e6";
+}
+
+.icon-fangchengshi:before {
+  content: "\e6e7";
+}
+@font-face {
+  font-family: "iconfont"; /* Project id 3985177 */
+  src: url('//at.alicdn.com/t/c/font_3985177_pg90zygcie.woff2?t=1682322700563') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3985177_pg90zygcie.woff?t=1682322700563') format('woff'),
+       url('//at.alicdn.com/t/c/font_3985177_pg90zygcie.ttf?t=1682322700563') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shoucang:before {
+  content: "\e600";
+}
+
+.icon-shoucang1:before {
+  content: "\eca7";
+}
+
+.icon-collection:before {
+  content: "\e6ec";
+}
+
+.icon-lishijilu:before {
+  content: "\e62b";
 }
 
 .icon-fuxi:before {

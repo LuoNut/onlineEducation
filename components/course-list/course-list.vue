@@ -2,18 +2,17 @@
 	<view class="container" @click="toVideoPlay">
 		<view class="content">
 			<view class="image">
-				<image src="../../static/demo/cover/1.png" mode="aspectFill"></image>
-				<view class="type">
-					图文
-				</view>
+				<image :src="courseData.courseCover" mode="aspectFill"></image>
 			</view>
 			<view class="title">
 				<view class="text">
-					1111111111111111111111111111111111111111111111111111111111111111111111111111
+					{{courseData.course_name}}
 				</view>
 				<view class="info">
-					<text class="name">李老师</text>
-					<text class="date">2022-1-1</text>
+					<text class="name">{{courseData.user_id[0].nickname}}</text>
+					<text class="date">
+						<uni-dateformat :date="courseData.publish_date" format="yyyy/MM/dd" ></uni-dateformat>
+					</text>
 				</view>
 
 			</view>
@@ -24,6 +23,11 @@
 <script>
 	export default {
 		name: "course-list",
+		props: {
+			courseData: {
+				type: Object
+			}
+		},
 		data() {
 			return {
 
@@ -32,7 +36,7 @@
 		methods: {
 			toVideoPlay() {
 				uni.navigateTo({
-					url:'/pages/course-study/course-videoplay/course-videoplay'
+					url:`/pages/course-study/course-videoplay/course-videoplay?id=${this.courseData._id}`
 				})
 			}
 		}
@@ -63,6 +67,7 @@
 				flex-direction: column;
 				justify-content: space-between;
 				padding-right: 30rpx;
+				margin-top: 14rpx;
 				.text {
 					font-size: 36rpx;
 					line-height: 46rpx;

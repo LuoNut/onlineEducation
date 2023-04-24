@@ -1,0 +1,39 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "评论者ID，参考`uni-id-users` 表",
+			"forceDefaultValue": {
+				"$env": "uid"
+			},
+			"foreignKey": "uni-id-users._id"
+		},
+		"play_time": {
+			"bsonType": "课程观看进度时间",
+			"description": "课程观看进的时间",
+			"forceDefaultValue": {
+				"$env": 0
+			}
+		},
+		"course_src": {
+			"bsonType": "课程视频src",
+			"description": "课程视频src"
+		},
+		"course_id": {
+			"bsonType": "课程id",
+			"description": "课程id"
+		}
+	}
+}

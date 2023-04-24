@@ -17,6 +17,7 @@
 				show-mute-btn
 				@ended="videoEnd"
 				autoplay
+				@timeupdate="timeUpdata"
 				>
 			</video>
 		</view>
@@ -73,10 +74,9 @@
 				<swiper-item>
 					<view class="swiper-item">					  
 						<view class="course-container">
-							
 							<uni-collapse>
 								<uni-collapse-item :title="item.section" v-for="item in courseData.course_video" :id="item.id" >
-									<view @click="videoPlay(videoItem)" class="course-item" v-for="videoItem in item.videoSrc" :id="item.name" >
+									<view @click="videoPlay(videoItem)" :class="videoItem.src == courseUrl ? 'active' : '' " class="course-item" v-for="videoItem in item.videoSrc" :id="item.name" >
 										{{videoItem.name}}
 									</view>
 								</uni-collapse-item>
@@ -169,6 +169,7 @@
 	import {giveName, giveAvatar, courseLikeFun} from '../../../utils/tools.js'
 	import {store} from "@/uni_modules/uni-id-pages/common/store.js"
 	import pageJson from '@/pages.json'
+import log from 'video.js/dist/types/utils/log'
 	const db = uniCloud.database()
 	export default {
 		data() {
@@ -198,6 +199,8 @@
 				courseUrl: "", //当前课程url
 				courseTitle: "" ,//课程标题
 				checked: false, //是否已收藏 
+				
+				playschedule: undefined, //播放进度
 				
 				// 二级评论
 				secondComShow: false, //是否显示二级评论
@@ -233,7 +236,31 @@
 				this.tabIndex = e.detail.current
 			},
 			
+			//记录视频播放记录
+			timeUpdata(e) {
+				let timeId
+				this.playschedule = e.detail.currentTime
+				
+				if(!timeId) {
+					timeId =  setTimeout(function() {
+						this.playSchedule()
+						timeId = null 
+					},5000)
+				}
+				
+				
+			},
 			
+			//更新数据库课程观看进度的功能函数
+			playSchedule() {
+				db.collection('course_play_history').where("").updata({
+					play_time: this.playschedule,
+					course_id: this.courseId,
+					course_src: this.courseUrl
+				})
+				
+			},
+
 			//获取课程视频数据
 			async getCourseData() {
 				
@@ -512,6 +539,9 @@
 						color: #333333;
 						border-bottom: 1px solid #f7f7f7;
 						font-size: 28rpx;
+					}
+					.active {
+						color: #0081FF;
 					}
 				}
 				.document-container {

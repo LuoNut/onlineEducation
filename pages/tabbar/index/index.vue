@@ -23,7 +23,7 @@
 		<!-- 分割线 -->
 		<view class="divider"></view>
 
-		<!-- 推荐课程模块 -->
+		<!-- 最新课程模块 -->
 		<view class="courseContainer">
 			<view class="cu-bar bg-white margin-top-xs">
 				<view class="action sub-title">
@@ -38,7 +38,7 @@
 			</scroll-view>
 		</view>
 
-		<!-- 最新课程模块 -->
+		<!-- 推荐课程模块 -->
 		<view class="courseContainer">
 			<view class="cu-bar bg-white margin-top-xs">
 				<view class="action sub-title">
@@ -47,9 +47,10 @@
 				</view>
 				<view class="action" @click="goVideo"><text class="text-lg text-grey text-shadow">更多</text></view>
 			</view>
-
-				<course-list></course-list>
-				<course-list></course-list>
+			<view class="course-list" v-for="item in recommendCourseData" :id="item._id" >
+				<course-list :courseData="item" ></course-list>
+			</view>
+				
 
 		</view>
 
@@ -102,13 +103,16 @@
 			
 			//获取课程数据
 			this.getCourseData()
+			
+			//获取热门课程数据
+			this.getHotCourseData()
 		},
 		onShow() {
 			this.tabBerLists = uni.getStorageSync('tabBarList') // 自定义的tabbar赋值
 		},
 
 		methods: {
-			//获取课程视频数据
+			//获取最新课程视频数据
 			async getCourseData() {
 				
 				
@@ -120,6 +124,24 @@
 				
 	
 				this.newestCourseData = res.result.data
+			},
+			
+			//获取热门课程数据
+			async getHotCourseData() {
+				
+				
+				const courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id,publish_date").orderBy("like_count").getTemp()
+				const userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp()
+				
+				
+				let res = await db.collection(courseTemp,userTemp).get()
+				
+				console.log(res);
+				
+				this.recommendCourseData = res.result.data
+				
+				console.log(this.recommendCourseData);
+				
 			}
 		}
 	}
