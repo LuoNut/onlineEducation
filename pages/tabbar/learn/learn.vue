@@ -5,12 +5,15 @@
 			<block slot="content">学习</block>
 		</cu-custom>
 		
+		<!-- 搜索框 -->
 		<view class="u-search-box">
 			<view class="u-search-inner">
 				<u-icon name="search" color="#909399" :size="28"></u-icon>
 				<text class="u-search-text">搜索您想学习的课程</text>
 			</view>
 		</view>
+		
+		
 		<view class="u-menu-wrap">
 			<scroll-view scroll-y scroll-with-animation class="u-tab-view menu-scroll-view" :scroll-top="scrollTop">
 				<view v-for="(item,index) in tabbar" :key="index" class="u-tab-item" :class="[current==index ? 'u-tab-item-active' : '']"
@@ -26,7 +29,7 @@
 								<text>{{item.name}}</text>
 							</view>
 							<view class="item-container">
-								<view class="thumb-box" v-for="(item1, index1) in item.foods" :key="index1">
+								<view class="thumb-box" v-for="(item1, index1) in item.foods" :key="index1" @click="toCourseList(item,item1)" >
 									<image class="item-menu-image" :src="item1.icon" mode=""></image>
 									<view class="item-menu-name margin-top-sm">{{item1.name}}</view>
 								</view>
@@ -51,6 +54,8 @@
 				current: 0, // 预设当前项的值
 				menuHeight: 0, // 左边菜单的高度
 				menuItemHeight: 0, // 左边菜单item的高度
+				
+				
 			}
 		},
 		onLoad() {
@@ -61,6 +66,15 @@
 			this.tabBerLists = uni.getStorageSync('tabBarList') // 自定义的tabbar赋值
 		},
 		methods: {
+			
+			//跳转到对应的课程列表yemian
+			toCourseList(e1, e2) {
+				uni.navigateTo({
+					url:`/pages/learn/course-list/course-list?subject_type_one=${e1.name}&subject_type_two=${e2.name}`
+				})
+				
+			},
+			
 			getImg() {
 				return Math.floor(Math.random() * 35);
 			},

@@ -56,7 +56,7 @@
 						</view>
 						<view class="right"><text class="iconfont icon-enter"></text></view>
 					</view>
-					<view class="item" @click="">
+					<view class="item" @click="toViewHistory">
 						<view class="left"><text class="iconfont icon-lishijilu"></text><text class="text">观看历史</text>
 						</view>
 						<view class="right"><text class="iconfont icon-enter"></text></view>
@@ -149,6 +149,13 @@
 				if (this.isLoginPage()) return
 				uni.navigateTo({
 					url: '/pages/home/blog_article/list'
+				})
+			},
+			
+			toViewHistory() {
+				if (this.isLoginPage()) return
+				uni.navigateTo({
+					url: '/pages/home/view_history/view_history'
 				})
 			},
 			

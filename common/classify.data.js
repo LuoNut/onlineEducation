@@ -269,12 +269,6 @@ export default [{
 			
 		},
 		{
-			"name": "老年医学",
-			"key": "老年医学",
-			"icon": "http://cdn.zhoukaiwen.com/sheji.jpg",
-			
-		},
-		{
 			"name": "儿医学",
 			"key": "儿医学",
 			"icon": "http://cdn.zhoukaiwen.com/sheji.jpg",
@@ -289,12 +283,6 @@ export default [{
 		{
 			"name": "急诊与灾难医学",
 			"key": "急诊与灾难医学",
-			"icon": "http://cdn.zhoukaiwen.com/sheji.jpg",
-			
-		},
-		{
-			"name": "医患沟通伦理学",
-			"key": "医患沟通伦理学",
 			"icon": "http://cdn.zhoukaiwen.com/sheji.jpg",
 			
 		}

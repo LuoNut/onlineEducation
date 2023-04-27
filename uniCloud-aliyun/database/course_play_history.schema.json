@@ -22,10 +22,7 @@
 		},
 		"play_time": {
 			"bsonType": "课程观看进度时间",
-			"description": "课程观看进的时间",
-			"forceDefaultValue": {
-				"$env": 0
-			}
+			"description": "课程观看进的时间"
 		},
 		"course_src": {
 			"bsonType": "课程视频src",
@@ -33,7 +30,12 @@
 		},
 		"course_id": {
 			"bsonType": "课程id",
-			"description": "课程id"
+			"description": "课程id",
+			"foreignKey": "course_video._id"
+		},
+		"play_date": {
+			"bsonType": "timestamp",
+			"description": "观看时间"
 		}
 	}
 }

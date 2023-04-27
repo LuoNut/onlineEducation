@@ -87,7 +87,8 @@
 					},
 					{
 						name: "题库",
-						src: '/static/demo/icon/test.png'
+						src: '/static/demo/icon/test.png',
+						navigateTo: '/pages/answer/index/index'
 					},
 					{
 						name: "社区",
@@ -124,6 +125,7 @@
 				
 	
 				this.newestCourseData = res.result.data
+				
 			},
 			
 			//获取热门课程数据
@@ -136,11 +138,10 @@
 				
 				let res = await db.collection(courseTemp,userTemp).get()
 				
-				console.log(res);
 				
 				this.recommendCourseData = res.result.data
 				
-				console.log(this.recommendCourseData);
+
 				
 			}
 		}

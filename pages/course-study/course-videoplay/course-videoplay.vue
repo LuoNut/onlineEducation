@@ -18,6 +18,7 @@
 				@ended="videoEnd"
 				autoplay
 				@timeupdate="timeUpdata"
+				:initial-time="lastPlayTime"
 				>
 			</video>
 		</view>
@@ -169,7 +170,6 @@
 	import {giveName, giveAvatar, courseLikeFun} from '../../../utils/tools.js'
 	import {store} from "@/uni_modules/uni-id-pages/common/store.js"
 	import pageJson from '@/pages.json'
-import log from 'video.js/dist/types/utils/log'
 	const db = uniCloud.database()
 	export default {
 		data() {
@@ -199,8 +199,9 @@ import log from 'video.js/dist/types/utils/log'
 				courseUrl: "", //当前课程url
 				courseTitle: "" ,//课程标题
 				checked: false, //是否已收藏 
-				
-				playschedule: undefined, //播放进度
+				lastPlayTime: null, //上吃的播放时间
+				playschedule: 20, //播放进度
+				isSchedule: true, //判断是否是第一次播放
 				
 				// 二级评论
 				secondComShow: false, //是否显示二级评论
@@ -218,8 +219,10 @@ import log from 'video.js/dist/types/utils/log'
 		onLoad(e) {
 			this.courseId = e.id
 			this.commentObj.course_id = e.id
-			this.getCourseData()
+			this.scheduleFun() //判断是否第一次播放
+			this.getCourseData() //获取课程数据
 			this.getCourseComment()
+			
 			
 			
 		},
@@ -238,26 +241,55 @@ import log from 'video.js/dist/types/utils/log'
 			
 			//记录视频播放记录
 			timeUpdata(e) {
-				let timeId
+				
 				this.playschedule = e.detail.currentTime
 				
-				if(!timeId) {
-					timeId =  setTimeout(function() {
-						this.playSchedule()
-						timeId = null 
-					},5000)
+				if(!this.timeId) {
+					this.timeId =  setTimeout(() => {
+						this.playScheduleFun()
+						this.timeId = null 
+					},1000)
 				}
 				
 				
 			},
 			
+			//判断是否第一次观看，有无上次播放记录，有的话自动跳转到上次的播放进步
+			async scheduleFun() {
+				let res = await db.collection('course_play_history').where(`"${this.courseId}" == course_id && $cloudEnv_uid == user_id`).get()
+				
+				res.result.affectedDocs ? this.isSchedule = true : this.isSchedule = false
+				
+				console.log(res.result.data[0]);
+				this.courseUrl = res.result.data[0]?.course_src
+				this.lastPlayTime = res.result.data[0]?.play_time
+				
+				this.getCourseData() //获取课程数据
+			},
+			
+			
+			
 			//更新数据库课程观看进度的功能函数
-			playSchedule() {
-				db.collection('course_play_history').where("").updata({
-					play_time: this.playschedule,
-					course_id: this.courseId,
-					course_src: this.courseUrl
-				})
+			async playScheduleFun() {
+				
+				if (this.isSchedule) {
+					let res = await db.collection('course_play_history').where(`"${this.courseId}" == course_id && $cloudEnv_uid == user_id`).update({
+						"play_time": this.playschedule,
+						"course_id": this.courseId,
+						"course_src": this.courseUrl,
+						"play_date": Date.now()
+					})
+					
+				} else {
+					let res = await db.collection('course_play_history').add({
+						"play_time": this.playschedule,
+						"course_id": this.courseId,
+						"course_src": this.courseUrl,
+						"play_date": Date.now()
+					})
+					this.isSchedule = true
+				}
+				
 				
 			},
 
@@ -281,7 +313,6 @@ import log from 'video.js/dist/types/utils/log'
 				let res = await db.collection(...arr).get()
 				
 				let isLike = false
-				console.log(res);
 				if(store.hasLogin) isLike = res.result.data[0]._id.course_like.length ? true : false
 				
 				res.result.data[0].isLike = isLike
@@ -337,7 +368,6 @@ import log from 'video.js/dist/types/utils/log'
 			
 			//文档预览
 			openDocument(coursewareUrl) {
-				console.log(this.courseData);
 				uni.downloadFile({
 					url: coursewareUrl,
 					success: function(res) {
@@ -360,7 +390,7 @@ import log from 'video.js/dist/types/utils/log'
 								
 				let res = await db.collection(commentTemp,userTemp).orderBy("comment_date desc").get()
 			
-					console.log(res);
+
 					//获取一级评论所对应的二级评论的回复量
 					let idArr = res.result.data.map(item => {
 						return item._id
@@ -372,7 +402,7 @@ import log from 'video.js/dist/types/utils/log'
 					.groupField('count(*) as totalReply')
 					.get()
 					
-					console.log(replyArr);
+
 					
 			
 					res.result.data.forEach(item => {
@@ -442,7 +472,7 @@ import log from 'video.js/dist/types/utils/log'
 			
 			close() {
 			  this.secondComShow = false
-			  // console.log('close');
+
 			},
 			
 			//无感删除评论

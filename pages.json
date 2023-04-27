@@ -151,13 +151,6 @@
 			}
 
 		}, {
-			"path": "pages/teacher/teacher/teacher",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
 			"path": "pages/teacher/course-video/course-video",
 			"style": {
 				"navigationBarTitleText": "",
@@ -172,13 +165,6 @@
 			}
 
 		}, {
-			"path": "pages/teacher/course-management/course-management",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-
-		}, {
 			"path": "pages/home/blog_article/list",
 			"style": {
 				"navigationBarTitleText": "列表"
@@ -187,6 +173,42 @@
 
 	    ,{
             "path" : "pages/home/course_like/course_like",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/home/view_history/view_history",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/answer/index/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/answer/reply/reply",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/learn/course-list/course-list",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
