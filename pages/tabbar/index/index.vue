@@ -8,9 +8,9 @@
 		<!-- 轮播图 -->
 		<view class="image">
 			<swiper class="swiperImg" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" circular>
-				<swiper-item v-for="(item, index) in swiper" :key="index">
+				<swiper-item v-for="(item, index) in swiperData" :key="index">
 					<view class="swiperItem">
-						<image :src="item.src" mode="aspectFill"></image>
+						<image :src="item.bannerfile.url" mode="aspectFill"></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -68,13 +68,7 @@
 				tabBerLists: [], //tabbar数据
 				recommendCourseData: [] ,//推荐课程数据
 				newestCourseData: [] , //最新课程数据
-				swiper: [{
-						src: '/static/demo/cover/1.png',
-						
-					},
-					{
-						src: '/static/demo/cover/2.png'
-					}
+				swiperData: [
 				],
 				navList: [{
 						name: "通知",
@@ -93,7 +87,7 @@
 					{
 						name: "社区",
 						src: '/static/demo/icon/ask.png',
-						navigateTo: '/pages/community/index/index'
+						navigateTo: '/pages/index/community/index/index'
 					}
 				]
 			}
@@ -101,6 +95,8 @@
 		onLoad() {
 			// 影藏原生的tabbar,有自定义tabbar的页面都要写一遍
 			uni.hideTabBar()
+			
+			this.getBannerData() //获取轮播图数据
 			
 			//获取课程数据
 			this.getCourseData()
@@ -113,6 +109,19 @@
 		},
 
 		methods: {
+			
+			//获取轮播图的数据
+			async getBannerData() {
+				let res = await db.collection('index_banner').get() 
+				
+				
+				
+				this.swiperData = res.result.data
+				
+				console.log(this.swiperData);
+			},
+			
+			
 			//获取最新课程视频数据
 			async getCourseData() {
 				
