@@ -155,7 +155,6 @@
 				uni.navigateTo({
 					url: '/pages/teacher/course-video/course-video'
 				})
-
 			}
 		}
 	}

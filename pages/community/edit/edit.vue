@@ -150,7 +150,7 @@
 								cloudPath: item.name
 							})
 							this.editorCtx.insertImage({
-								src: filres.fileID
+								src: filres.fileID,
 							})
 							uni.hideLoading()
 						})

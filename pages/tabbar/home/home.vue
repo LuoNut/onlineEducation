@@ -1,5 +1,10 @@
 <template>
 	<view class="user">
+		
+		<cu-custom bgColor="bg-gradual-blue">
+			<block slot="content">我的</block>
+		</cu-custom>
+		
 		<view class="top">
 			<view class="group" @click="toUserInfo">
 				<view class="userinfo">

@@ -72,12 +72,13 @@
 				],
 				navList: [{
 						name: "通知",
-						src: '/static/demo/icon/hd.png'
-						
+						src: '/static/demo/icon/hd.png',
+						navigateTo: '/pages/inform/index/index'
 					},
 					{
 						name: "课程",
-						src: '/static/demo/icon/book.png'
+						src: '/static/demo/icon/book.png',
+						reLaunch: '/pages/tabbar/learn/learn'
 					},
 					{
 						name: "题库",
@@ -87,7 +88,7 @@
 					{
 						name: "社区",
 						src: '/static/demo/icon/ask.png',
-						navigateTo: '/pages/index/community/index/index'
+						navigateTo: '/pages/community/index/index'
 					}
 				]
 			}

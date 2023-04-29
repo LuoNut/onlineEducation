@@ -145,7 +145,6 @@
 						`delState != true && '${this.subject_type}' == subject_type`).field(
 						"user_id,like_count,view_count,comment_count,title,publish_date,description,picurls,province")
 					.getTemp()
-				console.log(artTemp);
 				let userTemp = await db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp()
 
 				db.collection(artTemp, userTemp).orderBy(this.navList[this.navActive].type, "desc").skip(this

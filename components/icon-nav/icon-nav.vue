@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view @click="addtabar(item.navigateTo)" class="navItem" v-for="(item, index) in navList" hover-class="navItem-hove" :key="index">
+		<view @click="addtabar(item)" class="navItem" v-for="(item, index) in navList" hover-class="navItem-hove" :key="index">
 			<image :src="item.src" mode="aspectFill"></image>
 			<text>{{item.name}}</text>
 		</view>
@@ -20,10 +20,17 @@
 		},
 		methods: {
 			addtabar(e) {
-				console.log(e);
-				uni.navigateTo({
-					url: `${e}`
-				})
+				if (Object.keys(e)[2] == 'navigateTo') {
+					console.log(1);
+					uni.navigateTo({
+						url: `${e.navigateTo}`
+					})
+				}else {
+					uni.reLaunch({
+						url: `${e.reLaunch}`
+					})
+				}
+				
 			}
 		}
 	}
