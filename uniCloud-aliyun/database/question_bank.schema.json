@@ -1,0 +1,104 @@
+{
+	"bsonType": "object",
+	"required": [
+		"code",
+		"true_option",
+		"testList"
+	],
+	"permission": {
+		"read": true,
+		"create": "auth.uid != null",
+		"update": "doc.user_id == auth.uid || 'webmaster' in auth.role ",
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "存储文档 ID（用户 ID），系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "题库ID， 参考`uni-id-users` 表",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"subject_type_one": {
+			"bsonType": "string",
+			"title": "题目大类",
+			"description": "题目大类"
+		},
+		"subject_type_two": {
+			"bsonType": "string",
+			"title": "题目小类",
+			"description": "题目小类"
+		},
+		"title": {
+			"bsonType": "string",
+			"title": "题目",
+			"description": "题目",
+			"label": "题目",
+			"trim": "both"
+		},
+		"src_title": {
+			"bsonType": "file",
+			"fileMediaType": "image",
+			"title": "题目类型",
+			"description": "题目是否有图片"
+		},
+		"isimg": {
+			"bsonType": "string",
+			"title": "题目类型",
+			"description": "1为文字 2为图片 选项  默认文字",
+			"defaultValue": "1"
+		},
+		"code": {
+			"bsonType": "string",
+			"title": "题型",
+			"description": "1为单选 2为多选  默认单选",
+			"defaultValue": "1"
+		},
+		"option": {
+			"bsonType": "array",
+			"title": "选项",
+			"description": "选项",
+			"defaultValue": ['A','B','C','D']
+		},
+		"true_option": {
+			"bsonType": "array",
+			"title": "正确选项",
+			"description": "正确选项",
+			"defaultValue": []
+		},
+		"current": {
+			"bsonType": "array",
+			"title": "当前所选",
+			"description": "当前所选",
+			"defaultValue": []
+		},
+		"topic": {
+			"bsonType": "bool",
+			"title": "所选是否正确 默认为'' true为正确 控制选项高亮",
+			"description": "所选是否正确 默认为'' true为正确 控制选项高亮",
+			"defaultValue": false
+		},
+		"code2": {
+			"bsonType": "bool",
+			"title": "选项选择状态 默认为true false为选择",
+			"description": "选项选择状态 默认为true false为选择",
+			"defaultValue": true
+		},
+		"alt": {
+			"bsonType": "string",
+			"title": "本题描述",
+			"description": "本题描述"
+		},
+		"testList": {
+			"bsonType": "array",
+			"title": "具体选项",
+			"description": "具体选项"
+		}
+		
+	},
+	"version": "0.0.1"
+}

@@ -32,7 +32,7 @@
 				</view>
 				
 				
-				<u-picker :show="courseTypeShow" ref="uPicker" :columns="columns" @confirm="confirm" @change="changeHandler">
+				<u-picker :show="courseTypeShow" ref="uPicker" @cancel="onCancel" :columns="columns" @confirm="confirm" @change="changeHandler">
 				</u-picker>
 				
 				<!-- 课程简介 -->
@@ -124,6 +124,12 @@
 				this.courseData.courseType = e.value
 				this.courseTypeShow = false
 			},
+			
+			//点击picker的取消按钮
+			onCancel() {
+				this.courseTypeShow = false
+			},
+			
 
 			//增加班级
 			addItem() {

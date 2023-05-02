@@ -1,0 +1,44 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "用户ID",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"question_id": {
+			"bsonType": "string",
+			"description": "题目ID",
+			"foreignKey": "question_bank._id"
+		},
+		"publish_date": {
+			"bsonType": "timestamp",
+			"title": "发表时间",
+			"description": "发表时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"estimate": {
+			"bsonType": "int",
+			"title": "答题正确/错误",
+			"description": "答题正确/错误 错误0 正确1 未做题3",
+			"defaultValue": 3
+		}
+	}
+	
+}

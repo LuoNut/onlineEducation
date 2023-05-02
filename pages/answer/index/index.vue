@@ -11,9 +11,16 @@
 			<view class="status_bar">
 				<!-- 导航栏 -->
 			</view>
-			<view class="title b-fontw7">
-				答题测试
+			<view class="top_title">
+				<view class="title b-fontw7">
+					答题测试
+				</view>
+				<view class="error" @click="toErrorQuestions">
+					<text class="title b-fontw7" >错题集</text>
+					<image src="../../../static/images/error-questions.png" mode="aspectFill"></image>
+				</view>
 			</view>
+			
 		
 			<view class="nav-box b-card">
 				
@@ -28,7 +35,7 @@
 						
 					</view>
 				</view>
-				<u-picker :show="courseTypeShow" ref="uPicker" :columns="columns" @confirm="confirm" @change="changeHandler">
+				<u-picker :show="courseTypeShow" ref="uPicker" @cancel="onCancel" :columns="columns" @confirm="confirm" @change="changeHandler">
 				</u-picker>
 				
 				
@@ -66,13 +73,13 @@
 							<text class="b-traiangle"></text>
 							<text>题目总数</text>
 							<text class="nav-content-line"></text>
-							<text class="b-fontw6">25</text>
+							<text class="b-fontw6">{{questionsSum}}</text>
 						</view>
 						<view class="nav-content-text b-flex-item-cent">
 							<text class="b-traiangle"></text>
 							<text>已答数量</text>
 							<text class="nav-content-line"></text>
-							<text class="b-fontw6">7</text>
+							<text class="b-fontw6">{{finishSum}}</text>
 						</view>
 					</view>
 					<view class=""   @click="selectionType" >
@@ -85,7 +92,7 @@
 				</view>
 		
 				<view class="nav-btn-box">
-					<view class="nav-btn b-fontw6 bg-gradual-blue" @click="goIndex(1)">
+					<view class="nav-btn b-fontw6 bg-gradual-blue" @click="goIndex()">
 						继续答题
 					</view>
 				</view>
@@ -98,9 +105,12 @@
 </template>
 
 <script>
+	const db = uniCloud.database()
 	export default {
 		data() {
 			return {
+				questionsSum: null, //总的题目数量
+				finishSum: null, //已经做的题目数量
 				courseType: [
 					'计算机',
 					'计算机基础'
@@ -124,12 +134,40 @@
 			};
 		},
 		onLoad() {
-
+			this.getquestions()
 		},
 		watch: {
 
 		},
 		methods: {
+			//获取题目总数和已做题目数
+			async getquestions() {
+				//题目总数
+				let res = await db.collection("question_bank")
+				.where(`"${this.courseType[0]}" == subject_type_one && "${this.courseType[1]}" == subject_type_two`)
+				.count()
+				
+				//已完成总数
+				let recordTemp = db.collection("record_questions").getTemp()
+				let quesTemp = db.collection("question_bank")
+					.where(`"${this.courseType[0]}" == subject_type_one && "${this.courseType[1]}" == subject_type_two`)
+					.getTemp()
+				
+				let sum = await db.collection(quesTemp, recordTemp)
+					.get({
+						  getCount:true
+						})
+						
+				this.questionsSum = res.result.total
+				this.finishSum = sum.result.count
+				
+			},
+			
+
+			//点击picker的取消按钮
+			onCancel() {
+				this.courseTypeShow = false
+			},
 			
 			//点击选答题程类型按钮
 			selectionType() {
@@ -158,9 +196,14 @@
 					picker.setColumnValues(1, this.columnData[index])
 				}
 			},
-			goIndex(mid) {
+			goIndex() {
 				uni.navigateTo({
-					url: '/pages/answer/reply/reply'
+					url: `/pages/answer/reply/reply?subject_type_one=${this.courseType[0]}&subject_type_two=${this.courseType[1]}&schema=question_bank`
+				})
+			},
+			toErrorQuestions() {
+				uni.navigateTo({
+					url: `/pages/answer/reply/reply?subject_type_one=${this.courseType[0]}&subject_type_two=${this.courseType[1]}&schema=record_questions`
 				})
 			},
 			change(index) {
@@ -213,10 +256,26 @@
 			width: 100%;
 			height: 36px;
 		}
-
-		.title {
-			font-size: 36rpx;
+		
+		.top_title {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.title {
+				font-size: 36rpx;
+			}
+			.error {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				image {
+					width: 70rpx;
+					height: 70rpx;
+				}
+				
+			}
 		}
+		
 
 		.nav-box {
 			margin-top: 40rpx;
