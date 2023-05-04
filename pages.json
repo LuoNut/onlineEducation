@@ -234,6 +234,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/teacher/course-manage/course-manage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "black",

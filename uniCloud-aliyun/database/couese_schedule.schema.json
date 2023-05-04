@@ -12,6 +12,11 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
+		"course_id": {
+			"bsonType": "string",
+			"description": "课程ID，opendb-news-posts 表中的`_id`字段",
+			"foreignKey": "course_video._id"
+		},
 		"user_id": {
 			"bsonType": "string",
 			"description": "评论者ID，参考`uni-id-users` 表",
@@ -22,28 +27,6 @@
 		},
 		"play_total_time": {
 			"bsonType": "string",
-			"description": "观看总时间",
-			"title": "观看总时间"
-		},
-		"play_time": {
-			"bsonType": "课程观看进度时间",
-			"description": "课程观看进的时间"
-		},
-		"course_src": {
-			"bsonType": "课程视频src",
-			"description": "课程视频src"
-		},
-		"course_id": {
-			"bsonType": "课程id",
-			"description": "课程id",
-			"foreignKey": "course_video._id"
-		},
-		"play_date": {
-			"bsonType": "timestamp",
-			"description": "观看时间"
-		},
-		"play_total_time": {
-			"bsonType": "timestamp",
 			"description": "观看总时间",
 			"title": "观看总时间"
 		},

@@ -2,7 +2,6 @@
 	"bsonType": "object",
 	"required": [
 		"user_id",
-		"class",
 		"course"
 	],
 	"permission": {

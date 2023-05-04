@@ -46,7 +46,7 @@
 			//跳转到课堂管理页面
 			toCourseManagement() {
 				uni.navigateTo({
-					url: '/pages/teacher/course-management/course-management'
+					url: '/pages/teacher/course-manage/course-manage'
 				})
 			}
 		}

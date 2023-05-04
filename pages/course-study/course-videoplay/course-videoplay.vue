@@ -170,6 +170,7 @@
 	import {giveName, giveAvatar, courseLikeFun} from '../../../utils/tools.js'
 	import {store} from "@/uni_modules/uni-id-pages/common/store.js"
 	import pageJson from '@/pages.json'
+import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 	const db = uniCloud.database()
 	export default {
 		data() {
@@ -200,9 +201,12 @@
 				courseTitle: "" ,//课程标题
 				checked: false, //是否已收藏 
 				lastPlayTime: null, //上吃的播放时间
-				playschedule: 20, //播放进度
+				playschedule: null, //播放进度
 				isSchedule: true, //判断是否是第一次播放
-				
+				play_total_time: null, //观看总时间
+				playAcc: [], //已经观看完视频列表
+				initialTime: '', //刚观看时的初始时间
+
 				// 二级评论
 				secondComShow: false, //是否显示二级评论
 				replyItem: null,
@@ -223,8 +227,11 @@
 			this.getCourseData() //获取课程数据
 			this.getCourseComment()
 			
-			
-			
+			this.initialTime = Date.now()	
+		},
+		onUnload() {
+			this.playScheduleFun()
+			console.log(Date.now());
 		},
 		methods: {
 			giveName,
@@ -239,17 +246,30 @@
 				this.tabIndex = e.detail.current
 			},
 			
+			
+			//视频播放到结尾执行的回调函数
+			videoEnd(e) {
+				this.playAcc.forEach(item => {
+					if (item == this.this.courseUrl) return 
+					
+				})
+				this.playAcc.push({
+					courseUrl: this.courseUrl
+				})
+				
+			},
+			
 			//记录视频播放记录
 			timeUpdata(e) {
 				
 				this.playschedule = e.detail.currentTime
 				
-				if(!this.timeId) {
-					this.timeId =  setTimeout(() => {
-						this.playScheduleFun()
-						this.timeId = null 
-					},1000)
-				}
+				// if(!this.timeId) {
+				// 	this.timeId =  setTimeout(() => {
+				// 		this.playScheduleFun()
+				// 		this.timeId = null 
+				// 	},1000)
+				// }
 				
 				
 			},
@@ -263,6 +283,9 @@
 				console.log(res.result.data[0]);
 				this.courseUrl = res.result.data[0]?.course_src
 				this.lastPlayTime = res.result.data[0]?.play_time
+				this.play_total_time = res.result.data[0]?.play_total_time
+				this.playAcc = res.result.data[0]?.playAcc
+				
 				
 				this.getCourseData() //获取课程数据
 			},
@@ -277,7 +300,9 @@
 						"play_time": this.playschedule,
 						"course_id": this.courseId,
 						"course_src": this.courseUrl,
-						"play_date": Date.now()
+						"play_date": Date.now(),
+						"play_total_time": this.play_total_time + Date.now() - this.initialTime,
+						"have_watched": this.playAcc
 					})
 					
 				} else {
@@ -285,9 +310,10 @@
 						"play_time": this.playschedule,
 						"course_id": this.courseId,
 						"course_src": this.courseUrl,
-						"play_date": Date.now()
+						"play_date": Date.now(),
+						"play_total_time": Date.now() - this.initialTime,
+						"have_watched": this.playAcc
 					})
-					this.isSchedule = true
 				}
 				
 				
@@ -297,8 +323,8 @@
 			async getCourseData() {
 				
 				
-				const courseTemp = db.collection('course_video').where(`_id=="${this.courseId}"`).getTemp()
-				const userTemp = db.collection('uni-id-users').field("_id,username,nickname").getTemp()
+				let courseTemp = db.collection('course_video').where(`_id=="${this.courseId}"`).getTemp()
+				let userTemp = db.collection('uni-id-users').field("_id,username,nickname").getTemp()
 				
 				let likeTemp = db.collection(("course_like")).where(`course_id=="${this.courseId}" && user_id==$cloudEnv_uid`).getTemp()
 				

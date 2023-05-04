@@ -112,6 +112,16 @@
 				"$env": "clientIP"
 			}
 		},
+		"course_video_num": {
+			"bsonType": "int",
+			"title": "课程视频数量",
+			"description": "课程视频数量"
+		},
+		"course_time": {
+			"bsonType": "double",
+			"title": "课程总时间",
+			"description": "课程总时间"
+		},
 		"last_modify_date": {
 			"bsonType": "timestamp",
 			"title": "最后修改时间",

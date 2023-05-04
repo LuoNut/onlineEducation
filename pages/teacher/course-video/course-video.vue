@@ -39,7 +39,7 @@
 				</view>
 				<view class="course-content">
 					<uni-file-picker fileMediatype="video" mode="grid" @select="select" @progress="progress"
-						@success="success" @fail="fail" ref="files" :auto-upload="false">
+						@success="success" @fail="fail" @delete="deleteFile" ref="files" :auto-upload="false">
 						<u-button plain class="select-button" type="primary" icon="plus" text="添加课程"></u-button>
 					</uni-file-picker>
 					<button class="upload-button" @click="upload(index)">上传</button>
@@ -64,6 +64,9 @@
 	export default {
 		data() {
 			return {
+				courseTotalTime: [], //每个课程时间的数组
+				totalTime: null, //课程总时间
+				courseNum: null, //课程视频数量
 				currentIndex: 0, //当前操作的章节
 				id: 1, //开始的章节id
 				courseware: [], //课程的课件
@@ -121,8 +124,24 @@
 			},
 			// 获取上传状态
 			select(e) {
-				console.log('选择文件：', e)
+				this.courseTotalTime.push({
+					"cloudPath": e.tempFiles[0].file.cloudPath,
+					"duration": e.tempFiles[0].file.duration
+				})
+				console.log(this.courseTotalTime);
 			},
+			
+			//取消课程文件的上传
+			deleteFile(e) {
+				console.log(e.tempFile.cloudPath);
+				this.courseTotalTime.forEach((item, index) => {
+					if(item.cloudPath == e.tempFile.cloudPath) {
+						this.courseTotalTime.splice(index, 1)
+					}
+				})
+				console.log(this.courseTotalTime);
+			},
+			
 			// 获取上传进度
 			progress(e) {
 				console.log('上传进度：', e)
@@ -133,6 +152,7 @@
 				console.log(e);
 				let videoObj = {}
 				e.tempFiles.forEach(item => {
+					console.log(item);
 					videoObj.name = item.name.substring(0, item.name.indexOf('.'));
 					videoObj.src = item.url
 					videoObj.size = item.size
@@ -169,9 +189,19 @@
 				console.log(e.tempFilePaths[0]);
 				this.courseCover = e.tempFilePaths[0]
 			},
+			
+			//计算课程的总时间数与课程视频总数量
+			courseToTime() {
+				this.courseNum = this.courseTotalTime.length
+				this.courseTotalTime.forEach(item => {
+					this.totalTime += item.duration
+				})
+				console.log(this.totalTime);
+			},
 
 			//点击完成按钮
 			onAccomplish() {
+				this.courseToTime()
 				this.upCourseData()
 				
 			},
@@ -188,7 +218,9 @@
 					course_intro: this.courseData.courseIntro,
 					courseware: this.courseware,
 					courseCover: this.courseCover,
-					course_video: this.courseVideoList
+					course_video: this.courseVideoList,
+					course_time: this.totalTime,
+					course_video_num: this.courseNum,
 				})
 				
 				console.log(res);
