@@ -207,13 +207,23 @@
 			"bsonType": "string",
 			"description": "用户昵称",
 			"title": "昵称",
-			"trim": "both",
-			"permission": {
-				"read": true,
-				"write": "doc._id == auth.uid || 'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
-			}
+			"trim": "both"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "用户名字",
+			"title": "名字",
+			"trim": "both"
 		},
 		"studentnumber": {
+			"bsonType": "string",
+			"description": "学号",
+			"title": "学号",
+			"forceDefaultValue": {
+			  "$env": ""
+			} 
+		},
+		"classId": {
 			"bsonType": "string",
 			"description": "学号",
 			"title": "学号",

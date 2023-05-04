@@ -31,6 +31,15 @@
 					})
 				}
 				
+
+					// if (this.uniIDHasRole('admin') || this.uniIDHasRole('teacher')) {
+					// 	this.$store.commit('setRoleId', 1)
+					// 	console.log(this);
+					// }else {
+					// 	this.$store.commit('setRoleId', 2)
+					// }
+
+				
 			}
 		}
 	}

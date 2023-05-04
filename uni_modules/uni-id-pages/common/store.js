@@ -19,6 +19,14 @@ const data = {
 	hasLogin: Object.keys(hostUserInfo).length != 0
 }
 
+// function setUserTabbar () {
+// 	if (this.uniIDHasRole('admin') || this.uniIDHasRole('teacher')) {
+// 		this.$store.commit('setRoleId', 1)
+// 	}else {
+// 		this.$store.commit('setRoleId', 2)
+// 	}
+// }
+
 // console.log('data', data);
 // 定义 mutations, 修改属性
 export const mutations = {
@@ -147,8 +155,10 @@ export const mutations = {
 			});
 		}
 		this.updateUserInfo()
+		
 
 		uni.$emit('uni-id-pages-login-success')
+		
 
 		if (config.setPasswordAfterLogin && !passwordConfirmed) {
 			return uni.redirectTo({

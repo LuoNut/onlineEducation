@@ -1,0 +1,9 @@
+{
+  "name": "user-center",
+  "dependencies": {
+    "uni-id": "file:../../../uni_modules/uni-id/uniCloud/cloudfunctions/common/uni-id"
+  },
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

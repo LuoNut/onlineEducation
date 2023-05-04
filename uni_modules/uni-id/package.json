@@ -1,20 +1,20 @@
 {
-  "id": "uni-open-bridge-common",
-  "displayName": "uni-open-bridge-common",
-  "version": "1.2.0",
-  "description": "统一接管微信等三方平台认证凭据",
+  "id": "uni-id",
+  "displayName": "uni-id",
+  "version": "3.3.29",
+  "description": "简单、统一、可扩展的用户中心",
   "keywords": [
-    "uni-open-bridge-common",
-    "access_token",
-    "session_key",
-    "ticket"
+    "uniid",
+    "uni-id",
+    "用户管理",
+    "用户中心",
+    "短信验证码"
 ],
-  "repository": "",
+  "repository": "https://gitee.com/dcloud/uni-id.git",
   "engines": {
-    "HBuilderX": "^3.5.2"
+    "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
-    "type": "unicloud-template-function",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,10 +31,11 @@
       "data": "无",
       "permissions": "无"
     },
-    "npmurl": ""
+    "npmurl": "",
+    "type": "unicloud-template-function"
   },
   "uni_modules": {
-    "dependencies": [],
+    "dependencies": ["uni-config-center", "uni-open-bridge-common"],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -42,10 +43,6 @@
         "aliyun": "y"
       },
       "client": {
-        "Vue": {
-          "vue2": "u",
-          "vue3": "u"
-        },
         "App": {
           "app-vue": "u",
           "app-nvue": "u"
@@ -77,6 +74,10 @@
         "快应用": {
           "华为": "u",
           "联盟": "u"
+        },
+        "Vue": {
+          "vue2": "y",
+          "vue3": "u"
         }
       }
     }

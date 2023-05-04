@@ -124,6 +124,14 @@
 
 				uniIdCo.login(data).then(e => {
 					this.loginSuccess(e)
+					
+					//根据不同的用户显示不同的tabbar栏
+					if (this.uniIDHasRole('admin') || this.uniIDHasRole('teacher')) {
+						this.$store.commit('setRoleId', 1)
+					}else {
+						this.$store.commit('setRoleId', 0)
+					}
+					
 				}).catch(e => {
 					if (e.errCode == 'uni-id-captcha-required') {
 						this.needCaptcha = true

@@ -204,7 +204,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 				playschedule: null, //播放进度
 				isSchedule: true, //判断是否是第一次播放
 				play_total_time: null, //观看总时间
-				playAcc: [], //已经观看完视频列表
+				playedList: [], //已经观看完视频列表
 				initialTime: '', //刚观看时的初始时间
 
 				// 二级评论
@@ -249,11 +249,11 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 			
 			//视频播放到结尾执行的回调函数
 			videoEnd(e) {
-				this.playAcc.forEach(item => {
-					if (item == this.this.courseUrl) return 
+				this.playedList?.forEach(item => {
+					if (item == this.courseUrl) return 
 					
 				})
-				this.playAcc.push({
+				this.playedList.push({
 					courseUrl: this.courseUrl
 				})
 				
@@ -284,7 +284,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 				this.courseUrl = res.result.data[0]?.course_src
 				this.lastPlayTime = res.result.data[0]?.play_time
 				this.play_total_time = res.result.data[0]?.play_total_time
-				this.playAcc = res.result.data[0]?.playAcc
+				this.playAcc = res.result.data[0]?.have_watched
 				
 				
 				this.getCourseData() //获取课程数据
@@ -294,7 +294,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 			
 			//更新数据库课程观看进度的功能函数
 			async playScheduleFun() {
-				
+				console.log(this.playedList);
 				if (this.isSchedule) {
 					let res = await db.collection('course_play_history').where(`"${this.courseId}" == course_id && $cloudEnv_uid == user_id`).update({
 						"play_time": this.playschedule,
@@ -302,7 +302,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 						"course_src": this.courseUrl,
 						"play_date": Date.now(),
 						"play_total_time": this.play_total_time + Date.now() - this.initialTime,
-						"have_watched": this.playAcc
+						"have_watched": this.playedList
 					})
 					
 				} else {
@@ -312,7 +312,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 						"course_src": this.courseUrl,
 						"play_date": Date.now(),
 						"play_total_time": Date.now() - this.initialTime,
-						"have_watched": this.playAcc
+						"have_watched": this.playedList
 					})
 				}
 				
@@ -388,6 +388,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 			
 			//点击课程列表进行播放
 			videoPlay(item) {
+				this.lastPlayTime = null //清空之前的播放进度				
 				this.courseUrl = item.src
 				this.courseTitle = item.name
 			},

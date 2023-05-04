@@ -19,6 +19,7 @@ const {
  * @param {String} params.nickname    昵称
  * @param {String} params.inviteCode  邀请码
  * @param {String} params.studentnumber 学号
+ * @param {String} params.classId 学号
  * @param {String} params.userType 用户类型
  * @returns
  */
@@ -27,9 +28,10 @@ module.exports = async function (params = {}) {
     username: 'username',
     password: 'password',
     captcha: 'string',
+	name: 'string',
     nickname: {
       required: false,
-      type: 'nickname'
+      type: 'string'
     },
     inviteCode: {
       required: false,
@@ -39,7 +41,8 @@ module.exports = async function (params = {}) {
       required: false,
       type: 'string'
     },
-	userType: 'string'
+	userType: 'string',
+	
 	
   }
   this.middleware.validate(params, schema)
@@ -47,9 +50,11 @@ module.exports = async function (params = {}) {
     username,
     password,
     nickname,
+	name,
     captcha,
     inviteCode,
 	studentnumber,
+	classId,
 	userType
   } = params
 
@@ -72,7 +77,9 @@ module.exports = async function (params = {}) {
     extraData: {
       ...extraData,
       nickname,
+	  name,
 	  studentnumber,
+	  classId,
 	  userType,
 	  "verified": 0
     },

@@ -13,9 +13,13 @@
 				<uni-easyinput :inputBorder="false" :focus="focusUsername" @blur="focusUsername = false"
 					class="input-box" placeholder="请输入用户名" v-model="formData.username" trim="both" />
 			</uni-forms-item>
-			<uni-forms-item name="nickname">
+	<!-- 		<uni-forms-item name="nickname">
 				<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
 					class="input-box" placeholder="请输入用户昵称" v-model="formData.nickname" trim="both" />
+			</uni-forms-item> -->
+			<uni-forms-item name="nickname">
+				<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
+					class="input-box" placeholder="请输入用户姓名" v-model="formData.name" trim="both" />
 			</uni-forms-item>
 			<uni-forms-item name="studentnumber">
 				<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
@@ -71,11 +75,12 @@
 			return {
 				formData: {
 					username: "",
-					nickname: "",
+					name:"",
 					password: "",
 					password2: "",
 					captcha: "",
 					studentnumber: "", //学号
+					classId: "", //班级号
 					userType: "student", //用户类型
 				},
 				rules,
@@ -105,6 +110,8 @@
 			 * 触发表单提交
 			 */
 			submit() {
+				
+				this.formData.classId = this.formData.studentnumber.slice(0,8)
 				console.log(this.formData)
 				this.$refs.form.validate().then((res) => {
 					if (this.formData.captcha.length != 4) {

@@ -50,7 +50,8 @@
 		"have_watched": {
 			"bsonType": "array",
 			"description": "已观看课程",
-			"title": "已观看课程"
+			"title": "已观看课程",
+			"defaultValue": []
 		}
 	}
 }

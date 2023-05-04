@@ -9,6 +9,7 @@ module.exports = {
 		let obj = {}
 		obj[attr] = dbCmd.inc(num)
 		db.collection(table).doc(id).update(obj)
-	}
+	},
+	
 
 }

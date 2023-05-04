@@ -39,15 +39,32 @@
 		methods: {
 			//跳转到课堂创建页面
 			toCourseCreation() {
-				uni.navigateTo({
-					url: '/pages/teacher/course/course'
-				})
+				
+				if (this.uniIDHasRole('admin') || this.uniIDHasRole('teacher')) {
+					uni.navigateTo({
+						url: '/pages/teacher/course/course'	
+					})
+				}else {
+					uni.showToast({
+						title:"账号还没通过审核哦....",
+						icon:"none"
+					})
+				}
+				
 			},
 			//跳转到课堂管理页面
 			toCourseManagement() {
-				uni.navigateTo({
-					url: '/pages/teacher/course-manage/course-manage'
-				})
+				if (this.uniIDHasRole('admin') || this.uniIDHasRole('teacher')) {
+					uni.navigateTo({
+						url: '/pages/teacher/course-manage/course-manage'
+					})
+				}else {
+					uni.showToast({
+						title:"账号还没通过审核哦....",
+						icon:"none"
+					})
+				}
+				
 			}
 		}
 	}
