@@ -102,19 +102,19 @@ var components
 try {
   components = {
     uTabs: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 586))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 635))
     },
     uIcon: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 457))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 499))
     },
     uSkeleton: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-skeleton/u-skeleton */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-skeleton/u-skeleton")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-skeleton/u-skeleton.vue */ 594))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-skeleton/u-skeleton */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-skeleton/u-skeleton")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-skeleton/u-skeleton.vue */ 643))
     },
     blogItem: function () {
-      return Promise.all(/*! import() | components/blog-item/blog-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/blog-item/blog-item")]).then(__webpack_require__.bind(null, /*! @/components/blog-item/blog-item.vue */ 602))
+      return Promise.all(/*! import() | components/blog-item/blog-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/blog-item/blog-item")]).then(__webpack_require__.bind(null, /*! @/components/blog-item/blog-item.vue */ 651))
     },
     uniLoadMore: function () {
-      return Promise.all(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-load-more/components/uni-load-more/uni-load-more")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 609))
+      return Promise.all(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-load-more/components/uni-load-more/uni-load-more")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 658))
     },
   }
 } catch (e) {
@@ -181,7 +181,7 @@ exports.default = void 0;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 30));
-var _store = __webpack_require__(/*! @/uni_modules/uni-id-pages/common/store.js */ 217);
+var _store = __webpack_require__(/*! @/uni_modules/uni-id-pages/common/store.js */ 184);
 //
 //
 //
@@ -322,10 +322,9 @@ var _default = {
             switch (_context2.prev = _context2.next) {
               case 0:
                 artTemp = db.collection('blog_article').where("delState != true && '".concat(_this.subject_type, "' == subject_type")).field("user_id,like_count,view_count,comment_count,title,publish_date,description,picurls,province").getTemp();
-                console.log(artTemp);
-                _context2.next = 4;
+                _context2.next = 3;
                 return db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp();
-              case 4:
+              case 3:
                 userTemp = _context2.sent;
                 db.collection(artTemp, userTemp).orderBy(_this.navList[_this.navActive].type, "desc").skip(_this.articleData.length).limit(5).get().then( /*#__PURE__*/function () {
                   var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(res) {
@@ -388,7 +387,7 @@ var _default = {
                     return _ref.apply(this, arguments);
                   };
                 }());
-              case 6:
+              case 5:
               case "end":
                 return _context2.stop();
             }

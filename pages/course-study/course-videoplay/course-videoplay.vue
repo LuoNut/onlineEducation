@@ -129,9 +129,9 @@
 							        <view class="secondComment">
 							        	<view class="reply">
 											<view class="comment-box">
-												<view class="top">
+												<!-- <view class="top">
 													<commentItem :item="replyItem" schema="course" :showReply="true" :showClose="true"></commentItem>
-												</view>
+												</view> -->
 												<view class="list">
 													<view class="row" v-for="item in replyList">
 														<commentItem @removeEvn="second_P_removeEvn" :item="item" :showReply="true"></commentItem>

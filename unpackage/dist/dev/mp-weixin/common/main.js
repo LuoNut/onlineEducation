@@ -25,13 +25,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
 var cuCustom = function cuCustom() {
   __webpack_require__.e(/*! require.ensure | colorui/components/cu-custom */ "colorui/components/cu-custom").then((function () {
-    return resolve(__webpack_require__(/*! ./colorui/components/cu-custom.vue */ 410));
+    return resolve(__webpack_require__(/*! ./colorui/components/cu-custom.vue */ 458));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 _vue.default.component('cu-custom', cuCustom);
 var TnCustom = function TnCustom() {
   Promise.all(/*! require.ensure | components/TnCustom/TnCustom */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/TnCustom/TnCustom")]).then((function () {
-    return resolve(__webpack_require__(/*! ./components/TnCustom/TnCustom.vue */ 415));
+    return resolve(__webpack_require__(/*! ./components/TnCustom/TnCustom.vue */ 463));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 _vue.default.component('tn-custom', TnCustom);

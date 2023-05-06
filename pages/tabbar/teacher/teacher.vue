@@ -26,7 +26,7 @@
 	export default {
 		data() {
 			return {
-				
+				tabBerLists: [], //tabbar数据
 			}
 		},
 		onLoad() {

@@ -47,6 +47,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding-right: 30rpx;
+  margin-top: 14rpx;
 }
 .container .content .title .text {
   font-size: 36rpx;

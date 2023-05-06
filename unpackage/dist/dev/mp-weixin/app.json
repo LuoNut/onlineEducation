@@ -25,10 +25,17 @@
     "pages/community/edit/edit",
     "pages/community/reply/reply",
     "pages/teacher/course/course",
-    "pages/teacher/teacher/teacher",
     "pages/teacher/course-video/course-video",
     "pages/course-study/course-videoplay/course-videoplay",
-    "pages/teacher/course-management/course-management"
+    "pages/home/blog_article/list",
+    "pages/home/course_like/course_like",
+    "pages/home/view_history/view_history",
+    "pages/answer/index/index",
+    "pages/answer/reply/reply",
+    "pages/learn/course-list/course-list",
+    "pages/inform/index/index",
+    "pages/inform/detail/detail",
+    "pages/teacher/course-manage/course-manage"
   ],
   "subPackages": [],
   "window": {

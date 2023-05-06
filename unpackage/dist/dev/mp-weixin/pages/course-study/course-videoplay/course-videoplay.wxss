@@ -29,7 +29,7 @@
   padding: 10rpx 0;
 }
 .container .content.data-v-14645ae0 {
-  padding: 0 20rpx 20rpx 10rpx;
+  padding: 10px;
   background-color: #FFFFFF;
   margin-top: 20rpx;
   height: calc( 100vh - 670rpx);
@@ -49,6 +49,9 @@
 }
 .container .content .brief-container .title.data-v-14645ae0 {
   padding: 10rpx 0 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .container .content .brief-container .title .course-name.data-v-14645ae0 {
   font-size: 40rpx;
@@ -74,6 +77,9 @@
   color: #333333;
   border-bottom: 1px solid #f7f7f7;
   font-size: 28rpx;
+}
+.container .content .course-container .active.data-v-14645ae0 {
+  color: #0081FF;
 }
 .container .content .document-container .blueBtn.data-v-14645ae0 {
   width: 500rpx;

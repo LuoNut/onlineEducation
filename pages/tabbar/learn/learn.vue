@@ -49,13 +49,12 @@
 	export default {
 		data() {
 			return {
+				tabBerLists: [], //tabbar数据
 				tabbar: classifyData,
 				scrollTop: 0, //tab标题的滚动条位置
 				current: 0, // 预设当前项的值
 				menuHeight: 0, // 左边菜单的高度
-				menuItemHeight: 0, // 左边菜单item的高度
-				
-				
+				menuItemHeight: 0, // 左边菜单item的高度	
 			}
 		},
 		onLoad() {

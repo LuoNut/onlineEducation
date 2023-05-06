@@ -3,7 +3,6 @@
   "enablePullDownRefresh": false,
   "navigationStyle": "custom",
   "usingComponents": {
-    "uni-dateformat": "/uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat",
     "tabbar": "/components/tabbar/tabbar"
   }
 }

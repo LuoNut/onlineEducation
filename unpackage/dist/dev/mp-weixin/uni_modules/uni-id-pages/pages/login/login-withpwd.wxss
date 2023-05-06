@@ -80,6 +80,10 @@
 .uni-body.uni_modules-uni-id-pages-pages-login-login-withoutpwd.data-v-9dec0b32 {
   height: auto !important;
 }
+.uni-content.data-v-9dec0b32 {
+  background-color: #fff;
+  height: 100vh;
+}
 @media screen and (min-width: 690px) {
 .uni-content.data-v-9dec0b32 {
     height: 600px;

@@ -3,6 +3,7 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "u-tabs": "/uni_modules/uview-ui/components/u-tabs/u-tabs",
+    "uni-fav": "/uni_modules/uni-fav/components/uni-fav/uni-fav",
     "uni-collapse": "/uni_modules/uni-collapse/components/uni-collapse/uni-collapse",
     "uni-collapse-item": "/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item",
     "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty",

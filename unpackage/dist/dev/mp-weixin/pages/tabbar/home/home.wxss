@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.body .top.data-v-52760117 {
+.user .top.data-v-52760117 {
   height: 300rpx;
   background: #bbb;
   padding: 0 30rpx;
@@ -33,7 +33,7 @@
   display: flex;
   align-items: center;
 }
-.body .top .group.data-v-52760117 {
+.user .top .group.data-v-52760117 {
   position: relative;
   z-index: 10;
   display: flex;
@@ -42,38 +42,38 @@
   width: 100%;
   color: #fff;
 }
-.body .top .group .userinfo.data-v-52760117 {
+.user .top .group .userinfo.data-v-52760117 {
   display: flex;
   width: 100%;
   align-items: center;
 }
-.body .top .group .userinfo .pic.data-v-52760117 {
+.user .top .group .userinfo .pic.data-v-52760117 {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid #fff;
 }
-.body .top .group .userinfo .pic image.data-v-52760117 {
+.user .top .group .userinfo .pic image.data-v-52760117 {
   width: 100%;
   height: 100%;
 }
-.body .top .group .userinfo .text.data-v-52760117 {
+.user .top .group .userinfo .text.data-v-52760117 {
   padding-left: 20rpx;
 }
-.body .top .group .userinfo .text .nickname.data-v-52760117 {
+.user .top .group .userinfo .text .nickname.data-v-52760117 {
   font-size: 44rpx;
   font-weight: 600;
 }
-.body .top .group .userinfo .text .year.data-v-52760117 {
+.user .top .group .userinfo .text .year.data-v-52760117 {
   font-size: 26rpx;
   opacity: 0.6;
   padding-top: 5rpx;
 }
-.body .top .group .more .iconfont.data-v-52760117 {
+.user .top .group .more .iconfont.data-v-52760117 {
   font-size: 40rpx;
 }
-.body .top .bg.data-v-52760117 {
+.user .top .bg.data-v-52760117 {
   position: absolute;
   top: 0;
   left: 0;
@@ -81,7 +81,7 @@
   height: 100%;
   overflow: hidden;
 }
-.body .top .bg image.data-v-52760117 {
+.user .top .bg image.data-v-52760117 {
   width: 100%;
   height: 100%;
   -webkit-filter: blur(20px);
@@ -90,7 +90,7 @@
           transform: scale(2);
   opacity: 0.5;
 }
-.body .main.data-v-52760117 {
+.user .main.data-v-52760117 {
   width: 100%;
   min-height: 200rpx;
   background: #fff;
@@ -99,24 +99,24 @@
           transform: translateY(-30rpx);
   padding: 30rpx 0;
 }
-.body .main .info.data-v-52760117 {
+.user .main .info.data-v-52760117 {
   padding: 10rpx 30rpx;
   display: flex;
   font-size: 30rpx;
 }
-.body .main .info .item.data-v-52760117 {
+.user .main .info .item.data-v-52760117 {
   padding-right: 20rpx;
   color: #888;
 }
-.body .main .info .item text.data-v-52760117 {
+.user .main .info .item text.data-v-52760117 {
   font-weight: 600;
   color: #333;
 }
-.body .main .list .group.data-v-52760117 {
+.user .main .list .group.data-v-52760117 {
   padding: 15rpx 30rpx;
   border-bottom: 15rpx solid #f4f4f4;
 }
-.body .main .list .group .item.data-v-52760117 {
+.user .main .list .group .item.data-v-52760117 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,21 +125,21 @@
   color: #555;
   border-bottom: 1rpx solid #f8f8f8;
 }
-.body .main .list .group .item .left.data-v-52760117 {
+.user .main .list .group .item .left.data-v-52760117 {
   display: flex;
   align-items: center;
 }
-.body .main .list .group .item .left .iconfont.data-v-52760117 {
+.user .main .list .group .item .left .iconfont.data-v-52760117 {
   font-size: 38rpx;
   margin-right: 10rpx;
 }
-.body .main .list .group .item .right .iconfont.data-v-52760117 {
+.user .main .list .group .item .right .iconfont.data-v-52760117 {
   font-size: 26rpx;
 }
-.body .main .list .group .item.data-v-52760117:last-child {
+.user .main .list .group .item.data-v-52760117:last-child {
   border: none;
 }
-.body .main .list .group.data-v-52760117:last-child {
+.user .main .list .group.data-v-52760117:last-child {
   border: none;
 }
 

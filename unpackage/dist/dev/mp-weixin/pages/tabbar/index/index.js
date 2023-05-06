@@ -102,16 +102,16 @@ var components
 try {
   components = {
     iconNav: function () {
-      return __webpack_require__.e(/*! import() | components/icon-nav/icon-nav */ "components/icon-nav/icon-nav").then(__webpack_require__.bind(null, /*! @/components/icon-nav/icon-nav.vue */ 423))
+      return __webpack_require__.e(/*! import() | components/icon-nav/icon-nav */ "components/icon-nav/icon-nav").then(__webpack_require__.bind(null, /*! @/components/icon-nav/icon-nav.vue */ 471))
     },
     courseItem: function () {
-      return __webpack_require__.e(/*! import() | components/course-item/course-item */ "components/course-item/course-item").then(__webpack_require__.bind(null, /*! @/components/course-item/course-item.vue */ 430))
+      return __webpack_require__.e(/*! import() | components/course-item/course-item */ "components/course-item/course-item").then(__webpack_require__.bind(null, /*! @/components/course-item/course-item.vue */ 478))
     },
     courseList: function () {
-      return __webpack_require__.e(/*! import() | components/course-list/course-list */ "components/course-list/course-list").then(__webpack_require__.bind(null, /*! @/components/course-list/course-list.vue */ 437))
+      return __webpack_require__.e(/*! import() | components/course-list/course-list */ "components/course-list/course-list").then(__webpack_require__.bind(null, /*! @/components/course-list/course-list.vue */ 485))
     },
     tabbar: function () {
-      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 444))
+      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 492))
     },
   }
 } catch (e) {
@@ -238,6 +238,7 @@ var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/r
 //
 //
 //
+//
 
 var db = uniCloud.database();
 var _default = {
@@ -249,20 +250,19 @@ var _default = {
       //推荐课程数据
       newestCourseData: [],
       //最新课程数据
-      swiper: [{
-        src: '/static/demo/cover/1.png'
-      }, {
-        src: '/static/demo/cover/2.png'
-      }],
+      swiperData: [],
       navList: [{
         name: "通知",
-        src: '/static/demo/icon/hd.png'
+        src: '/static/demo/icon/hd.png',
+        navigateTo: '/pages/inform/index/index'
       }, {
         name: "课程",
-        src: '/static/demo/icon/book.png'
+        src: '/static/demo/icon/book.png',
+        reLaunch: '/pages/tabbar/learn/learn'
       }, {
         name: "题库",
-        src: '/static/demo/icon/test.png'
+        src: '/static/demo/icon/test.png',
+        navigateTo: '/pages/answer/index/index'
       }, {
         name: "社区",
         src: '/static/demo/icon/ask.png',
@@ -273,37 +273,88 @@ var _default = {
   onLoad: function onLoad() {
     // 影藏原生的tabbar,有自定义tabbar的页面都要写一遍
     uni.hideTabBar();
+    this.getBannerData(); //获取轮播图数据
 
     //获取课程数据
     this.getCourseData();
+
+    //获取热门课程数据
+    this.getHotCourseData();
   },
   onShow: function onShow() {
     this.tabBerLists = uni.getStorageSync('tabBarList'); // 自定义的tabbar赋值
   },
 
   methods: {
-    //获取课程视频数据
-    getCourseData: function getCourseData() {
+    //获取轮播图的数据
+    getBannerData: function getBannerData() {
       var _this = this;
       return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-        var courseTemp, userTemp, res;
+        var res;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id").orderBy("publish_date desc").getTemp();
-                userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp();
-                _context.next = 4;
-                return db.collection(courseTemp, userTemp).get();
-              case 4:
+                _context.next = 2;
+                return db.collection('index_banner').get();
+              case 2:
                 res = _context.sent;
-                _this.newestCourseData = res.result.data;
-              case 6:
+                _this.swiperData = res.result.data;
+                console.log(_this.swiperData);
+              case 5:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
+      }))();
+    },
+    //获取最新课程视频数据
+    getCourseData: function getCourseData() {
+      var _this2 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+        var courseTemp, userTemp, res;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id").orderBy("publish_date desc").getTemp();
+                userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp();
+                _context2.next = 4;
+                return db.collection(courseTemp, userTemp).get();
+              case 4:
+                res = _context2.sent;
+                _this2.newestCourseData = res.result.data;
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    //获取热门课程数据
+    getHotCourseData: function getHotCourseData() {
+      var _this3 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
+        var courseTemp, userTemp, res;
+        return _regenerator.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id,publish_date").orderBy("like_count").getTemp();
+                userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp();
+                _context3.next = 4;
+                return db.collection(courseTemp, userTemp).get();
+              case 4:
+                res = _context3.sent;
+                _this3.recommendCourseData = res.result.data;
+              case 6:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   }

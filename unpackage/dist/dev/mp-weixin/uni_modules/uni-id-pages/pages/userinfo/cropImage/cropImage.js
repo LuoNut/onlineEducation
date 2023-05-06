@@ -144,7 +144,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var limeClipper = function limeClipper() {
   Promise.all(/*! require.ensure | uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/limeClipper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-id-pages/pages/userinfo/cropImage/limeClipper/limeClipper")]).then((function () {
-    return resolve(__webpack_require__(/*! ./limeClipper/limeClipper.vue */ 534));
+    return resolve(__webpack_require__(/*! ./limeClipper/limeClipper.vue */ 576));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
