@@ -53,6 +53,9 @@
 .container .loadingState.data-v-da6333f4 {
   margin: 50rpx;
 }
+.container .content.data-v-da6333f4 {
+  background-color: #fff;
+}
 .container .content .Item.data-v-da6333f4 {
   padding: 30rpx;
   border-bottom: #F7F7F7 15rpx solid;

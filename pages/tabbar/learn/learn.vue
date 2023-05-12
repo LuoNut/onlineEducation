@@ -6,12 +6,18 @@
 		</cu-custom>
 		
 		<!-- 搜索框 -->
-		<view class="u-search-box">
+		<view class="search-header" @click="toSearch" >
+			<image class="search-img" src="../../../static/search.png"></image>
+			<input class="search-input" placeholder="搜索您想学习的课程" type="text"  placeholder-class="placeholder-name" />
+			<view class="search-name" >搜索</view>
+		</view>
+		<!-- <search-bar :hotList="hotList" @input="input" @change="change"></search-bar> -->
+		<!-- <view class="u-search-box" @click="toSearch">
 			<view class="u-search-inner">
 				<u-icon name="search" color="#909399" :size="28"></u-icon>
 				<text class="u-search-text">搜索您想学习的课程</text>
 			</view>
-		</view>
+		</view> -->
 		
 		
 		<view class="u-menu-wrap">
@@ -55,6 +61,7 @@
 				current: 0, // 预设当前项的值
 				menuHeight: 0, // 左边菜单的高度
 				menuItemHeight: 0, // 左边菜单item的高度	
+				 hotList: ['白酒', '苹果醋', '红酒', '笔记本', '洗衣液', '平板电脑', '电视机'],//热门搜索
 			}
 		},
 		onLoad() {
@@ -66,12 +73,27 @@
 		},
 		methods: {
 			
+			//搜索内容
+			        change(e) {
+			            console.log('搜索内容：' + e)
+			        },
+			        //input事件
+			        input(e){
+			            console.log('搜索框输入的内容：' + e)
+			        },
+			
 			//跳转到对应的课程列表yemian
 			toCourseList(e1, e2) {
 				uni.navigateTo({
 					url:`/pages/learn/course-list/course-list?subject_type_one=${e1.name}&subject_type_two=${e2.name}`
 				})
 				
+			},
+			//跳转到搜索页面
+			toSearch () {
+				uni.navigateTo({
+					url:"/pages/learn/search/search"
+				})
 			},
 			
 			getImg() {
@@ -110,6 +132,51 @@
 </script>
 
 <style lang="scss" scoped>
+	.learn {
+		background-color: #fff;
+	}
+	
+	.search-header {
+		width: calc(100%-64rpx);
+		padding: 0 32rpx;
+		height: 112rpx;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		position: relative;
+	
+		.search-img {
+			position: absolute;
+			left: 64rpx;
+			width: 32rpx;
+			height: 32rpx;
+		}
+	
+		.search-input {
+			padding: 0 32rpx 0 76rpx;
+			width: calc(90% - 16rpx);
+			height: 72rpx;
+			line-height: 72rpx;
+			background-color: #F2F3F5;
+			border: solid #e4e4e5 1rpx;
+			border-radius: 36rpx;
+			font-size: 30rpx;
+			color: #666666;
+		}
+	
+		.placeholder-name {
+			font-size: 30rpx;
+			color: #999999;
+		}
+	
+		.search-name {
+			width: 80rpx;
+			text-align: right;
+			font-size: 30rpx;
+			color: #666666;
+		}
+	}
+	
 	.u-wrap {
 		height: calc(100vh);
 		/* #ifdef H5 */

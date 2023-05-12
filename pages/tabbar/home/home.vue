@@ -8,11 +8,17 @@
 		<view class="top">
 			<view class="group" @click="toUserInfo">
 				<view class="userinfo">
-					<view class="pic">
-						<image v-if="hasLogin&&userInfo.avatar_file&&userInfo.avatar_file.url"
-							:src="userInfo.avatar_file.url" mode="aspectFill">
-						</image>
-						<image src="../../../static/images/user-default.jpg" mode="aspectFill"></image>
+					<view class="infoLeft">
+						<view class="userType">
+							<text></text>
+						</view>
+						<view class="pic">
+							<image v-if="hasLogin&&userInfo.avatar_file&&userInfo.avatar_file.url"
+								:src="userInfo.avatar_file.url" mode="aspectFill">
+							</image>
+							<image src="../../../static/images/user-default.jpg" mode="aspectFill"></image>
+						</view>
+						
 					</view>
 					<view class="text" v-if="hasLogin">
 						<view class="nickname">
@@ -57,7 +63,7 @@
 			<view class="list">
 				<view class="group">
 					<view class="item" @click="toMyArticle">
-						<view class="left"><text class="iconfont icon-tianxie"></text><text class="text">我的帖子</text>
+						<view class="left"><text class="iconfont icon-tianxie"></text><text class="text">我的文章</text>
 						</view>
 						<view class="right"><text class="iconfont icon-enter"></text></view>
 					</view>
@@ -71,28 +77,27 @@
 						</view>
 						<view class="right"><text class="iconfont icon-enter"></text></view>
 					</view>
+					<view class="item" @click="toNote" >
+						<view class="left"><text class="iconfont icon-yijianfankui"></text><text class="text">我的笔记</text>
+						</view>
+						<view class="right"><text class="iconfont icon-enter"></text></view>
+					</view>
 				</view>
 
 				<view class="group">
-					<view class="item">
-						<view class="left"><text class="iconfont icon-shiyongwendang"></text><text
-								class="text">关于</text></view>
-						<view class="right"><text class="iconfont icon-enter"></text></view>
-					</view>
+
 					<view class="item" @click="goFeedback">
 						<view class="left"><text class="iconfont icon-yijianfankui"></text><text
 								class="text">意见反馈</text></view>
 						<view class="right"><text class="iconfont icon-enter"></text></view>
 					</view>
-				</view>
-
-				<view class="group">
 					<view class="item" @click="logout">
 						<view class="left"><text class="iconfont icon-tuichudenglu"></text><text
 								class="text">退出登录</text></view>
 						<view class="right"><text class="iconfont icon-enter"></text></view>
 					</view>
 				</view>
+
 			</view>
 		</view>
 
@@ -157,6 +162,7 @@
 				})
 			},
 			
+			//跳转到我的历史页面
 			toViewHistory() {
 				if (this.isLoginPage()) return
 				uni.navigateTo({
@@ -186,6 +192,21 @@
 				}
 
 			},
+			//跳转到意见反馈页面
+			goFeedback() {
+				if(this.isLoginPage()) return
+				uni.navigateTo({
+					url: '/uni_modules/uni-feedback/pages/opendb-feedback/opendb-feedback'
+				})
+			},
+			//跳转到我的笔记页面
+			toNote() {
+				if(this.isLoginPage()) return
+				uni.navigateTo({
+					url: '/pages/home/online_note/list'
+				})
+			},
+ 			//退出登录
 			logout() {
 				if (this.isLoginPage()) return
 				uni.showModal({
@@ -240,19 +261,26 @@
 					display: flex;
 					width: 100%;
 					align-items: center;
-
-					.pic {
-						width: 120rpx;
-						height: 120rpx;
-						border-radius: 50%;
-						overflow: hidden;
-						border: 2px solid #fff;
-
-						image {
-							width: 100%;
-							height: 100%;
+					.infoLeft {
+						.pic {
+							width: 120rpx;
+							height: 120rpx;
+							border-radius: 50%;
+							overflow: hidden;
+							border: 2px solid #fff;
+						
+							image {
+								width: 100%;
+								height: 100%;
+							}
+						}
+						.userType {
+								margin: -10rpx -10rpx 0 0 ;
+								color: #41cfff;
+							
 						}
 					}
+					
 
 					.text {
 						padding-left: 20rpx;

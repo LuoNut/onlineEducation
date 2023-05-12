@@ -4,8 +4,17 @@
 			<image :src="courseData.courseCover" mode="aspectFill"></image>
 		</view>
 		<view class="title">
-			<text class="text">{{courseData.course_name}}</text>
-			<text class="name">{{courseData.user_id[0].nickname}}</text>
+			<view class="text">
+				{{courseData.course_name}}
+			</view>
+			<view class="info">
+				<text class="name">{{courseData.user_id[0].nickname}}</text>
+				<text class="date">
+					<!-- <uni-dateformat :date="courseData.publish_date" format="yyyy/MM/dd" ></uni-dateformat> -->
+					<uni-dateformat :date="courseData.publish_date" :threshold="[60000,3600000 * 24 * 365]" ></uni-dateformat>
+				</text>
+			</view>
+		
 		</view>
 	</view>
 </template>
@@ -50,17 +59,34 @@
 			}
 		}
 		.title {
-			width: 340rpx;
+			flex: 1;
 			display: flex;
 			flex-direction: column;
-			.text {				    
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
+			justify-content: space-between;
+			padding-right: 30rpx;
+			margin-top: 14rpx;
+			.text {
+				// font-size: 36rpx;
+				line-height: 46rpx;
+				text-align: justify;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				word-break: break-all;
 			}
-			.name {
-				font-size: 25rpx;
-			}	
+			.info {
+				padding-bottom: 10rpx;
+				.name {
+					font-size: 25rpx;
+						padding-right: 20rpx;
+				}
+				.date {
+					font-size: 25rpx;
+					color: #999;
+				}
+			}
 		}
 	}
 </style>

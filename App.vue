@@ -1,5 +1,8 @@
 <script>
 	import Vue from 'vue'
+	import {
+		store,
+	} from "@/uni_modules/uni-id-pages/common/store.js"
 	export default {
 		onLaunch: function() {
 		    uni.getSystemInfo({
@@ -27,6 +30,11 @@
 		},
 		onShow: function() {
 			console.log('App Show')
+			if (store.hasLogin) {
+				return
+			}else {
+				this.$store.commit('setRoleId', 0)
+			}
 		},
 		onHide: function() {
 			console.log('App Hide')

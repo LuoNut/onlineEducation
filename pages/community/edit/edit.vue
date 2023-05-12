@@ -83,7 +83,7 @@
 			//上传到云数据库的功能函数
 			setData() {
 				db.collection('blog_article').add({
-					...this.artobj
+					...this.artobj	
 				}).then(res => {
 					uni.hideLoading()
 					uni.showToast({
@@ -98,89 +98,89 @@
 				})
 			},
 
-			//富文本获取焦点
-			onfocus() {
-				this.showTool = true
-			},
+				//富文本获取焦点
+				onfocus() {
+					this.showTool = true
+				},
 
-			//初始化
-			onEditReady() {
-				uni.createSelectorQuery().in(this).select(".myEdit").fields({
-					size: true,
-					context: true
-				}, res => {
-					this.editorCtx = res.context
-				}).exec()
-			},
+				//初始化
+				onEditReady() {
+					uni.createSelectorQuery().in(this).select(".myEdit").fields({
+						size: true,
+						context: true
+					}, res => {
+						this.editorCtx = res.context
+					}).exec()
+				},
 
-			//插入分割线
-			clickDivider() {
-				this.editorCtx.insertDivider()
-			},
+				//插入分割线
+				clickDivider() {
+					this.editorCtx.insertDivider()
+				},
 
-			//点击标题样式按钮
-			clickHeader() {
-				this.showHeader = !this.showHeader
-				this.editorCtx.format('header', this.showHeader ? 'H1' : false)
-			},
+				//点击标题样式按钮
+				clickHeader() {
+					this.showHeader = !this.showHeader
+					this.editorCtx.format('header', this.showHeader ? 'H1' : false)
+				},
 
-			// 点击粗体按钮
-			clickBold() {
-				this.showBold = !this.showBold
-				this.editorCtx.format('bold')
-			},
+				// 点击粗体按钮
+				clickBold() {
+					this.showBold = !this.showBold
+					this.editorCtx.format('bold')
+				},
 
-			// 点击斜体按钮
-			clickItalic() {
-				this.showItalic = !this.showItalic
-				this.editorCtx.format('italic')
-			},
+				// 点击斜体按钮
+				clickItalic() {
+					this.showItalic = !this.showItalic
+					this.editorCtx.format('italic')
+				},
 
-			//点击图片按钮
-			clickInsertImage() {
-				uni.chooseImage({
-					success: (res) => {
-						uni.showLoading({
-							title: "上传中...",
-							mask: true
-						})
-						res.tempFiles.forEach(async item => {
-							let filres = await uniCloud.uploadFile({
-								filePath: item.path,
-								cloudPath: item.name
+				//点击图片按钮
+				clickInsertImage() {
+					uni.chooseImage({
+						success: (res) => {
+							uni.showLoading({
+								title: "上传中...",
+								mask: true
 							})
-							this.editorCtx.insertImage({
-								src: filres.fileID,
+							res.tempFiles.forEach(async item => {
+								let filres = await uniCloud.uploadFile({
+									filePath: item.path,
+									cloudPath: item.name
+								})
+								this.editorCtx.insertImage({
+									src: filres.fileID,
+								})
+								uni.hideLoading()
 							})
-							uni.hideLoading()
-						})
 
+						}
+					})
+				},
+
+				//点击确定键
+				okEdit() {
+					this.showTool = false
+				},
+
+				//判断是否使用了某种样式的功能函数	
+				checkStatus(name, detail, obj) {
+					if (detail.hasOwnProperty(name)) {
+						this[obj] = true
+					} else {
+						this[obj] = false
 					}
-				})
-			},
-
-			//点击确定键
-			okEdit() {
-				this.showTool = false
-			},
-
-			//判断是否使用了某种样式的功能函数	
-			checkStatus(name, detail, obj) {
-				if (detail.hasOwnProperty(name)) {
-					this[obj] = true
-				} else {
-					this[obj] = false
+				},
+				
+				//当编辑器内样式改变时
+				statuschange(e) {
+					let detail = e.detail
+					this.checkStatus("header", detail, 'showHeader')
+					this.checkStatus("bold", detail, 'showBold')
+					this.checkStatus("italic", detail, 'showItalic')
 				}
-			},
-			
-			//当编辑器内样式改变时
-			statuschange(e) {
-				let detail = e.detail
-				this.checkStatus("header", detail, 'showHeader')
-				this.checkStatus("bold", detail, 'showBold')
-				this.checkStatus("italic", detail, 'showItalic')
 			}
-		}
 
 	}
 </script>

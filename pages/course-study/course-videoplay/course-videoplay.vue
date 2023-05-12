@@ -101,6 +101,24 @@
 				<!-- 在线笔记 -->
 				<swiper-item>
 					<view class="swiper-item">
+						<view class="onlineontainer">
+							<view class="content">
+								<editor class="myEdit" placeholder="写点什么吧......" show-img-size show-img-toolbar show-img-resize
+									@ready="onEditReady" @focus="onfocus" @statuschange="statuschange"></editor>
+							</view>
+							<view class="tools" v-show="showTool">
+								<view class="item" @click="clickHeader"><text :class="showHeader ? 'active' : ''"
+										class="iconfont icon-zitibiaoti"></text></view>
+								<view class="item" @click="clickBold"><text :class="showBold ? 'active' : ''"
+										class="iconfont icon-zitijiacu"></text></view>
+								<view class="item" @click="clickItalic"><text :class="showItalic ? 'active' : ''"
+										class="iconfont icon-zitixieti"></text></view>
+								<view class="item" @click="clickDivider"><text class="iconfont icon-fengexian"></text></view>
+								<view class="item" @click="clickInsertImage"><text class="iconfont icon-charutupian"></text></view>
+								<view class="item" @click="okEdit"><text class="iconfont icon-duigoux"></text></view>
+							</view>
+						</view>
+						
 					</view>
 				</swiper-item>
 				
@@ -206,6 +224,14 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 				play_total_time: null, //观看总时间
 				playedList: [], //已经观看完视频列表
 				initialTime: '', //刚观看时的初始时间
+				
+				//在线笔记
+				showTool: false,
+				showHeader: false,
+				showBold: false,
+				showItalic: false,	
+				content: "",//在线笔记内容
+				isOnlineNote: false, //是否有之前的笔记
 
 				// 二级评论
 				secondComShow: false, //是否显示二级评论
@@ -226,12 +252,14 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 			this.scheduleFun() //判断是否第一次播放
 			this.getCourseData() //获取课程数据
 			this.getCourseComment()
+			this.isOnlineNoteFun() //判断第一次记录
 			
 			this.initialTime = Date.now()	
 		},
 		onUnload() {
 			this.playScheduleFun()
 			console.log(Date.now());
+			this.uploadNote()
 		},
 		methods: {
 			giveName,
@@ -408,6 +436,152 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 					}
 				})
 			},
+			
+			//在线笔记。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+			async isOnlineNoteFun() {
+				let res = await db.collection("online_note").where(`"${this.courseId}" == courseId && user_id==$cloudEnv_uid`).get()
+				
+				res.result.affectedDocs ? this.isOnlineNote = true : this.isOnlineNote = false
+				console.log(this.isOnlineNote);
+				console.log(this.editorCtx);
+				if (this.isOnlineNote) {
+					this.content = res.result.data[0].content
+					this.editorCtx.setContents({
+						html: res.result.data[0].content,
+						success: (e) => {
+							this.content = e.html
+							console.log(res.result.data[0].content);
+						}
+					})
+				}
+				
+			},
+			//富文本获取焦点
+			onfocus() {
+				this.showTool = true
+			},
+			
+			//初始化
+			onEditReady() {
+				uni.createSelectorQuery().in(this).select(".myEdit").fields({
+					size: true,
+					context: true
+				}, res => {
+					this.editorCtx = res.context
+				}).exec()
+				
+				
+			},
+			
+			//插入分割线
+			clickDivider() {
+				this.editorCtx.insertDivider()
+			},
+			
+			//点击标题样式按钮
+			clickHeader() {
+				this.showHeader = !this.showHeader
+				this.editorCtx.format('header', this.showHeader ? 'H1' : false)
+			},
+			
+			// 点击粗体按钮
+			clickBold() {
+				this.showBold = !this.showBold
+				this.editorCtx.format('bold')
+			},
+			
+			// 点击斜体按钮
+			clickItalic() {
+				this.showItalic = !this.showItalic
+				this.editorCtx.format('italic')
+			},
+			
+			//点击图片按钮
+			clickInsertImage() {
+				uni.chooseImage({
+					success: (res) => {
+						uni.showLoading({
+							title: "上传中...",
+							mask: true
+						})
+						res.tempFiles.forEach(async item => {
+							let filres = await uniCloud.uploadFile({
+								filePath: item.path,
+								cloudPath: item.name
+							})
+							this.editorCtx.insertImage({
+								src: filres.fileID,
+							})
+							uni.hideLoading()
+						})
+			
+					}
+				})
+			},
+			
+			//点击确定键
+			okEdit() {
+				this.showTool = false
+				this.uploadNote()
+				
+			
+			},
+			
+			//上传笔记到数据库
+			uploadNote() {
+				//保存
+				this.editorCtx.getContents({
+					success: (e) => {
+						this.content = e.html
+						this.setData()
+					}
+				})
+			},
+			
+			//上传到云数据库的功能函数
+			setData() {
+				console.log(this.isOnlineNote);
+				if (this.isOnlineNote) {
+					db.collection('online_note').update({
+						content: this.content,
+					}).then(res => {
+						console.log(res);
+								
+					})
+					
+				}else {
+					db.collection('online_note').add({
+						content: this.content,
+						courseId: this.courseId,
+						courseName: this.courseData.course_name
+						
+					}).then(res => {
+						console.log(res);
+					})
+					this.this.isOnlineNote = true
+				}
+			},
+			//判断是否使用了某种样式的功能函数	
+			checkStatus(name, detail, obj) {
+				if (detail.hasOwnProperty(name)) {
+					this[obj] = true
+				} else {
+					this[obj] = false
+				}
+			},
+			
+			
+			
+			//当编辑器内样式改变时
+			statuschange(e) {
+				let detail = e.detail
+				this.checkStatus("header", detail, 'showHeader')
+				this.checkStatus("bold", detail, 'showBold')
+				this.checkStatus("italic", detail, 'showItalic')
+			},
+			
+			
+			//............................................................
 			
 			//获取课程视频评论数据
 			async getCourseComment() {
@@ -607,6 +781,36 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 						margin: 50rpx auto;
 						display: block;
 						line-height: 80rpx;
+					}
+				}
+				.onlineontainer {
+					.content {
+						.myEdit {
+							height: calc(100vh - 500rpx);
+							margin-bottom: 30rpx;
+						}
+					}
+								
+					.tools {
+						position: fixed;
+						left: 0;
+						bottom: 0;
+						display: flex;
+						justify-content: space-around;
+						align-items: center;
+						width: 100%;
+						height: 80rpx;
+						background-color: #fff;
+						border-top: 1rpx solid #f4f4f4;
+								
+						.iconfont {
+							font-size: 36rpx;
+							color: #333;
+								
+							&.active {
+								color: #0199Fe;
+							}
+						}
 					}
 				}
 				.comment-container {

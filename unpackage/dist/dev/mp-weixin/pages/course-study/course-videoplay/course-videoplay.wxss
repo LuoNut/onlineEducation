@@ -87,6 +87,29 @@
   display: block;
   line-height: 80rpx;
 }
+.container .content .onlineontainer .content .myEdit.data-v-14645ae0 {
+  height: calc(100vh - 500rpx);
+  margin-bottom: 30rpx;
+}
+.container .content .onlineontainer .tools.data-v-14645ae0 {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 80rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #f4f4f4;
+}
+.container .content .onlineontainer .tools .iconfont.data-v-14645ae0 {
+  font-size: 36rpx;
+  color: #333;
+}
+.container .content .onlineontainer .tools .iconfont.active.data-v-14645ae0 {
+  color: #0199Fe;
+}
 .container .content .comment-container .comment-box.data-v-14645ae0 {
   height: 508rpx;
   overflow-y: auto;

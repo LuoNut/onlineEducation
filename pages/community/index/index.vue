@@ -3,7 +3,7 @@
 		<!-- 顶部区域 -->
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
 			<block slot="backText">返回</block>
-			<block slot="content">技术栈</block>
+			<block slot="content">社区</block>
 		</cu-custom>
 		<!-- 导航部分 -->
 		<view class="nav" :class="show ? 'active' : ''">
@@ -257,6 +257,7 @@
 		}
 
 		.content {
+			background-color: #fff;
 			.Item {
 				padding: 30rpx;
 				border-bottom: #F7F7F7 15rpx solid;

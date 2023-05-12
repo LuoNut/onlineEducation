@@ -34,7 +34,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _view_history_vue_vue_type_template_id_ede1e410___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./view_history.vue?vue&type=template&id=ede1e410& */ 410);
 /* harmony import */ var _view_history_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./view_history.vue?vue&type=script&lang=js& */ 412);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _view_history_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _view_history_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 44);
+/* harmony import */ var _HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 46);
 
 var renderjs
 
@@ -100,7 +100,7 @@ var components
 try {
   components = {
     courseList: function () {
-      return __webpack_require__.e(/*! import() | components/course-list/course-list */ "components/course-list/course-list").then(__webpack_require__.bind(null, /*! @/components/course-list/course-list.vue */ 485))
+      return __webpack_require__.e(/*! import() | components/course-list/course-list */ "components/course-list/course-list").then(__webpack_require__.bind(null, /*! @/components/course-list/course-list.vue */ 516))
     },
   }
 } catch (e) {
@@ -200,7 +200,7 @@ var _default = {
             switch (_context.prev = _context.next) {
               case 0:
                 likeTemp = db.collection("course_play_history").where("user_id==$cloudEnv_uid").orderBy("play_date desc").getTemp();
-                courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id").orderBy("publish_date desc").getTemp();
+                courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id,publish_date").orderBy("publish_date desc").getTemp();
                 userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp();
                 _context.next = 5;
                 return db.collection(likeTemp, courseTemp, userTemp).get();

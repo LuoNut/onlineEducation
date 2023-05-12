@@ -1,62 +1,72 @@
 <!-- 账号注册页 -->
 <template>
-	<view class="uni-content">
-		<match-media :min-width="690">
-			<view class="login-logo">
-				<image :src="logo"></image>
-			</view>
-			<!-- 顶部文字 -->
-			<text class="title title-box">用户名密码注册</text>
-		</match-media>
-		<uni-forms ref="form" :value="formData" :rules="rules" validate-trigger="submit" err-show-type="toast">
-			<uni-forms-item name="username" required>
-				<uni-easyinput :inputBorder="false" :focus="focusUsername" @blur="focusUsername = false"
-					class="input-box" placeholder="请输入用户名" v-model="formData.username" trim="both" />
-			</uni-forms-item>
-	<!-- 		<uni-forms-item name="nickname">
-				<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
-					class="input-box" placeholder="请输入用户昵称" v-model="formData.nickname" trim="both" />
-			</uni-forms-item> -->
-			<uni-forms-item name="nickname">
-				<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
-					class="input-box" placeholder="请输入用户姓名" v-model="formData.name" trim="both" />
-			</uni-forms-item>
-			<uni-forms-item name="studentnumber">
-				<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
-					class="input-box" placeholder="请输入10位学号编号" v-model="formData.studentnumber" trim="both" />
-				</uni-forms-item>
+	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText">返回</block>
+			<block slot="content">登录</block>
+		</cu-custom>
+		<view class="uni-content">
 			
-			<uni-forms-item name="studentnumber">
-				 <view>
-						<uni-data-checkbox  v-model="formData.userType" :localdata="range" @change="change" selected-color="#007aff" selected-text-color="#666" ></uni-data-checkbox>
-					</view>
-			</uni-forms-item>
-			
-			<uni-forms-item name="password" v-model="formData.password" required>
-				<uni-easyinput :inputBorder="false" :focus="focusPassword" @blur="focusPassword = false"
-					class="input-box" maxlength="20"
-					:placeholder="'请输入' + (config.passwordStrength == 'weak'?'6':'8') + '-16位密码'" type="password"
-					v-model="formData.password" trim="both" />
-			</uni-forms-item>
-			<uni-forms-item name="password2" v-model="formData.password2" required>
-				<uni-easyinput :inputBorder="false" :focus="focusPassword2" @blur="focusPassword2 =false"
-					class="input-box" placeholder="再次输入密码" maxlength="20" type="password" v-model="formData.password2"
-					trim="both" />
-			</uni-forms-item>
-			<uni-forms-item>
-				<uni-captcha ref="captcha" scene="register" v-model="formData.captcha" />
-			</uni-forms-item>
-			<uni-id-pages-agreements scope="register" ref="agreements"></uni-id-pages-agreements>
-			<button class="uni-btn" type="primary" @click="submit">注册</button>
-			<button @click="navigateBack" class="register-back">返回</button>
 			<match-media :min-width="690">
-				<view class="link-box">
-					<text class="link" @click="registerByEmail">邮箱验证码注册</text>
-					<text class="link" @click="toLogin">已有账号？点此登录</text>
+				<view class="login-logo">
+					<image :src="logo"></image>
 				</view>
+				<!-- 顶部文字 -->
+				<text class="title title-box">用户名密码注册</text>
 			</match-media>
-		</uni-forms>
+			<uni-forms ref="form" :value="formData" :rules="rules" validate-trigger="submit" err-show-type="toast">
+				<uni-forms-item name="username" required>
+					<uni-easyinput :inputBorder="false" :focus="focusUsername" @blur="focusUsername = false"
+						class="input-box" placeholder="请输入用户名" v-model="formData.username" trim="both" />
+				</uni-forms-item>
+		<!-- 		<uni-forms-item name="nickname">
+					<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
+						class="input-box" placeholder="请输入用户昵称" v-model="formData.nickname" trim="both" />
+				</uni-forms-item> -->
+				<uni-forms-item name="nickname">
+					<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
+						class="input-box" placeholder="请输入用户姓名" v-model="formData.name" trim="both" />
+				</uni-forms-item>
+				
+				
+				<uni-forms-item name="userType">
+					 <view>
+							<uni-data-checkbox  v-model="formData.userType" :localdata="range" @change="change" selected-color="#007aff" selected-text-color="#666" ></uni-data-checkbox>
+						</view>
+				</uni-forms-item>
+				
+				<uni-forms-item name="studentnumber" v-if="formData.userType == 'student'" >
+					<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
+						class="input-box" placeholder="请输入10位学号编号" v-model="formData.studentnumber" trim="both" />
+				</uni-forms-item>
+				
+				<uni-forms-item name="password" v-model="formData.password" required>
+					<uni-easyinput :inputBorder="false" :focus="focusPassword" @blur="focusPassword = false"
+						class="input-box" maxlength="20"
+						:placeholder="'请输入' + (config.passwordStrength == 'weak'?'6':'8') + '-16位密码'" type="password"
+						v-model="formData.password" trim="both" />
+				</uni-forms-item>
+				<uni-forms-item name="password2" v-model="formData.password2" required>
+					<uni-easyinput :inputBorder="false" :focus="focusPassword2" @blur="focusPassword2 =false"
+						class="input-box" placeholder="再次输入密码" maxlength="20" type="password" v-model="formData.password2"
+						trim="both" />
+				</uni-forms-item>
+				<uni-forms-item>
+					<uni-captcha ref="captcha" scene="register" v-model="formData.captcha" />
+				</uni-forms-item>
+				<uni-id-pages-agreements scope="register" ref="agreements"></uni-id-pages-agreements>
+				<button class="uni-btn" type="primary" @click="submit">注册</button>
+				<button @click="navigateBack" class="register-back">返回</button>
+				<match-media :min-width="690">
+					<view class="link-box">
+						<text class="link" @click="registerByEmail">邮箱验证码注册</text>
+						<text class="link" @click="toLogin">已有账号？点此登录</text>
+					</view>
+				</match-media>
+			</uni-forms>
+		</view>
 	</view>
+	
 </template>
 
 <script>
@@ -89,7 +99,7 @@
 				focusPassword: false,
 				focusPassword2: false,
 				logo: "/static/logo.png",
-				range: [{"value": "student","text": "学生"	},{"value": "teacher","text": "教师"}]
+				range: [{"value": "student","text": "学习者"	},{"value": "teacher","text": "教师"}]
 			}
 		},
 		onReady() {

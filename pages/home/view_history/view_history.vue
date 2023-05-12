@@ -25,7 +25,7 @@
 		methods: {
 			async getCourseLike() {
 				const likeTemp = db.collection("course_play_history").where(`user_id==$cloudEnv_uid`).orderBy("play_date desc").getTemp()
-				const courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id").orderBy("publish_date desc").getTemp()
+				const courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id,publish_date").orderBy("publish_date desc").getTemp()
 				const userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp()
 				
 				let res = await db.collection(likeTemp,courseTemp,userTemp).get()

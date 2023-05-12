@@ -36,7 +36,7 @@
 		"estimate": {
 			"bsonType": "int",
 			"title": "答题正确/错误",
-			"description": "答题正确/错误 错误0 正确1 未做题3",
+			"description": "答题正确/错误 错误0 正确1 未做题3	",
 			"defaultValue": 3
 		}
 	}

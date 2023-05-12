@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _learn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./learn.vue?vue&type=script&lang=js& */ 201);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _learn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _learn_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 /* harmony import */ var _learn_vue_vue_type_style_index_0_id_3b95fac1_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./learn.vue?vue&type=style&index=0&id=3b95fac1&lang=scss&scoped=true& */ 203);
-/* harmony import */ var _HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 44);
+/* harmony import */ var _HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 46);
 
 var renderjs
 
@@ -101,11 +101,8 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uIcon: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-icon/u-icon */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-icon/u-icon")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-icon/u-icon.vue */ 499))
-    },
     tabbar: function () {
-      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 492))
+      return __webpack_require__.e(/*! import() | components/tabbar/tabbar */ "components/tabbar/tabbar").then(__webpack_require__.bind(null, /*! @/components/tabbar/tabbar.vue */ 523))
     },
   }
 } catch (e) {
@@ -218,6 +215,12 @@ var _classifyData = _interopRequireDefault(__webpack_require__(/*! @/common/clas
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -230,7 +233,9 @@ var _default = {
       // 预设当前项的值
       menuHeight: 0,
       // 左边菜单的高度
-      menuItemHeight: 0 // 左边菜单item的高度	
+      menuItemHeight: 0,
+      // 左边菜单item的高度	
+      hotList: ['白酒', '苹果醋', '红酒', '笔记本', '洗衣液', '平板电脑', '电视机'] //热门搜索
     };
   },
   onLoad: function onLoad() {
@@ -242,10 +247,24 @@ var _default = {
   },
 
   methods: {
+    //搜索内容
+    change: function change(e) {
+      console.log('搜索内容：' + e);
+    },
+    //input事件
+    input: function input(e) {
+      console.log('搜索框输入的内容：' + e);
+    },
     //跳转到对应的课程列表yemian
     toCourseList: function toCourseList(e1, e2) {
       uni.navigateTo({
         url: "/pages/learn/course-list/course-list?subject_type_one=".concat(e1.name, "&subject_type_two=").concat(e2.name)
+      });
+    },
+    //跳转到搜索页面
+    toSearch: function toSearch() {
+      uni.navigateTo({
+        url: "/pages/learn/search/search"
       });
     },
     getImg: function getImg() {

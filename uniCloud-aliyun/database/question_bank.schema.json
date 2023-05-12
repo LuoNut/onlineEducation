@@ -43,8 +43,8 @@
 		"src_title": {
 			"bsonType": "file",
 			"fileMediaType": "image",
-			"title": "题目类型",
-			"description": "题目是否有图片"
+			"title": "题目为图片",
+			"description": "题目为图片"
 		},
 		"isimg": {
 			"bsonType": "string",

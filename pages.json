@@ -243,7 +243,62 @@
             }
             
         }
-    ],
+    ,{
+    "path": "uni_modules/uni-feedback/pages/opendb-feedback/opendb-feedback",
+    "style": {
+        "navigationBarTitleText": "新增"
+    }
+}
+,{
+    "path": "uni_modules/uni-feedback/pages/opendb-feedback/edit",
+    "style": {
+        "navigationBarTitleText": "编辑"
+    }
+}
+,{
+    "path": "uni_modules/uni-feedback/pages/opendb-feedback/list",
+    "style": {
+        "navigationBarTitleText": "列表"
+    }
+}
+,{
+    "path": "uni_modules/uni-feedback/pages/opendb-feedback/detail",
+    "style": {
+        "navigationBarTitleText": "详情"
+    }
+}
+    ,{
+            "path" : "pages/learn/search/search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/learn/search-result/search-result",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ,{
+    "path": "pages/home/online_note/edit",
+    "style": {
+        "navigationBarTitleText": "编辑"
+    }
+}
+,{
+    "path": "pages/home/online_note/list",
+    "style": {
+        "navigationBarTitleText": "列表"
+    }
+}
+
+],
 	"globalStyle": {
 		// "navigationBarTextStyle": "black",
 		// "navigationBarTitleText": "uni-app",

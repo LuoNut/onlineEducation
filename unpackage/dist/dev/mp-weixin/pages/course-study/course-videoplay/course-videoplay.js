@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _course_videoplay_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./course-videoplay.vue?vue&type=script&lang=js& */ 390);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _course_videoplay_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _course_videoplay_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 /* harmony import */ var _course_videoplay_vue_vue_type_style_index_0_id_14645ae0_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./course-videoplay.vue?vue&type=style&index=0&id=14645ae0&lang=scss&scoped=true& */ 392);
-/* harmony import */ var _HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 44);
+/* harmony import */ var _HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 46);
 
 var renderjs
 
@@ -102,28 +102,28 @@ var components
 try {
   components = {
     uTabs: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 635))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-tabs/u-tabs.vue */ 666))
     },
     uniFav: function () {
-      return Promise.all(/*! import() | uni_modules/uni-fav/components/uni-fav/uni-fav */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-fav/components/uni-fav/uni-fav")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-fav/components/uni-fav/uni-fav.vue */ 745))
+      return Promise.all(/*! import() | uni_modules/uni-fav/components/uni-fav/uni-fav */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-fav/components/uni-fav/uni-fav")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-fav/components/uni-fav/uni-fav.vue */ 776))
     },
     uniCollapse: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse/uni-collapse */ "uni_modules/uni-collapse/components/uni-collapse/uni-collapse").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue */ 756))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse/uni-collapse */ "uni_modules/uni-collapse/components/uni-collapse/uni-collapse").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse/uni-collapse.vue */ 787))
     },
     uniCollapseItem: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item */ "uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue */ 763))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item */ "uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item.vue */ 794))
     },
     uEmpty: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-empty/u-empty.vue */ 684))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-empty/u-empty */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-empty/u-empty")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-empty/u-empty.vue */ 715))
     },
     commentItem: function () {
-      return __webpack_require__.e(/*! import() | components/comment-item/comment-item */ "components/comment-item/comment-item").then(__webpack_require__.bind(null, /*! @/components/comment-item/comment-item.vue */ 692))
+      return __webpack_require__.e(/*! import() | components/comment-item/comment-item */ "components/comment-item/comment-item").then(__webpack_require__.bind(null, /*! @/components/comment-item/comment-item.vue */ 723))
     },
     commentFrame: function () {
-      return __webpack_require__.e(/*! import() | components/comment-frame/comment-frame */ "components/comment-frame/comment-frame").then(__webpack_require__.bind(null, /*! @/components/comment-frame/comment-frame.vue */ 699))
+      return __webpack_require__.e(/*! import() | components/comment-frame/comment-frame */ "components/comment-frame/comment-frame").then(__webpack_require__.bind(null, /*! @/components/comment-frame/comment-frame.vue */ 730))
     },
     uPopup: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 770))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-popup/u-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-popup/u-popup")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-popup/u-popup.vue */ 801))
     },
   }
 } catch (e) {
@@ -200,9 +200,9 @@ var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 30));
 var _tools = __webpack_require__(/*! ../../../utils/tools.js */ 351);
-var _store = __webpack_require__(/*! @/uni_modules/uni-id-pages/common/store.js */ 184);
+var _store = __webpack_require__(/*! @/uni_modules/uni-id-pages/common/store.js */ 42);
 var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 37));
-var _mixin = __webpack_require__(/*! ../../../uni_modules/uview-ui/libs/mixin/mixin.js */ 49);
+var _mixin = __webpack_require__(/*! ../../../uni_modules/uview-ui/libs/mixin/mixin.js */ 51);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var db = uniCloud.database();
@@ -253,6 +253,16 @@ var _default = {
       initialTime: '',
       //刚观看时的初始时间
 
+      //在线笔记
+      showTool: false,
+      showHeader: false,
+      showBold: false,
+      showItalic: false,
+      content: "",
+      //在线笔记内容
+      isOnlineNote: false,
+      //是否有之前的笔记
+
       // 二级评论
       secondComShow: false,
       //是否显示二级评论
@@ -273,11 +283,14 @@ var _default = {
     this.scheduleFun(); //判断是否第一次播放
     this.getCourseData(); //获取课程数据
     this.getCourseComment();
+    this.isOnlineNoteFun(); //判断第一次记录
+
     this.initialTime = Date.now();
   },
   onUnload: function onUnload() {
     this.playScheduleFun();
     console.log(Date.now());
+    this.uploadNote();
   },
   methods: {
     giveName: _tools.giveName,
@@ -476,45 +489,205 @@ var _default = {
         }
       });
     },
-    //获取课程视频评论数据
-    getCourseComment: function getCourseComment() {
+    //在线笔记。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+    isOnlineNoteFun: function isOnlineNoteFun() {
       var _this5 = this;
       return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4() {
-        var commentTemp, userTemp, res, idArr, replyArr;
+        var res;
         return _regenerator.default.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                commentTemp = db.collection("course_comment").where("course_id == \"".concat(_this5.courseId, "\" && comment_type==0")).getTemp();
+                _context4.next = 2;
+                return db.collection("online_note").where("\"".concat(_this5.courseId, "\" == courseId && user_id==$cloudEnv_uid")).get();
+              case 2:
+                res = _context4.sent;
+                res.result.affectedDocs ? _this5.isOnlineNote = true : _this5.isOnlineNote = false;
+                console.log(_this5.isOnlineNote);
+                console.log(_this5.editorCtx);
+                if (_this5.isOnlineNote) {
+                  _this5.content = res.result.data[0].content;
+                  _this5.editorCtx.setContents({
+                    html: res.result.data[0].content,
+                    success: function success(e) {
+                      _this5.content = e.html;
+                      console.log(res.result.data[0].content);
+                    }
+                  });
+                }
+              case 7:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    //富文本获取焦点
+    onfocus: function onfocus() {
+      this.showTool = true;
+    },
+    //初始化
+    onEditReady: function onEditReady() {
+      var _this6 = this;
+      uni.createSelectorQuery().in(this).select(".myEdit").fields({
+        size: true,
+        context: true
+      }, function (res) {
+        _this6.editorCtx = res.context;
+      }).exec();
+    },
+    //插入分割线
+    clickDivider: function clickDivider() {
+      this.editorCtx.insertDivider();
+    },
+    //点击标题样式按钮
+    clickHeader: function clickHeader() {
+      this.showHeader = !this.showHeader;
+      this.editorCtx.format('header', this.showHeader ? 'H1' : false);
+    },
+    // 点击粗体按钮
+    clickBold: function clickBold() {
+      this.showBold = !this.showBold;
+      this.editorCtx.format('bold');
+    },
+    // 点击斜体按钮
+    clickItalic: function clickItalic() {
+      this.showItalic = !this.showItalic;
+      this.editorCtx.format('italic');
+    },
+    //点击图片按钮
+    clickInsertImage: function clickInsertImage() {
+      var _this7 = this;
+      uni.chooseImage({
+        success: function success(res) {
+          uni.showLoading({
+            title: "上传中...",
+            mask: true
+          });
+          res.tempFiles.forEach( /*#__PURE__*/function () {
+            var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee5(item) {
+              var filres;
+              return _regenerator.default.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      _context5.next = 2;
+                      return uniCloud.uploadFile({
+                        filePath: item.path,
+                        cloudPath: item.name
+                      });
+                    case 2:
+                      filres = _context5.sent;
+                      _this7.editorCtx.insertImage({
+                        src: filres.fileID
+                      });
+                      uni.hideLoading();
+                    case 5:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5);
+            }));
+            return function (_x) {
+              return _ref.apply(this, arguments);
+            };
+          }());
+        }
+      });
+    },
+    //点击确定键
+    okEdit: function okEdit() {
+      this.showTool = false;
+      this.uploadNote();
+    },
+    //上传笔记到数据库
+    uploadNote: function uploadNote() {
+      var _this8 = this;
+      //保存
+      this.editorCtx.getContents({
+        success: function success(e) {
+          _this8.content = e.html;
+          _this8.setData();
+        }
+      });
+    },
+    //上传到云数据库的功能函数
+    setData: function setData() {
+      console.log(this.isOnlineNote);
+      if (this.isOnlineNote) {
+        db.collection('online_note').update({
+          content: this.content
+        }).then(function (res) {
+          console.log(res);
+        });
+      } else {
+        db.collection('online_note').add({
+          content: this.content,
+          courseId: this.courseId,
+          courseName: this.courseData.course_name
+        }).then(function (res) {
+          console.log(res);
+        });
+        this.this.isOnlineNote = true;
+      }
+    },
+    //判断是否使用了某种样式的功能函数	
+    checkStatus: function checkStatus(name, detail, obj) {
+      if (detail.hasOwnProperty(name)) {
+        this[obj] = true;
+      } else {
+        this[obj] = false;
+      }
+    },
+    //当编辑器内样式改变时
+    statuschange: function statuschange(e) {
+      var detail = e.detail;
+      this.checkStatus("header", detail, 'showHeader');
+      this.checkStatus("bold", detail, 'showBold');
+      this.checkStatus("italic", detail, 'showItalic');
+    },
+    //............................................................
+    //获取课程视频评论数据
+    getCourseComment: function getCourseComment() {
+      var _this9 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee6() {
+        var commentTemp, userTemp, res, idArr, replyArr;
+        return _regenerator.default.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commentTemp = db.collection("course_comment").where("course_id == \"".concat(_this9.courseId, "\" && comment_type==0")).getTemp();
                 userTemp = db.collection("uni-id-users").field("_id,username,nickname").getTemp();
-                _context4.next = 4;
+                _context6.next = 4;
                 return db.collection(commentTemp, userTemp).orderBy("comment_date desc").get();
               case 4:
-                res = _context4.sent;
+                res = _context6.sent;
                 //获取一级评论所对应的二级评论的回复量
                 idArr = res.result.data.map(function (item) {
                   return item._id;
                 });
-                _context4.next = 8;
+                _context6.next = 8;
                 return db.collection("course_comment").where({
                   reply_comment_id: db.command.in(idArr)
                 }).groupBy('reply_comment_id').groupField('count(*) as totalReply').get();
               case 8:
-                replyArr = _context4.sent;
+                replyArr = _context6.sent;
                 res.result.data.forEach(function (item) {
                   var index = replyArr.result.data.findIndex(function (find) {
                     return item._id == find.reply_comment_id;
                   });
                   if (index > -1) item.totalReply = replyArr.result.data[index].totalReply;
                 });
-                if (!res.result.data.length) _this5.noComment = true;
-                _this5.commentList = res.result.data;
+                if (!res.result.data.length) _this9.noComment = true;
+                _this9.commentList = res.result.data;
               case 12:
               case "end":
-                return _context4.stop();
+                return _context6.stop();
             }
           }
-        }, _callee4);
+        }, _callee6);
       }))();
     },
     //评论成功的回调,评论无感增加操作
@@ -580,32 +753,32 @@ var _default = {
     },
     //获取二级评论
     getArticleComment: function getArticleComment() {
-      var _this6 = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee5() {
+      var _this10 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee7() {
         var commentTemp, userTemp, res;
-        return _regenerator.default.wrap(function _callee5$(_context5) {
+        return _regenerator.default.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
-                commentTemp = db.collection("course_comment").where("course_id == \"".concat(_this6.replyItem.course_id, "\" && comment_type==1 && reply_comment_id==\"").concat(_this6.replyItem._id, "\"")).getTemp();
+                commentTemp = db.collection("course_comment").where("course_id == \"".concat(_this10.replyItem.course_id, "\" && comment_type==1 && reply_comment_id==\"").concat(_this10.replyItem._id, "\"")).getTemp();
                 userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp();
-                _context5.next = 4;
+                _context7.next = 4;
                 return db.collection(commentTemp, userTemp).orderBy("comment_date desc").get();
               case 4:
-                res = _context5.sent;
+                res = _context7.sent;
                 if (res.result.data.length) {
-                  _context5.next = 7;
+                  _context7.next = 7;
                   break;
                 }
-                return _context5.abrupt("return", _this6.secondNoComment = true);
+                return _context7.abrupt("return", _this10.secondNoComment = true);
               case 7:
-                _this6.replyList = res.result.data;
+                _this10.replyList = res.result.data;
               case 8:
               case "end":
-                return _context5.stop();
+                return _context7.stop();
             }
           }
-        }, _callee5);
+        }, _callee7);
       }))();
     }
   }

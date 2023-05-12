@@ -12,7 +12,7 @@
 			</view>
 			<view class="item" @click="toCourseManagement">
 				<text class="iconfont icon-tingke"></text>
-				<text class="text">课程管理</text>
+				<text class="text">课程班级</text>
 			</view>
 		</view>
 		<!-- //底部tabbar -->

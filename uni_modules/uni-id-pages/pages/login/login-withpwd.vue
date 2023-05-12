@@ -1,37 +1,44 @@
 <!-- 账号密码登录页 -->
 <template>
-	<view class="uni-content">
-		<view class="login-logo">
-			<image :src="logo"></image>
-		</view>
-		<!-- 顶部文字 -->
-		<text class="title title-box">账号密码登录</text>
-		<uni-forms>
-			<uni-forms-item name="username">
-				<uni-easyinput :focus="focusUsername" @blur="focusUsername = false" class="input-box"
-					:inputBorder="false" v-model="username" placeholder="请输入手机号/用户名/邮箱" />
-			</uni-forms-item>
-			<uni-forms-item name="password">
-				<uni-easyinput :focus="focusPassword" @blur="focusPassword = false" class="input-box" clearable
-					type="password" :inputBorder="false" v-model="password" placeholder="请输入密码" />
-			</uni-forms-item>
-		</uni-forms>
-		<uni-captcha v-if="needCaptcha" focus ref="captcha" scene="login-by-pwd" v-model="captcha" />
-		<!-- 带选择框的隐私政策协议组件 -->
-		<uni-id-pages-agreements scope="login" ref="agreements"></uni-id-pages-agreements>
-		<button class="uni-btn" type="primary" @click="pwdLogin">登录</button>
-		<!-- 忘记密码 -->
-		<view class="link-box">
-			<view v-if="!config.isAdmin">
-				<text class="forget">忘记了？</text>
-				<text class="link" @click="toRetrievePwd">找回密码</text>
+	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText">返回</block>
+			<block slot="content">登录</block>
+		</cu-custom>
+		<view class="uni-content">
+			<view class="login-logo">
+				<image :src="logo"></image>
 			</view>
-			<text class="link" @click="toRegister">{{config.isAdmin ? '注册管理员账号': '注册账号'}}</text>
-			<!-- <text class="link" @click="toRegister" v-if="!config.isAdmin">注册账号</text> -->
+			<!-- 顶部文字 -->
+			<text class="title title-box">账号密码登录</text>
+			<uni-forms>
+				<uni-forms-item name="username">
+					<uni-easyinput :focus="focusUsername" @blur="focusUsername = false" class="input-box"
+						:inputBorder="false" v-model="username" placeholder="请输入手机号/用户名/邮箱" />
+				</uni-forms-item>
+				<uni-forms-item name="password">
+					<uni-easyinput :focus="focusPassword" @blur="focusPassword = false" class="input-box" clearable
+						type="password" :inputBorder="false" v-model="password" placeholder="请输入密码" />
+				</uni-forms-item>
+			</uni-forms>
+			<uni-captcha v-if="needCaptcha" focus ref="captcha" scene="login-by-pwd" v-model="captcha" />
+			<!-- 带选择框的隐私政策协议组件 -->
+			<uni-id-pages-agreements scope="login" ref="agreements"></uni-id-pages-agreements>
+			<button class="uni-btn" type="primary" @click="pwdLogin">登录</button>
+			<!-- 忘记密码 -->
+			<view class="link-box">
+				<view v-if="!config.isAdmin">
+					<text class="forget">忘记了？</text>
+					<text class="link" @click="toRetrievePwd">找回密码</text>
+				</view>
+				<text class="link" @click="toRegister">{{config.isAdmin ? '注册管理员账号': '注册账号'}}</text>
+				<!-- <text class="link" @click="toRegister" v-if="!config.isAdmin">注册账号</text> -->
+			</view>
+			<!-- 悬浮登录方式组件 -->
+			<uni-id-pages-fab-login ref="uniFabLogin"></uni-id-pages-fab-login>
 		</view>
-		<!-- 悬浮登录方式组件 -->
-		<uni-id-pages-fab-login ref="uniFabLogin"></uni-id-pages-fab-login>
 	</view>
+	
 </template>
 
 <script>

@@ -1,0 +1,68 @@
+{
+	"bsonType": "object",
+	"required": [
+		"user_id",
+		"title",
+		"subject_type"
+	],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "存储文档 ID（用户 ID），系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "文章作者ID， 参考`uni-id-users` 表",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
+		},
+		"content": {
+			"bsonType": "string",
+			"title": "笔记内容",
+			"description": "笔记内容",
+			"label": "笔记内容",
+			"trim": "right"
+		},
+		"courseName": {
+			"bsonType": "string",
+			"title": "课程标题",
+			"description": "课程标题"
+		},
+		"courseId": {
+			"bsonType": "string",
+			"title": "课程id",
+			"description": "课程id"
+		},
+		"publish_ip": {
+			"bsonType": "string",
+			"title": "发布文章时IP地址",
+			"description": "发表时 IP 地址",
+			"forceDefaultValue": {
+				"$env": "clientIP"
+			}
+		},
+		"last_modify_date": {
+			"bsonType": "timestamp",
+			"title": "最后修改时间",
+			"description": "最后修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"last_modify_ip": {
+			"bsonType": "string",
+			"description": "最后修改时 IP 地址",
+			"forceDefaultValue": {
+				"$env": "clientIP"
+			}
+		}
+	},
+	"version": "0.0.1"
+}

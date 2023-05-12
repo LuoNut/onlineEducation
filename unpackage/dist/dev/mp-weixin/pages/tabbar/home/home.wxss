@@ -47,16 +47,20 @@
   width: 100%;
   align-items: center;
 }
-.user .top .group .userinfo .pic.data-v-52760117 {
+.user .top .group .userinfo .infoLeft .pic.data-v-52760117 {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid #fff;
 }
-.user .top .group .userinfo .pic image.data-v-52760117 {
+.user .top .group .userinfo .infoLeft .pic image.data-v-52760117 {
   width: 100%;
   height: 100%;
+}
+.user .top .group .userinfo .infoLeft .userType.data-v-52760117 {
+  margin: -10rpx -10rpx 0 0;
+  color: #41cfff;
 }
 .user .top .group .userinfo .text.data-v-52760117 {
   padding-left: 20rpx;
