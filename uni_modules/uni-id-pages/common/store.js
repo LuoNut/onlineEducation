@@ -57,8 +57,9 @@ export const mutations = {
 			})
 			try {
 				let res = await usersTable.where("'_id' == $cloudEnv_uid")
-					.field('mobile,nickname,username,email,avatar_file')
+					.field('mobile,name,username,userType,avatar_file')
 					.get()
+				
 
 				const realNameRes = await uniIdCo.getRealNameInfo()
 
@@ -74,7 +75,6 @@ export const mutations = {
 		}
 	},
 	async setUserInfo(data, {cover}={cover:false}) {
-		// console.log('set-userInfo', data);
 		let userInfo = cover?data:Object.assign(store.userInfo,data)
 		store.userInfo = Object.assign({},userInfo)
 		store.hasLogin = Object.keys(store.userInfo).length != 0

@@ -102,22 +102,22 @@ var components
 try {
   components = {
     uniIdPagesAvatar: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-id-pages/components/uni-id-pages-avatar/uni-id-pages-avatar */ "uni_modules/uni-id-pages/components/uni-id-pages-avatar/uni-id-pages-avatar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-id-pages/components/uni-id-pages-avatar/uni-id-pages-avatar.vue */ 539))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-id-pages/components/uni-id-pages-avatar/uni-id-pages-avatar */ "uni_modules/uni-id-pages/components/uni-id-pages-avatar/uni-id-pages-avatar").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-id-pages/components/uni-id-pages-avatar/uni-id-pages-avatar.vue */ 562))
     },
     uniList: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list/uni-list */ "uni_modules/uni-list/components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list/uni-list.vue */ 546))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list/uni-list */ "uni_modules/uni-list/components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list/uni-list.vue */ 569))
     },
     uniListItem: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-item/uni-list-item */ "uni_modules/uni-list/components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-item/uni-list-item.vue */ 553))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-list/components/uni-list-item/uni-list-item */ "uni_modules/uni-list/components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-list/components/uni-list-item/uni-list-item.vue */ 576))
+    },
+    uniDataCheckbox: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox */ "uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox.vue */ 675))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 560))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 583))
     },
     uniPopupDialog: function () {
-      return Promise.all(/*! import() | uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue */ 567))
-    },
-    uniIdPagesBindMobile: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-id-pages/components/uni-id-pages-bind-mobile/uni-id-pages-bind-mobile */ "uni_modules/uni-id-pages/components/uni-id-pages-bind-mobile/uni-id-pages-bind-mobile").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-id-pages/components/uni-id-pages-bind-mobile/uni-id-pages-bind-mobile.vue */ 579))
+      return Promise.all(/*! import() | uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue */ 590))
     },
   }
 } catch (e) {
@@ -228,6 +228,13 @@ var _store = __webpack_require__(/*! @/uni_modules/uni-id-pages/common/store.js 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 var uniIdCo = uniCloud.importObject("uni-id-co");
 var _default = {
@@ -244,6 +251,14 @@ var _default = {
   },
   data: function data() {
     return {
+      range: [{
+        "value": "student",
+        "text": "学习者"
+      }, {
+        "value": "teacher",
+        "text": "教师"
+      }],
+      uservalue: "",
       univerifyStyle: {
         authButton: {
           "title": "本机号码一键绑定" // 授权按钮文案
@@ -306,6 +321,24 @@ var _default = {
     }))();
   },
   methods: {
+    groupChange: function groupChange(e) {
+      console.log('e:', e);
+      // console.log(userType)
+      // if (e == "teacher") {
+      // 	uni.showModal({
+      // 		title:"是否申请教师身份?",
+      // 		success: function(e) {
+      // 			if (res.confirm) {
+      // 						mutations.updateUserInfo({
+      // 							userType
+      // 						})
+      // 					} else if (res.cancel) {
+      // 						console.log('用户点击取消');
+      // 					}
+      // 		}
+      // 	})
+      // }
+    },
     login: function login() {
       uni.navigateTo({
         url: '/uni_modules/uni-id-pages/pages/login/login-withoutpwd',
@@ -375,10 +408,23 @@ var _default = {
         url: './bind-mobile/bind-mobile'
       });
     },
-    setNickname: function setNickname(nickname) {
-      if (nickname) {
+    setNickname: function setNickname(name) {
+      console.log(this.userInfo);
+      if (name) {
         _store.mutations.updateUserInfo({
-          nickname: nickname
+          name: name
+        });
+        this.setNicknameIng = false;
+        this.$refs.dialog.close();
+      } else {
+        this.$refs.dialog.open();
+      }
+    },
+    setUserType: function setUserType(name) {
+      console.log(this.userInfo);
+      if (name) {
+        _store.mutations.updateUserInfo({
+          name: name
         });
         this.setNicknameIng = false;
         this.$refs.dialog.close();

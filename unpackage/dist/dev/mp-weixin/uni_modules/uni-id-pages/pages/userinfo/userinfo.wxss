@@ -121,4 +121,10 @@ button.data-v-451985ee {
 .mt10.data-v-451985ee {
   margin-top: 10px;
 }
+.userType.data-v-451985ee {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 12px 15px;
+}
 

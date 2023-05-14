@@ -100,7 +100,7 @@ var components
 try {
   components = {
     courseList: function () {
-      return __webpack_require__.e(/*! import() | components/course-list/course-list */ "components/course-list/course-list").then(__webpack_require__.bind(null, /*! @/components/course-list/course-list.vue */ 516))
+      return __webpack_require__.e(/*! import() | components/course-list/course-list */ "components/course-list/course-list").then(__webpack_require__.bind(null, /*! @/components/course-list/course-list.vue */ 548))
     },
   }
 } catch (e) {

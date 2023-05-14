@@ -243,11 +243,7 @@
 			"bsonType": "string",
 			"description": "用户类型",
 			"title": "用户类型",
-			"trim": "both",
-			"permission": {
-				"read": true,
-				"write": "doc._id == auth.uid || 'CREATE_UNI_ID_USERS' in auth.permission || 'UPDATE_UNI_ID_USERS' in auth.permission"
-			}
+			"defaultValue":"student"
 		},
 		"password": {
 			"bsonType": "password",

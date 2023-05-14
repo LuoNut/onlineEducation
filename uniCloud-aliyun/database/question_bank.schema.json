@@ -3,7 +3,6 @@
 	"required": [
 		"code",
 		"true_option",
-		"testList"
 	],
 	"permission": {
 		"read": true,

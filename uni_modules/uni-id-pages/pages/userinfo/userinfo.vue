@@ -4,17 +4,25 @@
 		
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
 			<block slot="backText">返回</block>
-			<block slot="content">课程</block>
+			<block slot="content">个人信息</block>
 		</cu-custom>
 		
 		<view class="avatar">
 			<uni-id-pages-avatar width="260rpx" height="260rpx"></uni-id-pages-avatar>
 		</view>
 		<uni-list>
-			<uni-list-item class="item" @click="setNickname('')" title="昵称" :rightText="userInfo.nickname||'未设置'" link>
+			<uni-list-item class="item" @click="setNickname('')" title="姓名" :rightText="userInfo.name||'未设置'" link>
 			</uni-list-item>
-			<uni-list-item class="item" @click="bindMobile" title="手机号" :rightText="userInfo.mobile||'未绑定'" link>
-			</uni-list-item>
+			<view class="userType">
+				<view class="text">
+					<text>用户类型</text>
+				</view>
+				<view class="radioStype">
+                     <uni-data-checkbox  v-model="uservalue" :localdata="range" @change="groupChange" selected-color="#007aff" selected-text-color="#666" ></uni-data-checkbox>
+				</view>
+				
+			</view>
+			
 			<uni-list-item v-if="userInfo.email" class="item" title="电子邮箱" :rightText="userInfo.email">
 			</uni-list-item>
 			<!-- #ifdef APP -->
@@ -32,10 +40,9 @@
 		<!-- #endif -->
 		<uni-popup ref="dialog" type="dialog">
 			<uni-popup-dialog mode="input" :value="userInfo.nickname" @confirm="setNickname" :inputType="setNicknameIng?'nickname':'text'"
-				title="设置昵称" placeholder="请输入要设置的昵称">
+				title="设置姓名" placeholder="请输入要设置的姓名">
 			</uni-popup-dialog>
 		</uni-popup>
-		<uni-id-pages-bind-mobile ref="bind-mobile-by-sms" @success="bindMobileSuccess"></uni-id-pages-bind-mobile>
 		<template v-if="showLoginManage">
 			<button v-if="userInfo._id" @click="logout">退出登录</button>
 			<button v-else @click="login">去登录</button>
@@ -63,6 +70,9 @@ const uniIdCo = uniCloud.importObject("uni-id-co")
     },
 		data() {
 			return {
+				range: [{"value": "student","text": "学习者", "disable":true},{"value": "teacher","text": "教师"}],
+				uservalue: "",
+					
 				univerifyStyle: {
 					authButton: {
 						"title": "本机号码一键绑定", // 授权按钮文案
@@ -77,7 +87,8 @@ const uniIdCo = uniCloud.importObject("uni-id-co")
 				// },
 				hasPwd: false,
 				showLoginManage: false ,//通过页面传参隐藏登录&退出登录按钮
-				setNicknameIng:false
+				setNicknameIng:false,
+				
 			}
 		},
 		async onShow() {
@@ -91,8 +102,32 @@ const uniIdCo = uniCloud.importObject("uni-id-co")
 			//判断当前用户是否有密码，否则就不显示密码修改功能
 			let res = await uniIdCo.getAccountInfo()
 			this.hasPwd = res.isPasswordSet
+			this.uservalue = this.uniIDHasRole('teacher') ? "teacher" : "student"
 		},
 		methods: {
+			groupChange(e) {
+				console.log('e:',e.detail.data.value);
+				if (e.detail.data.value == "teacher") {
+					uni.showModal({
+						title:"是否申请教师身份?",
+						success: (res) => {
+							if (res.confirm) {
+								mutations.updateUserInfo({
+											userType:e.detail.data.value
+								})
+								uni.showToast({
+									title:"已经成功申请，请等待管理员审核",
+									icon:'none'
+								})
+								this.uservalue = "student"
+							} else if (res.cancel) {
+										console.log(this.uservalue);
+										this.uservalue = "student"
+							}
+						}
+					})
+				}
+			},
 			login() {
 				uni.navigateTo({
 					url: '/uni_modules/uni-id-pages/pages/login/login-withoutpwd',
@@ -164,10 +199,23 @@ const uniIdCo = uniCloud.importObject("uni-id-co")
 					url: './bind-mobile/bind-mobile'
 				})
 			},
-			setNickname(nickname) {
-				if (nickname) {
+			setNickname(name) {
+				console.log(this.userInfo)
+				if (name) {
 					mutations.updateUserInfo({
-						nickname
+						name
+					})
+					this.setNicknameIng = false
+					this.$refs.dialog.close()
+				} else {
+					this.$refs.dialog.open()
+				}
+			},
+			setUserType(name) {
+				console.log(this.userInfo)
+				if (name) {
+					mutations.updateUserInfo({
+						name
 					})
 					this.setNicknameIng = false
 					this.$refs.dialog.close()
@@ -274,5 +322,11 @@ const uniIdCo = uniCloud.importObject("uni-id-co")
 
 	.mt10 {
 		margin-top: 10px;
+	}
+	.userType {
+		display: flex;
+		    flex-direction: row;
+		    justify-content: space-between;
+		    margin: 12px 15px;
 	}
 </style>

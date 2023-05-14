@@ -102,7 +102,7 @@ var components
 try {
   components = {
     informItem: function () {
-      return __webpack_require__.e(/*! import() | components/inform-item/inform-item */ "components/inform-item/inform-item").then(__webpack_require__.bind(null, /*! @/components/inform-item/inform-item.vue */ 820))
+      return __webpack_require__.e(/*! import() | components/inform-item/inform-item */ "components/inform-item/inform-item").then(__webpack_require__.bind(null, /*! @/components/inform-item/inform-item.vue */ 852))
     },
   }
 } catch (e) {

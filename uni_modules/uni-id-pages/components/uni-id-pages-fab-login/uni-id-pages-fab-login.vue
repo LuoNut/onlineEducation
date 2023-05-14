@@ -52,12 +52,6 @@
 						"path": "/uni_modules/uni-id-pages/pages/login/login-withpwd"
 					},
 					{
-						"id": "smsCode",
-						"text": "短信验证码",
-						"logo": "/uni_modules/uni-id-pages/static/login/uni-fab-login/sms.png",
-						"path": "/uni_modules/uni-id-pages/pages/login/login-withoutpwd?type=smsCode"
-					},
-					{
 						"id": "weixin",
 						"text": "微信登录",
 						"logo": "/uni_modules/uni-id-pages/static/login/uni-fab-login/weixin.png",
