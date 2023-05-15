@@ -1,5 +1,5 @@
 <template>
-	<view class="list-container">
+	<view class="list-container" @click="toCourseDetail">
 		<view class="course-title">
 			<view class="left">
 				<view class="img">
@@ -68,6 +68,14 @@
 			this.getClassData()
 		},
 		methods: {
+			
+			//跳转到课程详情页面
+			toCourseDetail() {
+				uni.navigateTo({
+					url:'/pages/teacher/course-detail/course-detail?courseId=' + this.courseItem._id
+				})
+			},
+			
 			//时间格式化的功能函数  xx:xx:xx
 			formateTime(time) {
 			      const h = parseInt(time / 3600)
@@ -81,8 +89,10 @@
 			
 			//获取班级成员数据
 			async getClassData() {
+				
 					let res = await db.collection("teacher_course").where(`"${this.courseItem._id}" == course`).get()		
-					
+					console.log(this.courseItem._id);
+					console.log(res);
 					res.result.data.forEach((item, index) => {
 						console.log(item.class);
 						let userTemp =  db.collection("uni-id-users").where(`"${item.class}" == classId`).field("_id,username,name,studentnumber").getTemp()

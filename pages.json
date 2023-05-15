@@ -298,7 +298,16 @@
     }
 }
 
-],
+    ,{
+            "path" : "pages/teacher/course-detail/course-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "black",
 		// "navigationBarTitleText": "uni-app",
