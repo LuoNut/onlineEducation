@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-tabs": "/uni_modules/uview-ui/components/u-tabs/u-tabs",
+    "uni-fav": "/uni_modules/uni-fav/components/uni-fav/uni-fav",
+    "uni-collapse": "/uni_modules/uni-collapse/components/uni-collapse/uni-collapse",
+    "uni-collapse-item": "/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item",
+    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty",
+    "comment-item": "/components/comment-item/comment-item",
+    "comment-frame": "/components/comment-frame/comment-frame",
+    "u-popup": "/uni_modules/uview-ui/components/u-popup/u-popup"
+  }
+}

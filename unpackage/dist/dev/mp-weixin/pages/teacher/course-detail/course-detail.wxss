@@ -1,0 +1,143 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.course-detail-container {
+  height: 93vh;
+  overflow: auto;
+}
+.course-detail-container .course-container {
+  overflow: auto;
+}
+.course-detail-container .course-container .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.course-detail-container .course-container .content .top .item-box {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.course-detail-container .course-container .content .top .item-box .iconfont {
+  font-size: 36rpx;
+  padding-right: 10rpx;
+}
+.course-detail-container .course-container .content .top .item-box .text {
+  color: #808080;
+  margin-right: 40rpx;
+}
+.course-detail-container .course-container .content .top .courseType {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.course-detail-container .course-container .content .top .courseType .hint {
+  display: flex;
+  align-items: center;
+}
+.course-detail-container .course-container .content .top .left {
+  display: flex;
+}
+.course-detail-container .course-container .content .top .right {
+  margin-left: 90rpx;
+  color: #0081ff;
+}
+.course-detail-container .course-container .content .top .add {
+  display: flex;
+  padding: 20rpx;
+  line-height: 40rpx;
+}
+.course-detail-container .course-container .content .top .add .add-class {
+  font-size: 40rpx;
+  color: #0081ff;
+  margin-right: 20rpx;
+}
+.course-detail-container .course-vid-container {
+  overflow: auto;
+}
+.course-detail-container .course-vid-container .content .item-box {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  padding-bottom: 82rpx;
+  background-color: #fff;
+}
+.course-detail-container .course-vid-container .content .item-box .course-title {
+  display: flex;
+  align-items: center;
+}
+.course-detail-container .course-vid-container .content .item-box .course-title .right {
+  margin: 0px 13px;
+  text-align: center;
+  color: #0081ff;
+}
+.course-detail-container .course-vid-container .content .item-box .course-content {
+  position: relative;
+}
+.course-detail-container .course-vid-container .content .item-box .course-content .upload-button {
+  position: absolute;
+  right: 0;
+  bottom: -70rpx;
+  width: 110rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+  background-color: #0081ff;
+}
+.course-detail-container .course-vid-container .content .item-box .course-content .select-button {
+  position: absolute;
+  left: 0;
+  bottom: -70rpx;
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+}
+.course-detail-container .course-vid-container .content .add {
+  display: flex;
+  padding: 20rpx;
+  line-height: 40rpx;
+}
+.course-detail-container .course-vid-container .content .add .add-class {
+  font-size: 40rpx;
+  color: #0081ff;
+  margin-right: 20rpx;
+}
+.course-detail-container .bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.course-detail-container .bottom .u-button {
+  width: 30%;
+}
+

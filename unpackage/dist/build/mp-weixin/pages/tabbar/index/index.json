@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "icon-nav": "/components/icon-nav/icon-nav",
+    "course-item": "/components/course-item/course-item",
+    "course-list": "/components/course-list/course-list",
+    "tabbar": "/components/tabbar/tabbar"
+  }
+}

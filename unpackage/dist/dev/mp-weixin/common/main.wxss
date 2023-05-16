@@ -6061,6 +6061,8 @@ to {
   opacity: 0;
   transition: opacity 1s;
 }
+@media print {
+}
 .vjs-resize-manager {
   position: absolute;
   top: 0;
