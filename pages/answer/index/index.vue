@@ -93,7 +93,7 @@
 		
 				<view class="nav-btn-box">
 					<view class="nav-btn b-fontw6 bg-gradual-blue" @click="goIndex()">
-						继续答题
+						开始答题
 					</view>
 				</view>
 			</view>

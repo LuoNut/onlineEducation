@@ -47,7 +47,7 @@
 
 <style lang="scss" scoped>
 	.container {
-		padding: 20rpx 0;
+		padding: 30rpx 0;
 		display: flex;
 		flex-wrap: wrap;
 		background-color: #fff;
@@ -59,13 +59,13 @@
 			align-items: center;
 			padding: 10rpx 0;
 			image {
-				width: 70rpx;
-				height: 70rpx;
+				width: 100rpx;
+				height: 100rpx;
 				border-radius: 100%;
 			}
 			text {
-				margin-top: 10rpx;
-				font-size: 20rpx;
+				margin-top: 20rpx;
+				font-size: 34rpx;
 				color: #6c757d;
 			}
 		}

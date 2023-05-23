@@ -42,7 +42,7 @@
 		<view class="content">
 			
 			<!-- 简介 -->
-			<swiper @change="onChangeTab" :current="tabIndex" :duration="200">
+			<swiper class="swiperClass" @change="onChangeTab" :current="tabIndex" :duration="200">
 				<swiper-item>
 					<view class="swiper-item">
 						<view class="brief-container">
@@ -719,9 +719,11 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 			padding: 10rpx 0;
 		}
 		.content {
-			/deep/ uni-swiper {
-				height: 100%;
+			.swiperClass {
+				display: block;
+				height: 320px;
 			}
+
 				
 				padding: 10px;
 				background-color: #FFFFFF;

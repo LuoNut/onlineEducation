@@ -11,7 +11,8 @@
 				<view class="info">
 					<text class="name">{{courseData.user_id[0].nickname}}</text>
 					<text class="date">
-						<uni-dateformat :date="courseData.publish_date" format="yyyy/MM/dd" ></uni-dateformat>
+						<!-- <uni-dateformat :date="courseData.publish_date" format="yyyy/MM/dd" ></uni-dateformat> -->
+						<text>{{formatDate(courseData.publish_date)}}</text>
 					</text>
 				</view>
 
@@ -34,6 +35,20 @@
 			};
 		},
 		methods: {
+			//时间格式化的功能函数  xx:xx:xx
+			formatDate(value) {
+			                var date = new Date();
+			                date.setTime(value);
+			                var month = date.getMonth() + 1;
+			                var hours = date.getHours();
+			                if (hours < 10)
+			                    hours = "0" + hours;
+			                var minutes = date.getMinutes();
+			                if (minutes < 10)
+			                    minutes = "0" + minutes;
+			                var time = date.getFullYear() + "-" + month + "-" + date.getDate();
+			                return time;
+			            },
 			toVideoPlay() {
 				uni.navigateTo({
 					url:`/pages/course-study/course-videoplay/course-videoplay?id=${this.courseData._id}`

@@ -4,7 +4,7 @@
 	  	<block slot="backText">返回</block>
 	  	<block slot="content">我的笔记</block>
 	  </cu-custom>
-    <unicloud-db ref="udb" v-slot:default="{data, pagination, loading, hasMore, error}" :collection="collectionList" field="user_id,content,courseName,courseId,last_modify_date">
+    <unicloud-db ref="udb" v-slot:default="{data, pagination, loading, hasMore, error}" :collection="collectionList" where="user_id==$cloudEnv_uid" field="user_id,content,courseName,courseId,last_modify_date">
       <view v-if="error">{{error.message}}</view>
       <view v-else-if="data">
         <uni-list>

@@ -14,10 +14,11 @@
 				</view>
 				<view class="info">
 					<view class="replyBtn" v-show="!showReply">
-						{{item.totalReply}}回复
+						{{item.totalReply ? item.totalReply : "" }}回复
 					</view>
 					<view class="time">
-						<uni-dateformat :date="item.comment_date" format="yyyy-MM-dd" :threshold="[60000, 3600000]"></uni-dateformat>
+						<!-- <uni-dateformat :date="item.comment_date" format="yyyy-MM-dd" :threshold="[60000, 3600000]"></uni-dateformat> -->
+						<text>{{formatDate(item.comment_date)}}</text>
 					</view>
 					<view class="address">
 						{{item.province}}
@@ -61,7 +62,7 @@
 			}
 		},
 		onLoad() {
-
+			
 		},
 		data() {
 			return {
@@ -70,8 +71,25 @@
 		},
 		methods: {
 			giveName, giveAvatar,
+			
+			//时间格式化的功能函数  xx:xx:xx
+			formatDate(value) {
+			                var date = new Date();
+			                date.setTime(value);
+			                var month = date.getMonth() + 1;
+			                var hours = date.getHours();
+			                if (hours < 10)
+			                    hours = "0" + hours;
+			                var minutes = date.getMinutes();
+			                if (minutes < 10)
+			                    minutes = "0" + minutes;
+			                var time = date.getFullYear() + "-" + month + "-" + date.getDate();
+			                return time;
+			            },
+			
 			//跳转到回复评论事件
 			toReply() {
+				console.log(this.item);
 				if(this.showReply) return
 				
 				console.log(this.toTarget);

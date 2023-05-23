@@ -48,17 +48,17 @@
 		</view>
 
 		<view class="main">
-			<view class="info">
+			<!-- <view class="info">
 				<view class="item">
 					<text>{{total.likeNum}}</text>获赞
 				</view>
-				<view class="item">
+				<view class="item"> -->
 					<!-- <text>11</text>评论 -->
-				</view>
+				<!-- </view>
 				<view class="item">
 					<text>{{total.artNum}}</text>发文
 				</view>
-			</view>
+			</view> -->
 
 			<view class="list">
 				<view class="group">
@@ -102,7 +102,7 @@
 		</view>
 
 		<!-- 底部tabbar -->
-		<tabbar :current="3" :tabBarList="tabBerLists" />
+		<tabbar :current="tabBerLists.length - 1" :tabBarList="tabBerLists" />
 
 	</view>
 </template>
@@ -332,21 +332,21 @@
 			transform: translateY(-30rpx);
 			padding: 30rpx 0;
 
-			.info {
-				padding: 10rpx 30rpx;
-				display: flex;
-				font-size: 30rpx;
+			// .info {
+			// 	padding: 10rpx 30rpx;
+			// 	display: flex;
+			// 	font-size: 30rpx;
 
-				.item {
-					padding-right: 20rpx;
-					color: #888;
+			// 	.item {
+			// 		padding-right: 20rpx;
+			// 		color: #888;
 
-					text {
-						font-weight: 600;
-						color: #333;
-					}
-				}
-			}
+			// 		text {
+			// 			font-weight: 600;
+			// 			color: #333;
+			// 		}
+			// 	}
+			// }
 
 			.list {
 				.group {

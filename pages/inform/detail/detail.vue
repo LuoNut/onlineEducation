@@ -18,8 +18,12 @@
     <view class="article-meta">
       <text class="article-meta-text article-author">{{informData.user_id ? informData.user_id[0].nickname : ''}}</text>
       <text class="article-meta-text article-text">发表于</text>
-	  <text class="article-meta-text article-time" ><uni-dateformat :date="informData.publish_date" format="MM-dd" :threshold="[60000, 3600000]" ></uni-dateformat></text>
-    </view>
+	  <text class="article-meta-text article-time" >
+		  <!-- <uni-dateformat :date="informData.publish_date" format="MM-dd" :threshold="[60000, 3600000]" ></uni-dateformat> -->
+		  {{formatDate(informData.publish_date)}}
+	  </text>
+		
+	</view>
     <view class="article-content">
       <rich-text :nodes="informData.content" style="font-size: 14px;"></rich-text>
     </view>
@@ -42,6 +46,20 @@
 			this.getArticleData() //获取通知数据
 		},
 		methods: {
+			//时间格式化的功能函数  xx:xx:xx
+			formatDate(value) {
+			                var date = new Date();
+			                //date.setTime(value);
+			                var month = date.getMonth() + 1;
+			                var hours = date.getHours();
+			                if (hours < 10)
+			                    hours = "0" + hours;
+			                var minutes = date.getMinutes();
+			                if (minutes < 10)
+			                    minutes = "0" + minutes;
+			                var time = date.getFullYear() + "-" + month + "-" + date.getDate();
+			                return time;
+			            },
 			//获取文章数据
 			async getArticleData() {
 				let informTemp = db.collection("inform").where(`"${this.informId}" == _id`).getTemp()

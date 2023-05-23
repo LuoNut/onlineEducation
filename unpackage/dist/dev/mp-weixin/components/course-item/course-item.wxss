@@ -36,8 +36,8 @@
   position: relative;
 }
 .container .image image.data-v-1990ede0 {
-  width: 340rpx;
-  height: 180rpx;
+  width: 334rpx;
+  height: 188rpx;
   border-radius: 8rpx;
 }
 .container .title.data-v-1990ede0 {
@@ -46,7 +46,6 @@
   flex-direction: column;
   justify-content: space-between;
   padding-right: 30rpx;
-  margin-top: 14rpx;
 }
 .container .title .text.data-v-1990ede0 {
   line-height: 46rpx;
@@ -57,9 +56,6 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   word-break: break-all;
-}
-.container .title .info.data-v-1990ede0 {
-  padding-bottom: 10rpx;
 }
 .container .title .info .name.data-v-1990ede0 {
   font-size: 25rpx;

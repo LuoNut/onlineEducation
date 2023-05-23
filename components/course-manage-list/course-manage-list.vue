@@ -1,6 +1,6 @@
 <template>
-	<view class="list-container" @click="toCourseDetail">
-		<view class="course-title">
+	<view class="list-container">
+		<view class="course-title"  @click="toCourseDetail">
 			<view class="left">
 				<view class="img">
 					<image :src="courseItem.courseCover" mode="aspectFill"></image>
@@ -27,7 +27,7 @@
 				<uni-collapse-item title-border="none" >
 					<template v-slot:title>
 						<uni-list :border="false">
-							<uni-list-item :rightText="`${item.length}人`" :title="item.class" :show-extra-icon="true">
+							<uni-list-item :rightText="`${item.length}人`" :title="item.classNum.toString()" :show-extra-icon="true">
 							</uni-list-item>
 						</uni-list>
 					</template>
@@ -41,7 +41,7 @@
 							</view>
 						</view>
 						<view class="schedule">
-							<u-line-progress :percentage="(item2._id.course_play_history[0] ? item2._id.course_play_history[0].have_watched.length : '0') / courseItem.course_video_num * 100" activeColor="#0081FF"></u-line-progress>
+							<u-line-progress :percentage="parseInt((item2._id.course_play_history[0] ? item2._id.course_play_history[0].have_watched.length : '0') / courseItem.course_video_num * 100)" activeColor="#0081FF"></u-line-progress>
 						</view>
 					</view>
 				</uni-collapse-item>
@@ -77,15 +77,19 @@
 			},
 			
 			//时间格式化的功能函数  xx:xx:xx
-			formateTime(time) {
-			      const h = parseInt(time / 3600)
-			      const minute = parseInt(time / 60 % 60)
-			      const second = Math.ceil(time % 60)    
-			 
-			      const hours = h < 10 ? '0' + h : h
-			      const formatSecond = second > 59 ? 59 : second
-			      return `${hours > 0 ? `${hours}:` : ''}${minute < 10 ? '0' + minute : minute}:${formatSecond < 10 ? '0' + formatSecond : formatSecond}`
-			},
+			formatDate(value) {
+			                var date = new Date();
+			                date.setTime(value);
+			                var month = date.getMonth() + 1;
+			                var hours = date.getHours();
+			                if (hours < 10)
+			                    hours = "0" + hours;
+			                var minutes = date.getMinutes();
+			                if (minutes < 10)
+			                    minutes = "0" + minutes;
+			                var time = date.getFullYear() + "-" + month + "-" + date.getDate();
+			                return time;
+			            },
 			
 			//获取班级成员数据
 			async getClassData() {
@@ -101,7 +105,7 @@
 						db.collection(userTemp, playTemp).get(
 						
 						).then(resData => {
-							resData.result.data.class = item.class
+							resData.result.data.classNum = item.class
 							this.studentList.push(resData.result.data)
 							console.log(this.studentList);
 						})

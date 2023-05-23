@@ -3,7 +3,7 @@
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
 			<block slot="backText">返回</block>
-			<block slot="content">登录</block>
+			<block slot="content">注册</block>
 		</cu-custom>
 		<view class="uni-content">
 			
@@ -25,7 +25,7 @@
 				</uni-forms-item> -->
 				<uni-forms-item name="nickname">
 					<uni-easyinput :inputBorder="false" :focus="focusNickname" @blur="focusNickname = false"
-						class="input-box" placeholder="请输入用户姓名" v-model="formData.name" trim="both" />
+						class="input-box" placeholder="请输入用户昵称" v-model="formData.name" trim="both" />
 				</uni-forms-item>
 				
 				

@@ -11,7 +11,7 @@
 			<uni-id-pages-avatar width="260rpx" height="260rpx"></uni-id-pages-avatar>
 		</view>
 		<uni-list>
-			<uni-list-item class="item" @click="setNickname('')" title="姓名" :rightText="userInfo.name||'未设置'" link>
+			<uni-list-item class="item" @click="setNickname('')" title="昵称" :rightText="userInfo.name||'未设置'" link>
 			</uni-list-item>
 			<view class="userType">
 				<view class="text">
@@ -40,7 +40,7 @@
 		<!-- #endif -->
 		<uni-popup ref="dialog" type="dialog">
 			<uni-popup-dialog mode="input" :value="userInfo.nickname" @confirm="setNickname" :inputType="setNicknameIng?'nickname':'text'"
-				title="设置姓名" placeholder="请输入要设置的姓名">
+				title="设置昵称" placeholder="请输入要设置的昵称">
 			</uni-popup-dialog>
 		</uni-popup>
 		<template v-if="showLoginManage">

@@ -10,7 +10,10 @@
 				</view>
 				<view class="info">
 					<text>{{item.user_id[0].nickname}}</text>
-					<text><uni-dateformat :date="item.publish_date" format="MM-dd" :threshold="[60000, 3600000]" ></uni-dateformat></text>
+					
+						<!-- <uni-dateformat :date="item.publish_date" format="MM-dd" :threshold="[60000, 3600000]" ></uni-dateformat> -->
+						<text>{{formatDate(item.publish_date)}}</text>
+					
 				</view>
 			</view>
 		</view>
@@ -29,6 +32,20 @@
 			};
 		},
 		methods: {
+			//时间格式化的功能函数  xx:xx:xx
+			formatDate(value) {
+			                var date = new Date();
+			                date.setTime(value);
+			                var month = date.getMonth() + 1;
+			                var hours = date.getHours();
+			                if (hours < 10)
+			                    hours = "0" + hours;
+			                var minutes = date.getMinutes();
+			                if (minutes < 10)
+			                    minutes = "0" + minutes;
+			                var time = date.getFullYear() + "-" + month + "-" + date.getDate();
+			                return time;
+			            },
 			//跳转至详情页
 			toDetail(e) {
 				uni.navigateTo({

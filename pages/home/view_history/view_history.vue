@@ -32,6 +32,8 @@
 				
 				console.log(res);
 				
+				console.log(res);
+				
 				res.result.data.forEach( item => {
 					item.course_id[0].user_id= item.user_id
 				})

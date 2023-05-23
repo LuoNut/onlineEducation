@@ -25,7 +25,7 @@
 /* 透明度 */
 /* 文章场景相关 */
 .container.data-v-0c9d72e4 {
-  padding: 20rpx 0;
+  padding: 30rpx 0;
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
@@ -39,13 +39,13 @@
   padding: 10rpx 0;
 }
 .container .navItem image.data-v-0c9d72e4 {
-  width: 70rpx;
-  height: 70rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 100%;
 }
 .container .navItem text.data-v-0c9d72e4 {
-  margin-top: 10rpx;
-  font-size: 20rpx;
+  margin-top: 20rpx;
+  font-size: 34rpx;
   color: #6c757d;
 }
 .navItem-hove.data-v-0c9d72e4 {

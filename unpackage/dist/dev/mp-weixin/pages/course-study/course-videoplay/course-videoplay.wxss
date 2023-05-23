@@ -34,8 +34,9 @@
   margin-top: 20rpx;
   height: calc( 100vh - 670rpx);
 }
-.container .content.data-v-14645ae0 uni-swiper {
-  height: 100%;
+.container .content .swiperClass.data-v-14645ae0 {
+  display: block;
+  height: 320px;
 }
 .container .content .brief-container .brief.data-v-14645ae0 {
   font-weight: bold;

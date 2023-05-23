@@ -2,7 +2,7 @@
 	<view class="course-detail-container">
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
 			<block slot="backText">返回</block>
-			<block slot="content">课程</block>
+			<block slot="content">课程管理</block>
 		</cu-custom>
 		<view class="course-container">
 			<view class="content">

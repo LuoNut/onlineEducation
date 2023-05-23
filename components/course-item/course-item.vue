@@ -11,7 +11,8 @@
 				<text class="name">{{courseData.user_id[0].nickname}}</text>
 				<text class="date">
 					<!-- <uni-dateformat :date="courseData.publish_date" format="yyyy/MM/dd" ></uni-dateformat> -->
-					<uni-dateformat :date="courseData.publish_date" :threshold="[60000,3600000 * 24 * 365]" ></uni-dateformat>
+					<!-- <uni-dateformat :date="courseData.publish_date" :threshold="[60000,3600000 * 24 * 365]" ></uni-dateformat> -->
+					<text>{{formatDate(courseData.publish_date)}}</text>
 				</text>
 			</view>
 		
@@ -33,6 +34,21 @@
 			};
 		},
 		methods: {
+			//时间格式化的功能函数  xx:xx:xx
+			formatDate(value) {
+			                var date = new Date();
+			                date.setTime(value);
+			                var month = date.getMonth() + 1;
+			                var hours = date.getHours();
+			                if (hours < 10)
+			                    hours = "0" + hours;
+			                var minutes = date.getMinutes();
+			                if (minutes < 10)
+			                    minutes = "0" + minutes;
+			                var time = date.getFullYear() + "-" + month + "-" + date.getDate();
+			                return time;
+			            },
+			
 			toVideoPlay() {
 				uni.navigateTo({
 					url:`/pages/course-study/course-videoplay/course-videoplay?id=${this.courseData._id}`
@@ -53,8 +69,8 @@
 		.image {
 			position: relative;
 			image {
-				width: 340rpx;
-				height: 180rpx;
+				width: 334rpx;
+				height: 188rpx;
 				border-radius: 8rpx;
 			}
 		}
@@ -64,12 +80,13 @@
 			flex-direction: column;
 			justify-content: space-between;
 			padding-right: 30rpx;
-			margin-top: 14rpx;
+			// margin-top: 14rpx;
 			.text {
 				// font-size: 36rpx;
 				line-height: 46rpx;
 				text-align: justify;
 				overflow: hidden;
+				
 				text-overflow: ellipsis;
 				display: -webkit-box;
 				-webkit-line-clamp: 2;
@@ -77,7 +94,7 @@
 				word-break: break-all;
 			}
 			.info {
-				padding-bottom: 10rpx;
+				// padding-bottom: 10rpx;
 				.name {
 					font-size: 25rpx;
 						padding-right: 20rpx;

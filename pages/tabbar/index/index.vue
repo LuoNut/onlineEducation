@@ -45,7 +45,7 @@
 					<text class="text-xl text-bold text-blue text-shadow">热门课程</text>
 					<text class="text-ABC text-blue">curriculum</text>
 				</view>
-				<view class="action" @click="goVideo"><text class="text-lg text-grey text-shadow">更多</text></view>
+				<view class="action" @click="goVideo"><text class="text-lg text-grey text-shadow"></text></view>
 			</view>
 			<view class="course-list" v-for="item in recommendCourseData" :id="item._id" >
 				<course-list :courseData="item" ></course-list>

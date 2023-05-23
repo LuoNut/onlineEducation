@@ -103,19 +103,6 @@
           transform: translateY(-30rpx);
   padding: 30rpx 0;
 }
-.user .main .info.data-v-52760117 {
-  padding: 10rpx 30rpx;
-  display: flex;
-  font-size: 30rpx;
-}
-.user .main .info .item.data-v-52760117 {
-  padding-right: 20rpx;
-  color: #888;
-}
-.user .main .info .item text.data-v-52760117 {
-  font-weight: 600;
-  color: #333;
-}
 .user .main .list .group.data-v-52760117 {
   padding: 15rpx 30rpx;
   border-bottom: 15rpx solid #f4f4f4;
