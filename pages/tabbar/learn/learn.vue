@@ -191,6 +191,7 @@
 	}
 	
 	.u-menu-wrap {
+		height: 80vh;
 		flex: 1;
 		display: flex;
 		overflow: hidden;

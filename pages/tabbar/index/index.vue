@@ -128,7 +128,7 @@
 				
 				
 				const courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id,publish_date").orderBy("publish_date desc").getTemp()
-				const userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp()
+				const userTemp = db.collection('uni-id-users').field("_id,username,name,avatar_file").getTemp()
 				
 				
 				let res = await db.collection(courseTemp,userTemp).get()
@@ -143,7 +143,7 @@
 				
 				
 				const courseTemp = db.collection('course_video').field("_id,course_name,courseCover,user_id,publish_date").orderBy("like_count").getTemp()
-				const userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp()
+				const userTemp = db.collection('uni-id-users').field("_id,username,name,avatar_file").getTemp()
 				
 				
 				let res = await db.collection(courseTemp,userTemp).get()

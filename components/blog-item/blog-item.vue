@@ -84,11 +84,6 @@
  				showSheet: false,
  				list:[
  					{
- 						name:"修改",
- 						type:"dedit",
- 						disabled:true
- 					},
- 					{
  						name:"删除",
  						type:"del",
  						color:"#f56c6c",
@@ -166,7 +161,7 @@
  				uni.showLoading({
  					title:"加载中..."
  				})
- 				db.collection("quanzi_article").doc(this.item._id).update({
+ 				db.collection("blog_article").doc(this.item._id).update({
  					delState:true
  				}).then(res => {
  					uni.hideLoading()

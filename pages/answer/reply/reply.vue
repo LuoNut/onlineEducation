@@ -16,7 +16,7 @@
 						<text v-if="item.code == 1">单选</text>
 						<text v-else>多选</text>
 						{{item.title}}
-						<view class="test-title-img" v-if="item.src_title != ''">
+						<view class="test-title-img" v-if="item.isimg == 2">
 							<image :src="item.src_title.url" mode="aspectFit" ></image>
 						</view>
 					</view>
@@ -86,327 +86,7 @@ import noNetwork from "../../../uni_modules/uview-ui/libs/config/props/noNetwork
 				schema: "",
 				a: 0,
 				lists: [], 
-				lists1:[
-					{
-						title:'请选择下列正确选项1',//题目
-						src_title:'',//题目是否有图片
-						isimg:1,//1为文字 2为图片 选项
-						code:1,//1为单选 2为多选
-						subject_type_one: '', //题目大类型
-						subject_type_two: '', //题目小类型
-						option:['A','B','C','D'],//选项
-						true_option:[0],//正确选项
-						current:[0],//当前所选
-						topic:true,//所选是否正确 默认为'' true为正确 控制选项高亮
-						code2:false,//选项选择状态 默认为true false为选择
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',//本题描述
-						testList:[//选项
-							{
-								name:'正确答案',//选项
-								code:true,//是否为正确答案
-								click_index:true,//选项是否选中
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							}
-						]
-					},
-					{
-						title:'请选择下列正确选项2',//题目
-						src_title:'',//题目是否有图片
-						isimg:1,//1为文字 2为图片 选项
-						code:1,//1为单选 2为多选
-						option:['A','B','C','D','E'],//选项
-						true_option:[1],//正确选项
-						current:[3],//当前所选
-						topic:false,//所选是否正确 默认为'' true为正确 控制选项高亮
-						code2:false,//选项选择状态 默认为true false为选择
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',//本题描述
-						testList:[//选项
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:true,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							}
-						]
-					},
-					{
-						title:'请选择下列正确选项3',//题目
-						src_title:'',//题目是否有图片
-						isimg:1,//1为文字 2为图片 选项
-						code:2,//1为单选 2为多选
-						option:['A','B','C','D'],//选项
-						true_option:[0,2],//正确选项
-						current:[1,2],//当前所选
-						topic:false,//所选是否正确 默认为'' true为正确 控制选项高亮
-						code2:false,//选项选择状态 默认为true false为选择
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',//本题描述
-						testList:[
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:true,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:true,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							}
-						]
-					},
-					
-					{
-						title:'请选择下列正确选项4',
-						src_title:'../../static/banner02.jpg',//题目是否有图片
-						code:2,//1为单选 2为多选
-						option:['A','B','C','D'],
-						true_option:[1,2,3],//正确选项
-						current:[1,2,3],//当前所选
-						topic:true,
-						code2:false,
-						isimg:1,//1为文字 2为图片 选项
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',
-						testList:[
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:true,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:true,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:true,
-							}
-						],
-					},
-					{
-						title:'请选择下列正确选项5',//题目
-						src_title:'',//题目是否有图片
-						isimg:1,//1为文字 2为图片 选项
-						code:1,//1为单选 2为多选
-						option:['A','B','C','D'],//选项
-						true_option:[0],//正确选项
-						current:[],//当前所选
-						topic:'',//所选是否正确 默认为'' true为正确 控制选项高亮
-						code2:true,//选项选择状态 默认为true false为选择
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',//本题描述
-						testList:[//选项
-							{
-								name:'正确答案',//选项
-								code:true,//是否为正确答案
-								click_index:false,//选项是否选中
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							}
-						]
-					},
-					{
-						title:'请选择下列正确选项6',//题目
-						src_title:'',//题目是否有图片
-						isimg:1,//1为文字 2为图片 选项
-						code:2,//1为单选 2为多选
-						option:['A','B','C','D','E'],//选项
-						true_option:[0,2,4],//正确选项
-						current:[],//当前所选
-						topic:'',//所选是否正确 默认为'' true为正确 控制选项高亮
-						code2:true,//选项选择状态 默认为true false为选择
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',//本题描述
-						testList:[//选项
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							}
-						]
-					},
-					{
-						title:'请选择下列正确选项7',//题目
-						src_title:'',//题目是否有图片
-						isimg:1,//1为文字 2为图片 选项
-						code:2,//1为单选 2为多选
-						option:['A','B','C','D'],//选项
-						true_option:[1,3],//正确选项
-						current:[],//当前所选
-						topic:'',//所选是否正确 默认为'' true为正确 控制选项高亮
-						code2:true,//选项选择状态 默认为true false为选择
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',//本题描述
-						testList:[
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							}
-						]
-					},
-					{
-						title:'请选择下列正确选项8',
-						src_title:'',//题目是否有图片
-						code:2,//1为单选 2为多选
-						option:['A','B','C','D'],
-						true_option:[1,2,3],//正确选项
-						current:[],//当前所选
-						topic:'',
-						code2:true,
-						isimg:2,//1为文字 2为图片 选项
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',
-						testList:[
-							{
-								name:'../../static/banner01.jpg',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'../../static/banner02.jpg',
-								code:true,
-								click_index:false,
-							},
-							{
-								name:'../../static/banner03.jpg',
-								code:true,
-								click_index:false,
-							},
-							{
-								name:'../../static/banner04.jpg',
-								code:true,
-								click_index:false,
-							}
-						],
-					},
-					{
-						title:'请选择下列正确选项9',
-						src_title:'../../static/banner02.jpg',//题目是否有图片
-						code:2,//1为单选 2为多选
-						option:['A','B','C','D'],
-						true_option:[1,3],//正确选项
-						current:[],//当前所选
-						topic:'',
-						code2:true,
-						isimg:1,//1为文字 2为图片 选项
-						alt:'正确答案正确答案正确答案正确答案正确答案正确答案正确答案正确答案',
-						testList:[
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							},
-							{
-								name:'错误答案',
-								code:false,
-								click_index:false,
-							},
-							{
-								name:'正确答案',
-								code:true,
-								click_index:false,
-							}
-						],
-					}
-				]
+				
 			};
 		},
 		onLoad(e) {
@@ -421,13 +101,14 @@ import noNetwork from "../../../uni_modules/uview-ui/libs/config/props/noNetwork
 			}else {
 				this.getErrorAnswer()
 			}
+			console.log(this.swiperIndex);
 			
 		},
 		methods:{
 			
 			//获取错题的功能函数
 			async getErrorAnswer() {
-				let recordTemp = db.collection("record_questions").getTemp()
+				let recordTemp = db.collection("record_questions").where("estimate == 0 && user_id==$cloudEnv_uid").getTemp()
 				console.log(this.subject_type_one, this.subject_type_two);
 				let quesTemp = db.collection("question_bank")
 					.where(`"${this.subject_type_one}" == subject_type_one && "${this.subject_type_two}" == subject_type_two`)
@@ -436,15 +117,21 @@ import noNetwork from "../../../uni_modules/uview-ui/libs/config/props/noNetwork
 				let res = await db.collection(quesTemp, recordTemp)
 					.get()
 				console.log(res);
-				if(!res.result.data.length) {
+				
+				res.result.data.forEach((item, index) => {
+					console.log(item);
+					if(item._id.record_questions[0]) {
+						
+						this.lists.push(item)
+					}
+				})
+				if(!this.lists.length) {
 					uni.showToast({
 						title:"暂时没有更多题目哦...",
 						icon: "none"
 					})
 					setTimeout(function() {uni.navigateBack()}, 1000);
-					
 				}
-				this.lists = res.result.data
 				
 				
 				
@@ -452,19 +139,44 @@ import noNetwork from "../../../uni_modules/uview-ui/libs/config/props/noNetwork
 			
 			//获取题库数据的功能函数
 			async getAnswer() {
-				let res = await db.collection("question_bank")
-					.where(`"${this.subject_type_one}" == subject_type_one && "${this.subject_type_two}" == subject_type_two && estimate == 3`)
+				
+				let recordTemp = db.collection("record_questions").where("estimate == 1  && user_id==$cloudEnv_uid").getTemp()
+				console.log(this.subject_type_one, this.subject_type_two);
+				let quesTemp = db.collection("question_bank")
+					.where(`"${this.subject_type_one}" == subject_type_one && "${this.subject_type_two}" == subject_type_two`)
+					.getTemp()
+				
+				let res = await db.collection(quesTemp, recordTemp)
 					.get()
 				console.log(res);
-				if(!res.result.data.length) {
+				
+				res.result.data.forEach((item, index) => {
+					if(!item._id.record_questions[0]) {
+						this.lists.push(item)
+					}
+				})
+				
+				if(!this.lists.length) {
 					uni.showToast({
 						title:"暂时没有更多题目哦...",
 						icon: "none"
 					})
 					setTimeout(function() {uni.navigateBack()}, 1000);
-					
 				}
-				this.lists = res.result.data
+				
+				// let res = await db.collection("question_bank")
+				// 	.where(`"${this.subject_type_one}" == subject_type_one && "${this.subject_type_two}" == subject_type_two`)
+				// 	.get()
+				// console.log(res);
+				// if(!res.result.data.length) {
+				// 	uni.showToast({
+				// 		title:"暂时没有更多题目哦...",
+				// 		icon: "none"
+				// 	})
+				// 	setTimeout(function() {uni.navigateBack()}, 1000);
+					
+				// }
+				// this.lists = res.result.data
 				
 			},
 			
@@ -493,18 +205,36 @@ import noNetwork from "../../../uni_modules/uview-ui/libs/config/props/noNetwork
 			},
 			//记录题目正确/错误情况
 			async recordError(e) {
-				let res = await db.collection("record_questions").where(`"${this.lists[this.swiperIndex - 1]._id}" == question_id`).get()
 				
+				console.log(this.swiperIndex);
+				console.log(this.lists[this.swiperIndex - 1]._id._value);
+				let res = await db.collection("record_questions").where(`"${this.lists[this.swiperIndex - 1]._id._value}" == question_id`).get()
+				
+				console.log(res.result.affectedDocs);
 				if(res.result.affectedDocs) {
-					await db.collection("record_questions").where(`"${this.lists[this.swiperIndex - 1]._id}" == question_id`).update({
+					await db.collection("record_questions").where(`"${this.lists[this.swiperIndex - 1]._id._value}" == question_id`).update({
 						"estimate": e
 					})
 					
 				}else {
+					
+					
 					db.collection("record_questions").add({
-						"question_id": this.lists[this.swiperIndex - 1]._id,
+						"question_id": this.lists[this.swiperIndex - 1]._id._value,
 						"estimate": e
 					})
+				}
+				
+				//判断是否还有题目
+				if(this.swiperIndex >= this.lists.length) {
+					uni.showModal({
+						content:"没有更多了哦...",
+						showCancel: false 
+					})
+					return
+				}
+				if(e == 1 ) {
+					this.swiperIndex += 1
 				}
 				
 				
@@ -519,15 +249,18 @@ import noNetwork from "../../../uni_modules/uview-ui/libs/config/props/noNetwork
 						that.lists[a].current = [b]
 						if(that.lists[a].testList[b].code){
 							that.lists[a].topic = true
-							that.swiperIndex ++
+							
 							that.choice[0] ++
 							that.choice[2] --
 							this.recordError(1) //记录对错情况
+							console.log("111");
 						}else{
+							
 							that.lists[a].topic = false
 							that.choice[1] ++
 							that.choice[2] --
 							this.recordError(0) //记录对错情况
+							console.log("000");
 						}
 					}
 				}

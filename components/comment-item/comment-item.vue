@@ -108,7 +108,8 @@
 			onDelete() {
 				//判断是否有删除权限
 				let uid = uniCloud.getCurrentUserInfo().uid
-				if( this.uniIDHasRole('admin') || this.uniIDHasRole('webmaster')) {
+				console.log(this.item);
+				if( uid == this.item.user_id[0]._id || this.uniIDHasRole('admin') || this.uniIDHasRole('webmaster')) {
 					uni.showModal({
 						title:"是否确认删除？",
 						success: (res) => {

@@ -57,17 +57,22 @@
 
 
 			async getOnteFun() {
+				uni.showLoading({})
 				let res = await db.collection("online_note").where(`"${this.noteId}" == _id`).get()
 
 
 				this.content = res.result.data[0].content
-				this.editorCtx.setContents({
-					html: res.result.data[0].content,
-					success: (e) => {
-						this.content = e.html
-						console.log(res.result.data[0].content);
-					}
+				setTimeout(() => {
+					this.editorCtx.setContents({
+						html: res.result.data[0].content,
+						success: (e) => {
+							this.content = e.html
+							console.log(res.result.data[0].content);
+							uni.hideLoading()
+						}
+					}), 1000
 				})
+				
 			},
 			//点击提交按钮
 			onSubmit() {

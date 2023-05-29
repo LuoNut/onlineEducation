@@ -147,6 +147,7 @@
 				.where(`"${this.courseType[0]}" == subject_type_one && "${this.courseType[1]}" == subject_type_two`)
 				.count()
 				
+				console.log(res);
 				//已完成总数
 				let recordTemp = db.collection("record_questions").getTemp()
 				let quesTemp = db.collection("question_bank")
@@ -157,9 +158,16 @@
 					.get({
 						  getCount:true
 						})
+				let finSum  = 0
+				sum.result.data.forEach(item => {
+					if (item._id.record_questions.length) {
+						finSum += 1
+					}
+				})
 						
+				console.log(sum);
 				this.questionsSum = res.result.total
-				this.finishSum = sum.result.count
+				this.finishSum = finSum
 				
 			},
 			

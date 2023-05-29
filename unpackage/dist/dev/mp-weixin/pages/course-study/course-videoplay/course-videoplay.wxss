@@ -32,67 +32,75 @@
   padding: 10px;
   background-color: #FFFFFF;
   margin-top: 20rpx;
-  height: calc( 100vh - 670rpx);
+  height: 49.8vh;
 }
 .container .content .swiperClass.data-v-14645ae0 {
   display: block;
-  height: 320px;
+  height: 100%;
+  width: 750rpx;
 }
-.container .content .brief-container .brief.data-v-14645ae0 {
+.container .content .swiper-item.data-v-14645ae0 {
+  height: 100%;
+  width: 94%;
+}
+.container .content .swiper-item .brief-container .brief.data-v-14645ae0 {
   font-weight: bold;
   font-size: 32rpx;
   color: #303133;
   margin-bottom: 20rpx;
 }
-.container .content .brief-container .text.data-v-14645ae0 {
+.container .content .swiper-item .brief-container .text.data-v-14645ae0 {
   font-size: 14px;
   color: #666666;
 }
-.container .content .brief-container .title.data-v-14645ae0 {
+.container .content .swiper-item .brief-container .title.data-v-14645ae0 {
   padding: 10rpx 0 40rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.container .content .brief-container .title .course-name.data-v-14645ae0 {
+.container .content .swiper-item .brief-container .title .course-name.data-v-14645ae0 {
   font-size: 40rpx;
   margin-bottom: 5rpx;
 }
-.container .content .brief-container .title .course-author.data-v-14645ae0 {
+.container .content .swiper-item .brief-container .title .course-author.data-v-14645ae0 {
   font-size: 24rpx;
   color: #666666;
 }
-.container .content .course-container.data-v-14645ae0 {
+.container .content .swiper-item .course-container.data-v-14645ae0 {
   height: calc( 100vh - 317px);
   overflow: auto;
   padding-bottom: 60rpx;
 }
-.container .content .course-container.data-v-14645ae0 .uni-collapse-item__title-box[data-v-41027c34] {
+.container .content .swiper-item .course-container.data-v-14645ae0 .uni-collapse-item__title-box[data-v-41027c34] {
   padding: 0;
 }
-.container .content .course-container.data-v-14645ae0 .uni-collapse-item__title-text[data-v-41027c34] {
+.container .content .swiper-item .course-container.data-v-14645ae0 .uni-collapse-item__title-text[data-v-41027c34] {
   font-size: 17px;
 }
-.container .content .course-container .course-item.data-v-14645ae0 {
+.container .content .swiper-item .course-container .course-item.data-v-14645ae0 {
   padding: 24rpx;
   color: #333333;
   border-bottom: 1px solid #f7f7f7;
   font-size: 28rpx;
 }
-.container .content .course-container .active.data-v-14645ae0 {
+.container .content .swiper-item .course-container .active.data-v-14645ae0 {
   color: #0081FF;
 }
-.container .content .document-container .blueBtn.data-v-14645ae0 {
+.container .content .swiper-item .document-container .blueBtn.data-v-14645ae0 {
   width: 500rpx;
   margin: 50rpx auto;
   display: block;
   line-height: 80rpx;
 }
-.container .content .onlineontainer .content .myEdit.data-v-14645ae0 {
+.container .content .swiper-item .onlineontainer.data-v-14645ae0 {
+  position: relative;
+}
+.container .content .swiper-item .onlineontainer .content .myEdit.data-v-14645ae0 {
   height: calc(100vh - 500rpx);
   margin-bottom: 30rpx;
 }
-.container .content .onlineontainer .tools.data-v-14645ae0 {
+.container .content .swiper-item .onlineontainer .tools.data-v-14645ae0 {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -104,32 +112,38 @@
   background-color: #fff;
   border-top: 1rpx solid #f4f4f4;
 }
-.container .content .onlineontainer .tools .iconfont.data-v-14645ae0 {
+.container .content .swiper-item .onlineontainer .tools .iconfont.data-v-14645ae0 {
   font-size: 36rpx;
   color: #333;
 }
-.container .content .onlineontainer .tools .iconfont.active.data-v-14645ae0 {
+.container .content .swiper-item .onlineontainer .tools .iconfont.active.data-v-14645ae0 {
   color: #0199Fe;
 }
-.container .content .comment-container .comment-box.data-v-14645ae0 {
-  height: 508rpx;
+.container .content .swiper-item .comment-container.data-v-14645ae0 {
+  height: 100%;
+}
+.container .content .swiper-item .comment-container .comment.data-v-14645ae0 {
+  height: 100%;
+}
+.container .content .swiper-item .comment-container .comment .comment-box.data-v-14645ae0 {
+  height: 82%;
   overflow-y: auto;
 }
-.container .content .comment-container .secondComment .reply.data-v-14645ae0 {
+.container .content .swiper-item .comment-container .comment .secondComment .reply.data-v-14645ae0 {
   height: 662rpx;
 }
-.container .content .comment-container .secondComment .reply.data-v-14645ae0 .list[data-v-14645ae0] {
+.container .content .swiper-item .comment-container .comment .secondComment .reply.data-v-14645ae0 .list[data-v-14645ae0] {
   padding-bottom: 0;
 }
-.container .content .comment-container .secondComment .reply .top.data-v-14645ae0 {
+.container .content .swiper-item .comment-container .comment .secondComment .reply .top.data-v-14645ae0 {
   padding: 30rpx;
   border-bottom: 15rpx solid #eee;
 }
-.container .content .comment-container .secondComment .reply .list.data-v-14645ae0 {
+.container .content .swiper-item .comment-container .comment .secondComment .reply .list.data-v-14645ae0 {
   padding: 30rpx 60rpx;
   padding-bottom: 120rpx;
 }
-.container .content .comment-container .secondComment .reply .list .row.data-v-14645ae0 {
+.container .content .swiper-item .comment-container .comment .secondComment .reply .list .row.data-v-14645ae0 {
   padding-bottom: 15rpx;
 }
 

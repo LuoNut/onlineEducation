@@ -5,9 +5,19 @@
 			<block slot="content">{{courseType.subject_type_two}}</block>
 		</cu-custom>
 		
-		<view class="course-list" v-for="item in courseListData" :id="item._id" >
-			<course-list :courseData="item" ></course-list>
+		<view v-if="listShow">
+			<u-empty
+			        mode="list"
+			        icon="http://cdn.uviewui.com/uview/empty/list.png"
+			>
+			</u-empty>
 		</view>
+		<view>
+			<view class="course-list" v-for="item in courseListData" :id="item._id" >
+				<course-list :courseData="item" ></course-list>
+			</view>
+		</view>
+		
 		
 	</view>
 </template>
@@ -18,7 +28,8 @@
 		data() {
 			return {
 				courseType: {},
-				courseListData:[]
+				courseListData:[],
+				listShow:false, //没有数据提示
 			};
 		},
 		onLoad(e) {
@@ -28,14 +39,15 @@
 		},
 		methods: {
 			async getCourseLike() {
+				uni.showLoading({})
 				const courseTemp = db.collection('course_video')
 					.where(`"${this.courseType.subject_type_one}"  == subject_type_one && "${this.courseType.subject_type_two}"  == subject_type_two`)
-					.field("_id,course_name,courseCover,user_id")
+					.field("_id,course_name,courseCover,user_id,publish_date")
 					.orderBy("publish_date desc")
 					.getTemp()
 				
 				
-				const userTemp = db.collection('uni-id-users').field("_id,username,nickname,avatar_file").getTemp()
+				const userTemp = db.collection('uni-id-users').field("_id,username,name,avatar_file").getTemp()
 				
 				let res = await db.collection(courseTemp,userTemp).get()
 				
@@ -48,6 +60,10 @@
 				// console.log(res);
 				
 				this.courseListData = res.result.data
+				uni.hideLoading()
+				if ( !this.courseListData.length) {
+					this.listShow = true
+				}
 				
 			}
 		}

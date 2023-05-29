@@ -8,7 +8,7 @@
 				{{courseData.course_name}}
 			</view>
 			<view class="info">
-				<text class="name">{{courseData.user_id[0].nickname}}</text>
+				<text class="name">{{courseData.user_id[0].name}}</text>
 				<text class="date">
 					<!-- <uni-dateformat :date="courseData.publish_date" format="yyyy/MM/dd" ></uni-dateformat> -->
 					<!-- <uni-dateformat :date="courseData.publish_date" :threshold="[60000,3600000 * 24 * 365]" ></uni-dateformat> -->

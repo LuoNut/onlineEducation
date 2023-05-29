@@ -29,17 +29,7 @@
 				</view>
 			</view>
 		</view>
-		<!-- <view class="search-history" v-if="hotList.length">
-			<view class="history-title">
-				<view class="title-name">热门搜索</view>
-				<image class="title-img" :src="seeMore?seeImg:noSeeImg" @click="seeMore=!seeMore"></image>
-			</view>
-			<view class="history-list" v-if="seeMore">
-				<view class="history-name" v-for="(item,index) in hotList" :key="index" @click="clickHis(item)">
-					{{item}}
-				</view>
-			</view>
-		</view> -->
+
 	</view>
 </template>
 <script>

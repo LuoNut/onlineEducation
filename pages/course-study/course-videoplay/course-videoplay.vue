@@ -42,8 +42,9 @@
 		<view class="content">
 			
 			<!-- 简介 -->
-			<swiper class="swiperClass" @change="onChangeTab" :current="tabIndex" :duration="200">
-				<swiper-item>
+			<swiper @transition="transition" disable-touch class="swiperClass" @change="onChangeTab" :current="tabIndex" :duration="200">
+				
+				<swiper-item @touchmove.stop>
 					<view class="swiper-item">
 						<view class="brief-container">
 							<view class="title">
@@ -52,7 +53,7 @@
 										{{courseData.course_name}}
 									</view>
 									<view class="course-author">
-										{{courseData.user_id ? courseData.user_id[0].nickname : ''}}
+										{{courseData.user_id ? courseData.user_id[0].name : ''}}
 									</view>
 								</view>
 								<view class="collect" @click="onCollect" >
@@ -72,7 +73,7 @@
 				</swiper-item>
 				
 				<!-- 课程 -->
-				<swiper-item>
+				<swiper-item @touchmove.stop>
 					<view class="swiper-item">					  
 						<view class="course-container">
 							<uni-collapse>
@@ -87,7 +88,7 @@
 				</swiper-item>
 				
 				<!-- 课件 -->
-				<swiper-item>
+				<swiper-item @touchmove.stop>
 					<view class="swiper-item">
 						<view class="document-container">
 							<view v-for="item in courseData.courseware" :id="item.src">
@@ -99,7 +100,7 @@
 				</swiper-item>
 				
 				<!-- 在线笔记 -->
-				<swiper-item>
+				<swiper-item @touchmove.stop>
 					<view class="swiper-item">
 						<view class="onlineontainer">
 							<view class="content">
@@ -123,7 +124,7 @@
 				</swiper-item>
 				
 				<!-- 评论 -->
-				<swiper-item>
+				<swiper-item @touchmove.stop>
 					<view class="swiper-item">
 						<view class="comment-container">
 							<view class="comment" >
@@ -147,12 +148,12 @@
 							        <view class="secondComment">
 							        	<view class="reply">
 											<view class="comment-box">
-												<!-- <view class="top">
-													<commentItem :item="replyItem" schema="course" :showReply="true" :showClose="true"></commentItem>
-												</view> -->
+												<view class="top">
+													<comment-item :item="replyItem" schema="course" :showReply="true" :showClose="true"></comment-item>
+												</view>
 												<view class="list">
 													<view class="row" v-for="item in replyList">
-														<commentItem @removeEvn="second_P_removeEvn" :item="item" :showReply="true"></commentItem>
+														<comment-item @removeEvn="second_P_removeEvn" :item="item" :showReply="true"></comment-item>
 													</view>
 												</view>
 												<view  v-if="noComment">
@@ -208,7 +209,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 						name: '评论'
 					},
 				],
-				tabIndex: 0, //当前下半部分显示的页面索引
+				tabIndex: 3, //当前下半部分显示的页面索引
 				noComment: false, //课程是否有评论数据
 				commentObj: {
 					course_id:"",
@@ -247,6 +248,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 			};
 		},
 		onLoad(e) {
+
 			this.courseId = e.id
 			this.commentObj.course_id = e.id
 			this.scheduleFun() //判断是否第一次播放
@@ -259,12 +261,15 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 		onUnload() {
 			this.playScheduleFun()
 			console.log(Date.now());
-			this.uploadNote()
 		},
 		methods: {
 			giveName,
+			transition(e) {
+
+			},
 			//切换选项卡
 			changeTab(e) {
+
 				this.tabIndex = e.index;
 			},
 			
@@ -352,7 +357,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 				
 				
 				let courseTemp = db.collection('course_video').where(`_id=="${this.courseId}"`).getTemp()
-				let userTemp = db.collection('uni-id-users').field("_id,username,nickname").getTemp()
+				let userTemp = db.collection('uni-id-users').field("_id,username,name").getTemp()
 				
 				let likeTemp = db.collection(("course_like")).where(`course_id=="${this.courseId}" && user_id==$cloudEnv_uid`).getTemp()
 				
@@ -446,13 +451,16 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 				console.log(this.editorCtx);
 				if (this.isOnlineNote) {
 					this.content = res.result.data[0].content
-					this.editorCtx.setContents({
-						html: res.result.data[0].content,
-						success: (e) => {
-							this.content = e.html
-							console.log(res.result.data[0].content);
-						}
-					})
+					setTimeout(() => {
+						this.editorCtx.setContents({
+							html: res.result.data[0].content,
+							success: (e) => {
+								this.content = e.html
+								console.log(res.result.data[0].content);
+							}
+						})
+					}, 1000)
+					
 				}
 				
 			},
@@ -523,6 +531,10 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 			okEdit() {
 				this.showTool = false
 				this.uploadNote()
+				uni.showLoading({
+					title:"保存中..."
+				})
+
 				
 			
 			},
@@ -546,6 +558,11 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 						content: this.content,
 					}).then(res => {
 						console.log(res);
+						uni.showLoading()
+						uni.showToast({
+							title:"保存成功",
+							icon:'none'
+						})
 								
 					})
 					
@@ -557,9 +574,17 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 						
 					}).then(res => {
 						console.log(res);
+						this.isOnlineNote = true
+						uni.showLoading()
+						uni.showToast({
+							title:"保存成功",
+							icon:'none'
+						})
 					})
-					this.this.isOnlineNote = true
+					
+					
 				}
+				
 			},
 			//判断是否使用了某种样式的功能函数	
 			checkStatus(name, detail, obj) {
@@ -590,8 +615,7 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 				
 								
 				let res = await db.collection(commentTemp,userTemp).orderBy("comment_date desc").get()
-			
-
+				console.log(res);
 					//获取一级评论所对应的二级评论的回复量
 					let idArr = res.result.data.map(item => {
 						return item._id
@@ -616,10 +640,12 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 					
 					if(!res.result.data.length) this.noComment = true
 					this.commentList = res.result.data
+					console.log(this.commentList);
 			},
 			
 			//评论成功的回调,评论无感增加操作
 			P_commentEvn(e) {
+				console.log(e);
 				if(!this.commentList.length) {
 					this.noComment = false
 				}
@@ -658,8 +684,8 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 			switchComment(replyItem) {
 				this.secondComShow = true
 				
-				
-				
+				console.log("111");
+								
 				if(!replyItem) {
 					return 
 				}
@@ -721,127 +747,142 @@ import { data } from '../../../uni_modules/uview-ui/libs/mixin/mixin.js'
 		.content {
 			.swiperClass {
 				display: block;
-				height: 320px;
+				height: 100%;
+				width: 750rpx;
 			}
 
 				
 				padding: 10px;
 				background-color: #FFFFFF;
 				margin-top: 20rpx;
-				height: calc( 100vh - 670rpx);
-				.brief-container {
-					.brief {
-						font-weight: bold;
-						font-size: 32rpx;
-						color: #303133;
-						margin-bottom: 20rpx;
-					}
-					.text {
-						font-size: 14px;
-						color: #666666;
-					}
-					.title {
-						padding: 10rpx 0 40rpx;
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-
-						.course-name {
-							font-size: 40rpx;
-							margin-bottom: 5rpx;
-							
-						}
-						.course-author {
-							font-size: 24rpx;
-							color: #666666;
-						}
-					}
-				}
-				.course-container {
-					/deep/ .uni-collapse-item__title-box[data-v-41027c34] {
-						padding: 0;
-					}
-					/deep/ .uni-collapse-item__title-text[data-v-41027c34] {
-						font-size: 17px;
-					}
-						height: calc( 100vh - 317px);
-						overflow: auto;
-						padding-bottom: 60rpx;
-					.course-item {
-						padding: 24rpx;
-						color: #333333;
-						border-bottom: 1px solid #f7f7f7;
-						font-size: 28rpx;
-					}
-					.active {
-						color: #0081FF;
-					}
-				}
-				.document-container {
-					.blueBtn {
-						width: 500rpx;
-						margin: 50rpx auto;
-						display: block;
-						line-height: 80rpx;
-					}
-				}
-				.onlineontainer {
-					.content {
-						.myEdit {
-							height: calc(100vh - 500rpx);
-							margin-bottom: 30rpx;
-						}
-					}
-								
-					.tools {
-						position: fixed;
-						left: 0;
-						bottom: 0;
-						display: flex;
-						justify-content: space-around;
-						align-items: center;
-						width: 100%;
-						height: 80rpx;
-						background-color: #fff;
-						border-top: 1rpx solid #f4f4f4;
-								
-						.iconfont {
-							font-size: 36rpx;
-							color: #333;
-								
-							&.active {
-								color: #0199Fe;
+				height: 49.8vh;
+				
+					.swiper-item {
+						height: 100%;
+						width: 94%;
+						.brief-container {
+							.brief {
+								font-weight: bold;
+								font-size: 32rpx;
+								color: #303133;
+								margin-bottom: 20rpx;
 							}
-						}
-					}
-				}
-				.comment-container {
-					.comment-box {
-						height: 508rpx;
-						overflow-y: auto;
-					}
-					.secondComment {
-						.reply {
-						    height: 662rpx;
-						}
-						.reply {
-							/deep/ .list[data-v-14645ae0] {
-							    padding-bottom: 0;
+							.text {
+								font-size: 14px;
+								color: #666666;
 							}
-							.top {
-								padding: 30rpx;
-								border-bottom: 15rpx solid #eee;
-								
-							}
-							.list {
-								padding: 30rpx 60rpx;
-								padding-bottom: 120rpx;
-								.row {
-									padding-bottom: 15rpx;
+							.title {
+								padding: 10rpx 0 40rpx;
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+						
+								.course-name {
+									font-size: 40rpx;
+									margin-bottom: 5rpx;
+									
+								}
+								.course-author {
+									font-size: 24rpx;
+									color: #666666;
 								}
 							}
 						}
+						.course-container {
+							/deep/ .uni-collapse-item__title-box[data-v-41027c34] {
+								padding: 0;
+							}
+							/deep/ .uni-collapse-item__title-text[data-v-41027c34] {
+								font-size: 17px;
+							}
+								height: calc( 100vh - 317px);
+								overflow: auto;
+								padding-bottom: 60rpx;
+							.course-item {
+								padding: 24rpx;
+								color: #333333;
+								border-bottom: 1px solid #f7f7f7;
+								font-size: 28rpx;
+							}
+							.active {
+								color: #0081FF;
+							}
+						}
+						.document-container {
+							.blueBtn {
+								width: 500rpx;
+								margin: 50rpx auto;
+								display: block;
+								line-height: 80rpx;
+							}
+						}
+						.onlineontainer {
+							position: relative;
+							.content {
+								.myEdit {
+									height: calc(100vh - 500rpx);
+									margin-bottom: 30rpx;
+								}
+							}
+										
+							.tools {
+								position: fixed;
+								left: 0;
+								bottom: 0;
+								display: flex;
+								justify-content: space-around;
+								align-items: center;
+								width: 100%;
+								height: 80rpx;
+								background-color: #fff;
+								border-top: 1rpx solid #f4f4f4;
+								
+										
+								.iconfont {
+									font-size: 36rpx;
+									color: #333;
+										
+									&.active {
+										color: #0199Fe;
+									}
+								}
+							}
+						}
+						.comment-container {
+							height: 100%;
+								
+							.comment {
+								height: 100%;
+								.comment-box {
+									height: 82%;
+									overflow-y: auto;
+								}
+								.secondComment {
+									.reply {
+									    height: 662rpx;
+									}
+									.reply {
+										/deep/ .list[data-v-14645ae0] {
+										    padding-bottom: 0;
+										}
+										.top {
+											padding: 30rpx;
+											border-bottom: 15rpx solid #eee;
+											
+										}
+										.list {
+											padding: 30rpx 60rpx;
+											padding-bottom: 120rpx;
+											.row {
+												padding-bottom: 15rpx;
+											}
+										}
+									}
+								}
+							}
+							
 					}
+				
 					
 				}
 				

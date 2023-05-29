@@ -22,7 +22,7 @@
 					</view>
 					<view class="text" v-if="hasLogin">
 						<view class="nickname">
-							{{userInfo.nickname||userInfo.username||userInfo.moblie}}
+							{{userInfo.name||userInfo.username||userInfo.moblie}}
 						</view>
 						<!-- <view class="year">
 							<uni-dateformat :date="userInfo.register_date" :threshold="[3600,99*365*24*60*60*1000]"></uni-dateformat>

@@ -8,7 +8,7 @@
 
 				<view class="info">
 					<text class="title">{{courseItem.course_name}}</text>
-					<text class="name">{{courseItem.user_id[0].nickname}}</text>
+					<text class="name">{{courseItem.user_id[0].name}}</text>
 				</view>
 			</view>
 			<view class="right">
@@ -36,7 +36,7 @@
 						<view class="info">
 							<text>{{item2.studentnumber}}{{item2.name}}</text>
 							<view class="plan">
-								<text>已看{{item2._id.course_play_history[0] ? formateTime(item2._id.course_play_history[0].play_total_time / 1000) : "0"}}/共{{courseItem.course_time}}</text>
+								<text>已看{{item2._id.course_play_history[0] ? formateTime(item2._id.course_play_history[0].play_total_time / 1000) : "0"}}/共{{formateTime(courseItem.course_time)}}</text>
 								<text>已看{{item2._id.course_play_history[0] ? item2._id.course_play_history[0].have_watched.length : "0"}}/共{{courseItem.course_video_num}}课</text>
 							</view>
 						</view>
@@ -77,19 +77,15 @@
 			},
 			
 			//时间格式化的功能函数  xx:xx:xx
-			formatDate(value) {
-			                var date = new Date();
-			                date.setTime(value);
-			                var month = date.getMonth() + 1;
-			                var hours = date.getHours();
-			                if (hours < 10)
-			                    hours = "0" + hours;
-			                var minutes = date.getMinutes();
-			                if (minutes < 10)
-			                    minutes = "0" + minutes;
-			                var time = date.getFullYear() + "-" + month + "-" + date.getDate();
-			                return time;
-			            },
+			formateTime(time) {
+			      const h = parseInt(time / 3600)
+			      const minute = parseInt(time / 60 % 60)
+			      const second = Math.ceil(time % 60)    
+			 
+			      const hours = h < 10 ? '0' + h : h
+			      const formatSecond = second > 59 ? 59 : second
+			      return `${hours > 0 ? `${hours}:` : ''}${minute < 10 ? '0' + minute : minute}:${formatSecond < 10 ? '0' + formatSecond : formatSecond}`
+			},
 			
 			//获取班级成员数据
 			async getClassData() {

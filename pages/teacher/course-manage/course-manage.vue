@@ -5,8 +5,15 @@
 			<block slot="content">课程管理</block>
 		</cu-custom>
 		
+		<view v-if="!CuorseManList.length">
+			<u-empty
+			        mode="list"
+			        icon="http://cdn.uviewui.com/uview/empty/list.png"
+			>
+			</u-empty>
+		</view>
 		<!-- 课程列表 -->
-		<view class="course-list">
+		<view v-else class="course-list">
 			<view class="course-item" v-for="item in CuorseManList" :id="item.id" >
 				<course-manage-list :courseItem="item" ></course-manage-list>
 			</view>
@@ -44,12 +51,13 @@
 			async getCuorseManData() {
 				
 				let courTemp = db.collection("course_video").where(`user_id == $cloudEnv_uid`).field("_id,user_id,courseCover,course_name,course_time,course_video_num").getTemp()
-				let userTemp = db.collection("uni-id-users").field("_id,username,nickname").getTemp()
+				let userTemp = db.collection("uni-id-users").field("_id,username,name").getTemp()
 				
 				let res = await db.collection(courTemp, userTemp).get()
 				
 				res.result.data.forEach(item => {
-					item.course_time = this.formateTime(item.course_time)
+					console.log( item.course_time);
+					// item.course_time = this.formateTime(item.course_time)
 
 				})
 

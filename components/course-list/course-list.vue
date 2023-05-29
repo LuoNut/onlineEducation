@@ -9,7 +9,7 @@
 					{{courseData.course_name}}
 				</view>
 				<view class="info">
-					<text class="name">{{courseData.user_id[0].nickname}}</text>
+					<text class="name">{{courseData.user_id[0].name}}</text>
 					<text class="date">
 						<!-- <uni-dateformat :date="courseData.publish_date" format="yyyy/MM/dd" ></uni-dateformat> -->
 						<text>{{formatDate(courseData.publish_date)}}</text>

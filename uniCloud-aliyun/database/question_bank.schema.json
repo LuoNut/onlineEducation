@@ -43,7 +43,8 @@
 			"bsonType": "file",
 			"fileMediaType": "image",
 			"title": "题目为图片",
-			"description": "题目为图片"
+			"description": "题目为图片",
+			"defaultValue": ""
 		},
 		"isimg": {
 			"bsonType": "string",
