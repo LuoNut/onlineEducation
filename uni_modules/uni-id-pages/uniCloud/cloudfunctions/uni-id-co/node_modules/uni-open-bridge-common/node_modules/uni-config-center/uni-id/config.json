@@ -58,8 +58,8 @@
     "oauth": {
       
       "weixin": {
-        "appid": "wx97cb5b932b7e5ceb",
-        "appsecret": "572eaf47156e6a1388723fc0052496af"
+        "appid": "",
+        "appsecret": ""
       }
     }
   },

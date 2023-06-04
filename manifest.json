@@ -71,5 +71,15 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "h5" : {
+        "devServer" : {
+            "https" : false
+        },
+        "router" : {
+            "mode" : "hash",
+            "base" : "./"
+        },
+        "title" : "onEduca"
+    }
 }
