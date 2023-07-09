@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "comment-item": "/components/comment-item/comment-item",
-    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty",
-    "comment-frame": "/components/comment-frame/comment-frame"
-  }
-}

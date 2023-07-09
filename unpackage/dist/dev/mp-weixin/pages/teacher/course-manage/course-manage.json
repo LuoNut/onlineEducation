@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "u-empty": "/uni_modules/uview-ui/components/u-empty/u-empty",
-    "course-manage-list": "/components/course-manage-list/course-manage-list"
-  }
-}

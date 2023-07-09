@@ -105,6 +105,8 @@
 </template>
 
 <script>
+	import {store} from "@/uni_modules/uni-id-pages/common/store.js"
+	import pageJson from '@/pages.json'
 	const db = uniCloud.database()
 	export default {
 		data() {
@@ -205,14 +207,48 @@
 				}
 			},
 			goIndex() {
+				//判断用户是否登录，登录才能进行答题
+				if(!store.hasLogin) {
+					 uni.showModal({
+					 	title:"登录才能进行点赞哦，是否进行登录？",
+						success: (res) => {
+				
+							if(res.confirm) {
+								uni.navigateTo({
+									url: '/' + pageJson.uniIdRouter.loginPage
+								})
+							}
+						}
+					 })
+					return 
+				 }
+				
 				uni.navigateTo({
 					url: `/pages/answer/reply/reply?subject_type_one=${this.courseType[0]}&subject_type_two=${this.courseType[1]}&schema=question_bank`
 				})
+				
 			},
 			toErrorQuestions() {
-				uni.navigateTo({
-					url: `/pages/answer/reply/reply?subject_type_one=${this.courseType[0]}&subject_type_two=${this.courseType[1]}&schema=record_questions`
-				})
+				//判断用户是否登录，登录才能进行答题
+				if(!store.hasLogin) {
+					 uni.showModal({
+					 	title:"登录才能进行点赞哦，是否进行登录？",
+						success: (res) => {
+				
+							if(res.confirm) {
+								uni.navigateTo({
+									url: '/' + pageJson.uniIdRouter.loginPage
+								})
+							}
+						}
+					 })
+					return 
+				 }
+			
+			uni.navigateTo({
+				url: `/pages/answer/reply/reply?subject_type_one=${this.courseType[0]}&subject_type_two=${this.courseType[1]}&schema=record_questions`
+			})
+				
 			},
 			change(index) {
 				this.current = index;
