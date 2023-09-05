@@ -47,7 +47,7 @@ export function getProvince() {
 function getip() {
 	return new Promise((resolve, reject) => {
 		uni.request({
-			url: 'https://restapi.amap.com/v3/ip?key=1e4c4960ff4e574cd39128750c5834ed',
+			url: '',
 			success: (res) => {
 				let str = ""
 				console.log('111');
